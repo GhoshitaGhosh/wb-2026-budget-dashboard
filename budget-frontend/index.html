@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget at a Glance | West Bengal 2026-27</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Premium background elements -->
+    <div class="bg-pattern"></div>
+    <div class="bg-glow top-glow"></div>
+    <div class="bg-glow bottom-glow"></div>
+
+    <div id="app">
+      <!-- Sidebar (TOC) -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo-container">
+            <div class="logo">WB</div>
+            <div class="sidebar-titles">
+              <h2>Budget 2026-27</h2>
+              <p>West Bengal</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sidebar-actions">
+          <button id="theme-toggle" class="theme-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+            <span>Toggle Theme</span>
+          </button>
+        </div>
+        
+        <nav class="sidebar-nav" id="sidebar-nav">
+          <div class="nav-section-title">Overview</div>
+          <a href="#overview-section" class="nav-item active">Dashboard Overview</a>
+          
+          <div class="nav-section-title mt-4">Departments</div>
+          <div id="nav-departments">
+            <!-- Populated by JS -->
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Scrollable Content -->
+      <main class="main-content" id="main-content">
+        <!-- Sticky Top Navigation -->
+        <div class="top-nav glass-header sticky-top">
+          <div class="top-nav-left">
+            <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle Sidebar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="top-nav-branding">
+              <h2>Budget at a Glance</h2>
+            </div>
+          </div>
+          <div class="top-nav-right">
+            <div class="search-input-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="global-search" placeholder="Search schemes, details...">
+            </div>
+          </div>
+        </div>
+
+        <div class="content-wrapper">
+          
+          <!-- Overview Section -->
+          <section id="overview-section" class="content-section animate-on-scroll">
+            <header class="section-header">
+              <div class="badge">Financial Year 2026-27</div>
+              <h1 class="gradient-text">West Bengal State Budget</h1>
+              <p>An interactive overview of allocations, schemes, and initiatives aligned with the UN Sustainable Development Goals.</p>
+            </header>
+
+            <div class="stats-grid">
+              <div class="stat-card glass-card">
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                </div>
+                <div>
+                  <h3>Total Departments</h3>
+                  <div class="stat-value" id="stat-depts">0</div>
+                </div>
+              </div>
+              <div class="stat-card glass-card">
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <div>
+                  <h3>Total Schemes</h3>
+                  <div class="stat-value" id="stat-schemes">0</div>
+                </div>
+              </div>
+              <div class="stat-card highlight-card">
+                <div class="stat-icon highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-indian-rupee"><path d="M6 3h12"/><path d="M6 8h12"/><path d="M6 13h8.5l-1 4h-2"/><path d="M6 13h3"/><path d="M9 13c6.667 0 6.667-10 0-10"/><path d="m10.5 16 6.5 5"/></svg>
+                </div>
+                <div>
+                  <h3>SDG Allocation</h3>
+                  <div class="stat-value" id="stat-total-sdg">₹0 Cr</div>
+                </div>
+              </div>
+              <div class="stat-card highlight-card">
+                <div class="stat-icon highlight-icon" style="color: #4caf50; background: rgba(76, 175, 80, 0.1);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-indian-rupee"><path d="M6 3h12"/><path d="M6 8h12"/><path d="M6 13h8.5l-1 4h-2"/><path d="M6 13h3"/><path d="M9 13c6.667 0 6.667-10 0-10"/><path d="m10.5 16 6.5 5"/></svg>
+                </div>
+                <div>
+                  <h3>Total Revenue</h3>
+                  <div class="stat-value" id="stat-total-revenue">₹0 Cr</div>
+                </div>
+              </div>
+              <div class="stat-card highlight-card">
+                <div class="stat-icon highlight-icon" style="color: #f44336; background: rgba(244, 67, 54, 0.1);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-indian-rupee"><path d="M6 3h12"/><path d="M6 8h12"/><path d="M6 13h8.5l-1 4h-2"/><path d="M6 13h3"/><path d="M9 13c6.667 0 6.667-10 0-10"/><path d="m10.5 16 6.5 5"/></svg>
+                </div>
+                <div>
+                  <h3>Total Expenditure</h3>
+                  <div class="stat-value" id="stat-total-expenditure">₹0 Cr</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Macro Budget Overview -->
+            <div class="charts-container" style="margin-top: 2rem;">
+              <div class="chart-card large glass-card" style="grid-column: 1 / -1;">
+                <div class="chart-header">
+                  <h2>Rupee Comes From</h2>
+                  <p>Revenue Sources Breakdown</p>
+                </div>
+                <div class="dept-chart-layout">
+                  <div class="canvas-wrapper">
+                    <canvas id="revenueChart"></canvas>
+                  </div>
+                  <div class="custom-legend-container" id="customRevLegend">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="charts-container" style="margin-top: 2rem;">
+              <div class="chart-card large glass-card" style="grid-column: 1 / -1;">
+                <div class="chart-header">
+                  <h2>Rupee Goes To</h2>
+                  <p>Expenditure Breakdown</p>
+                </div>
+                <div class="dept-chart-layout">
+                  <div class="canvas-wrapper">
+                    <canvas id="expenditureChart"></canvas>
+                  </div>
+                  <div class="custom-legend-container" id="customExpLegend">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="charts-container" style="margin-top: 2rem;">
+              <div class="chart-card large glass-card" style="grid-column: 1 / -1;">
+                <div class="chart-header">
+                  <h2>Department Wise Allocation</h2>
+                  <p>Total financial outlay across all departments</p>
+                </div>
+                <div class="dept-chart-layout">
+                  <div class="canvas-wrapper">
+                    <canvas id="departmentOutlayChart"></canvas>
+                  </div>
+                  <div class="custom-legend-container" id="customDeptLegend">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="charts-container" style="margin-top: 2rem;">
+              <div class="chart-card large glass-card">
+                <div class="chart-header">
+                  <h2>Sustainable Development Goals (SDG) Allocations</h2>
+                  <p>Distribution of funds (in Crores ₹) across the 17 UN Goals</p>
+                </div>
+                <div class="canvas-wrapper">
+                  <canvas id="sdgChart"></canvas>
+                </div>
+              </div>
+              
+              <div class="chart-card glass-card">
+                <div class="chart-header">
+                  <h2>Schemes by Department</h2>
+                  <p>Top 10 departments by number of initiatives</p>
+                </div>
+                <div class="canvas-wrapper">
+                  <canvas id="deptChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tag Filtering Section -->
+          <section class="tag-filter-section glass-card animate-on-scroll">
+             <div class="filter-header">
+                <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Filter by Category</h3>
+                <p>Select tags below to refine the list of initiatives.</p>
+             </div>
+             
+             <!-- Custom Dropdown Component -->
+             <div class="custom-select-wrapper" id="tag-select-wrapper">
+               <div class="custom-select-display" id="tag-select-display">
+                 <span>Add a filter tag...</span>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+               </div>
+               <div class="custom-select-dropdown" id="tag-select-dropdown">
+                 <div class="dropdown-search">
+                   <input type="text" id="tag-search-input" placeholder="Search tags...">
+                 </div>
+                 <div class="dropdown-list" id="tag-dropdown-list">
+                   <!-- Populated by JS -->
+                 </div>
+               </div>
+             </div>
+
+             <!-- Active Tags Container -->
+             <div id="active-tags-container" class="active-tags-container">
+                <!-- Active tag chips injected here -->
+             </div>
+          </section>
+
+          <!-- Search Results Container (Hidden by default) -->
+          <section id="search-results-section" class="content-section" style="display: none;">
+             <header class="section-header glass-header dept-header">
+                <h1 id="search-title">Search Results</h1>
+             </header>
+             <div class="schemes-grid" id="search-schemes-container">
+                <!-- Search results injected here -->
+             </div>
+          </section>
+
+          <!-- Departments Container (Populated by JS) -->
+          <div id="departments-container">
+            <!-- Departments injected here -->
+          </div>
+          
+          <footer class="site-footer glass-card animate-on-scroll">
+            <div class="logo">WB</div>
+            <p>Data parsed from all State Budget Publications (2026-27)</p>
+            <p class="footer-sub">A Citizen's Dashboard made for public benefit</p>
+          </footer>
+
+        </div>
+      </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-ssr/
+*.local
+.env
+.env.*
+.env.*.local
+.DS_Store
+.venv
+venv/
+__pycache__/
+*.pyc
+sparse_to_enrich.json
+export_sparse.py
+comb.py
+count_sparse.py
+template_enricher.py
