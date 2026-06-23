@@ -652,7 +652,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.5rem 2rem;
   margin-bottom: 3rem;
   position: relative;
-  z-index: 50;
+  z-index: 45;
 }
 
 .filter-header {
