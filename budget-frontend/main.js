@@ -479,7 +479,7 @@ function performSearch(query) {
            </div>
            <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">No initiatives found</h3>
            <p style="color: var(--text-tertiary); max-width: 400px; margin: 0 auto 2rem auto; line-height: 1.5;">We couldn't find any schemes matching your search query.</p>
-           <button onclick="document.getElementById('global-search').value=''; document.getElementById('global-search').dispatchEvent(new Event('input'));" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='var(--shadow-sm)';">Clear Search</button>
+           <button onclick="window.clearSearch()" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='var(--shadow-sm)';">Clear Search</button>
         </div>
       `;
   } else {
@@ -501,6 +501,16 @@ function setupSearch() {
     performSearch(currentSearchQuery);
   });
 }
+
+// Attach a global helper for the clear button empty state
+window.clearSearch = function() {
+  const input = document.getElementById('global-search');
+  if (input) {
+    input.value = '';
+  }
+  currentSearchQuery = '';
+  performSearch('');
+};
 
 function initCharts() {
   const getTextColor = () => document.documentElement.getAttribute('data-theme') === 'dark' ? '#e6edf3' : '#4b5563';
