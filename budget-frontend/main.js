@@ -357,8 +357,11 @@ function renderContent(filteredDepartments = globalData.departments) {
   
   scrollObserver.observe(overviewSection);
 
+  let schemeCount = 0;
+
   filteredDepartments.forEach(dept => {
     if (dept.schemes.length === 0) return;
+    schemeCount += dept.schemes.length;
 
     // Sidebar Link
     const navItem = document.createElement('a');
@@ -388,6 +391,11 @@ function renderContent(filteredDepartments = globalData.departments) {
   
   if (filteredDepartments.length === 0) {
       departmentsContainer.innerHTML = '<div style="padding: 3rem 2rem; text-align: center; color: var(--text-tertiary);">No departments match the selected tags.</div>';
+  }
+
+  const resultsCountNum = document.getElementById('results-count-num');
+  if (resultsCountNum) {
+      resultsCountNum.textContent = schemeCount;
   }
 
   // After adding dynamic content, tell the animation observer to watch them
@@ -785,5 +793,21 @@ Chart.prototype.update = function(mode) {
 
   originalUpdate.call(this, mode);
 };
+
+// Back to top logic
+const backToTopBtn = document.getElementById('back-to-top');
+if (backToTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 document.addEventListener('DOMContentLoaded', init);

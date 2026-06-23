@@ -220,9 +220,14 @@
 
           <!-- Tag Filtering Section -->
           <section class="tag-filter-section glass-card animate-on-scroll">
-             <div class="filter-header">
-                <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Filter by Category</h3>
-                <p>Select tags below to refine the list of initiatives.</p>
+             <div class="filter-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                  <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Filter by Category</h3>
+                  <p>Select tags below to refine the list of initiatives.</p>
+                </div>
+                <div class="results-count-badge" id="results-count">
+                  Showing <span id="results-count-num">0</span> schemes
+                </div>
              </div>
              
              <!-- Custom Dropdown Component -->
@@ -270,6 +275,12 @@
 
         </div>
       </main>
+
+      <!-- Back to top button -->
+      <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      </button>
+
     </div>
     <script type="module" src="./main.js"></script>
   </body>
