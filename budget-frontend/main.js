@@ -390,7 +390,16 @@ function renderContent(filteredDepartments = globalData.departments) {
   });
   
   if (filteredDepartments.length === 0) {
-      departmentsContainer.innerHTML = '<div style="padding: 3rem 2rem; text-align: center; color: var(--text-tertiary);">No departments match the selected tags.</div>';
+      departmentsContainer.innerHTML = `
+        <div class="empty-state animate-on-scroll" style="text-align: center; padding: 5rem 2rem;">
+           <div style="color: var(--primary-color-light); margin-bottom: 1.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+           </div>
+           <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">No initiatives found</h3>
+           <p style="color: var(--text-tertiary); max-width: 400px; margin: 0 auto 2rem auto; line-height: 1.5;">We couldn't find any schemes matching your selected tags.</p>
+           <button onclick="window.location.reload()" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='var(--shadow-sm)';">Clear All Filters</button>
+        </div>
+      `;
   }
 
   const resultsCountNum = document.getElementById('results-count-num');
@@ -463,7 +472,16 @@ function performSearch(query) {
   document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
 
   if (filteredSchemes.length === 0) {
-      searchSchemesContainer.innerHTML = '<div style="padding: 2rem; color: var(--text-tertiary);">No initiatives match your search criteria.</div>';
+      searchSchemesContainer.innerHTML = `
+        <div class="empty-state animate-on-scroll" style="text-align: center; padding: 5rem 2rem;">
+           <div style="color: var(--primary-color-light); margin-bottom: 1.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+           </div>
+           <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">No initiatives found</h3>
+           <p style="color: var(--text-tertiary); max-width: 400px; margin: 0 auto 2rem auto; line-height: 1.5;">We couldn't find any schemes matching your search query.</p>
+           <button onclick="document.getElementById('search-input').value=''; document.getElementById('search-input').dispatchEvent(new Event('input'));" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='var(--shadow-sm)';">Clear Search</button>
+        </div>
+      `;
   } else {
       searchSchemesContainer.innerHTML = filteredSchemes.map(s => {
         const searchScheme = {...s, departmentId: null}; 
