@@ -826,8 +826,8 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
     const maxFreq = Math.max(...sortedWords.map(w => w[1]));
     const labels = sortedWords.map(w => w[0]);
     const data = sortedWords.map(w => {
-      // Normalizing frequencies: max font size ~45px, min font size ~10px
-      return 10 + (Math.pow(w[1] / maxFreq, 0.6) * 45);
+      // Normalizing frequencies: max font size ~40px, min font size ~10px
+      return 10 + (Math.pow(w[1] / maxFreq, 0.6) * 30);
     });
 
     if (wordCloudChartInstance) wordCloudChartInstance.destroy();
