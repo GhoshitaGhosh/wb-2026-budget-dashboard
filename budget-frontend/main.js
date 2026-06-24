@@ -811,7 +811,7 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
 
     allSchemes.forEach(s => {
       const text = (s.name + ' ' + s.details).toLowerCase();
-      const words = text.match(/\b[a-z]{4,}\b/g) || []; // minimum 4 letters
+      const words = text.match(/\b[a-z]{3,}\b/g) || []; // minimum 3 letters
       words.forEach(w => {
         if (!stopWords.has(w)) {
           wordCounts[w] = (wordCounts[w] || 0) + 1;
@@ -821,13 +821,13 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
 
     const sortedWords = Object.entries(wordCounts)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 70);
+      .slice(0, 150);
 
     const maxFreq = Math.max(...sortedWords.map(w => w[1]));
     const labels = sortedWords.map(w => w[0]);
     const data = sortedWords.map(w => {
-      // Normalizing frequencies: max font size ~35px, min font size ~10px
-      return 10 + (Math.pow(w[1] / maxFreq, 0.6) * 35);
+      // Normalizing frequencies: max font size ~45px, min font size ~10px
+      return 10 + (Math.pow(w[1] / maxFreq, 0.6) * 45);
     });
 
     if (wordCloudChartInstance) wordCloudChartInstance.destroy();
