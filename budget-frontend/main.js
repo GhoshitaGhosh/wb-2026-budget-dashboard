@@ -1,5 +1,8 @@
 import './style.css'; // Let Vite handle it
 import Chart from 'chart.js/auto';
+import { WordCloudController, WordElement } from 'chartjs-chart-wordcloud';
+
+Chart.register(WordCloudController, WordElement);
 
 let globalData = null;
 let chartsData = null;
@@ -35,6 +38,7 @@ let deptChartInstance = null;
 let revenueChartInstance = null;
 let expenditureChartInstance = null;
 let departmentOutlayChartInstance = null;
+let wordCloudChartInstance = null;
 
 // Intersection Observer for scroll spy
 const observerOptions = {
@@ -181,6 +185,10 @@ function setupTheme() {
     
     if (sdgChartInstance) sdgChartInstance.update();
     if (deptChartInstance) deptChartInstance.update();
+    if (revenueChartInstance) revenueChartInstance.update();
+    if (expenditureChartInstance) expenditureChartInstance.update();
+    if (departmentOutlayChartInstance) departmentOutlayChartInstance.update();
+    if (wordCloudChartInstance) wordCloudChartInstance.update();
   });
 }
 
@@ -794,6 +802,63 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
 
     legendContainer.appendChild(item);
   });
+
+  // Init Word Cloud Chart
+  const wordCloudCtx = document.getElementById('wordCloudChart');
+  if (wordCloudCtx && allSchemes.length > 0) {
+    const stopWords = new Set(["the", "and", "of", "to", "in", "for", "a", "on", "with", "as", "by", "is", "at", "an", "from", "this", "under", "will", "be", "it", "are", "that", "which", "scheme", "west", "bengal", "state", "government", "has", "been", "have", "their", "all", "its", "other", "any", "not", "new", "through", "provided", "development", "crore", "lakh", "rs", "per", "assistance", "financial", "scheme", "schemes"]);
+    const wordCounts = {};
+
+    allSchemes.forEach(s => {
+      const text = (s.name + ' ' + s.details).toLowerCase();
+      const words = text.match(/\b[a-z]{4,}\b/g) || []; // minimum 4 letters
+      words.forEach(w => {
+        if (!stopWords.has(w)) {
+          wordCounts[w] = (wordCounts[w] || 0) + 1;
+        }
+      });
+    });
+
+    const sortedWords = Object.entries(wordCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 70);
+
+    const labels = sortedWords.map(w => w[0]);
+    const data = sortedWords.map(w => 10 + Math.pow(w[1], 0.7) * 5); // Scale frequencies logarithmically for font sizes
+
+    if (wordCloudChartInstance) wordCloudChartInstance.destroy();
+
+    wordCloudChartInstance = new Chart(wordCloudCtx, {
+      type: 'wordCloud',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Weight',
+          data: data,
+          color: (ctx) => {
+            const index = ctx.dataIndex;
+            const rank = index / data.length;
+            if (rank < 0.1) return '#f28500'; // primary saffron
+            if (rank < 0.3) return '#ff9933'; // lighter saffron
+            if (rank < 0.6) return document.documentElement.getAttribute('data-theme') === 'dark' ? '#9ca3af' : '#4b5563'; // secondary
+            return document.documentElement.getAttribute('data-theme') === 'dark' ? '#4b5563' : '#9ca3af'; // tertiary
+          }
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (context) => `Frequency weight: ${Math.round(context.raw)}`
+            }
+          }
+        }
+      }
+    });
+  }
 }
 
 const originalUpdate = Chart.prototype.update;
