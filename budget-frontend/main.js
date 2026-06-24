@@ -765,7 +765,7 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
     
     const valueNode = document.createElement('div');
     valueNode.className = 'legend-value';
-    const percentage = ((data[index] / data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
+    const percentage = ((data[index] / data.reduce((a, b) => a + b, 0)) * 100).toFixed(2);
     valueNode.textContent = percentage + '%';
 
     item.appendChild(colorBox);
