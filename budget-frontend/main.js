@@ -826,8 +826,8 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
     const maxFreq = Math.max(...sortedWords.map(w => w[1]));
     const labels = sortedWords.map(w => w[0]);
     const data = sortedWords.map(w => {
-      // Normalizing frequencies: max font size ~50px, min font size ~12px
-      return 12 + (Math.pow(w[1] / maxFreq, 0.6) * 45);
+      // Normalizing frequencies: max font size ~35px, min font size ~10px
+      return 10 + (Math.pow(w[1] / maxFreq, 0.6) * 35);
     });
 
     if (wordCloudChartInstance) wordCloudChartInstance.destroy();
@@ -852,6 +852,9 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: {
+          padding: 30
+        },
         plugins: {
           legend: { display: false },
           tooltip: {
