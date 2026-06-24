@@ -806,7 +806,7 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
   // Init Word Cloud Chart
   const wordCloudCtx = document.getElementById('wordCloudChart');
   if (wordCloudCtx && allSchemes.length > 0) {
-    const stopWords = new Set(["the", "and", "of", "to", "in", "for", "a", "on", "with", "as", "by", "is", "at", "an", "from", "this", "under", "will", "be", "it", "are", "that", "which", "scheme", "west", "bengal", "state", "government", "has", "been", "have", "their", "all", "its", "other", "any", "not", "new", "through", "provided", "development", "crore", "lakh", "rs", "per", "assistance", "financial", "scheme", "schemes"]);
+    const stopWords = new Set(["the", "and", "of", "to", "in", "for", "a", "on", "with", "as", "by", "is", "at", "an", "from", "this", "under", "will", "be", "it", "are", "that", "which", "scheme", "west", "bengal", "state", "government", "has", "been", "have", "their", "all", "its", "other", "any", "not", "new", "through", "provided", "development", "crore", "lakh", "rs", "per", "assistance", "financial", "scheme", "schemes", "initiative", "initiatives", "programme", "programmes", "project", "projects", "department", "departments", "fund", "funds", "budget", "plan", "plans"]);
     const wordCounts = {};
 
     allSchemes.forEach(s => {
