@@ -7,14 +7,16 @@ This dashboard parses and presents the massive West Bengal state budget into dig
 
 ## Features
 - **Macro-level Budget Visualizations:** Interactive pie and bar charts depicting the distribution of the state's outlays, tracking exactly where the "Rupee Comes From" and where the "Rupee Goes To."
+- **Initiatives Word Map:** A dynamic word cloud visualization automatically analyzing textual frequency across all budget allocations to highlight key thematic focus areas, complete with customizable filters.
 - **Departmental Drill-down:** A comprehensive breakdown of over 50 state departments, sorting schemes dynamically by allocation size and department footprint.
-- **Enriched Scheme Data:** Over 400 state-run schemes, projects, and welfare programs deeply enriched with detailed context and precise budgetary outlays.
+- **Enriched Scheme Data:** Over 550 state-run schemes, projects, and welfare programs deeply enriched with detailed context and precise budgetary outlays.
 - **Smart Filtering & Search:** A fast, real-time search engine with smart, multi-select tag filtering (e.g., `#Agriculture`, `#Infrastructure`, `#Education`, `#WomenEmpowerment`) to quickly isolate specific policy areas.
-- **Glassmorphism Design:** A premium, modern user interface built from scratch utilizing clean CSS glassmorphism, fluid micro-animations, and a responsive grid system.
+- **Modern Adaptive UI:** A premium user interface built from scratch utilizing clean CSS glassmorphism, fluid micro-animations, and seamless Dark/Light Mode toggling.
 
 ## Technical Stack
 - **Frontend Framework:** Built with [Vite](https://vitejs.dev/) for lightning-fast HMR and optimized production builds.
 - **Data Architecture:** A purely static, serverless architecture driven entirely by compiled `data.json` and `charts_data.json` artifacts, resulting in zero-latency data querying.
+- **Visualization:** Integrated with `chart.js` and `chartjs-chart-wordcloud` for responsive, accessible data graphics.
 - **Styling:** Vanilla CSS3 emphasizing modularity, CSS variables (tokens), and modern layout techniques without the overhead of heavy utility frameworks.
 - **Hosting:** Fully configured for CI/CD deployment via GitHub Actions and hosted statically on GitHub Pages.
 
@@ -24,7 +26,7 @@ To run this dashboard locally:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/wb-2026-budget-dashboard.git
+   git clone https://github.com/GhoshitaGhosh/wb-2026-budget-dashboard.git
    cd wb-2026-budget-dashboard/budget-frontend
    ```
 
