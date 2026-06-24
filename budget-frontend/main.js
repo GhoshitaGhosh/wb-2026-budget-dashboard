@@ -865,6 +865,17 @@ function buildCustomLegend(chartInstance, labels, data, backgroundColors, contai
         }
       }
     });
+
+    const excludedWordsList = document.getElementById('excluded-words-list');
+    if (excludedWordsList) {
+      excludedWordsList.innerHTML = '';
+      Array.from(stopWords).sort().forEach(word => {
+        const span = document.createElement('span');
+        span.className = 'excluded-word-tag';
+        span.textContent = word;
+        excludedWordsList.appendChild(span);
+      });
+    }
   }
 }
 

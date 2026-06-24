@@ -224,10 +224,14 @@
                   <h3>Initiatives Word Map</h3>
                   <p>Most frequently used terms across all schemes</p>
                 </div>
-                <div class="dept-chart-layout">
+                <div class="dept-chart-layout" style="flex-direction: column;">
                   <div class="chart-container-sm" style="height: 400px; width: 100%;">
                     <canvas id="wordCloudChart"></canvas>
                   </div>
+                  <details class="excluded-words-dropdown">
+                    <summary>View Excluded Filter Words</summary>
+                    <div id="excluded-words-list" class="excluded-words-list"></div>
+                  </details>
                 </div>
               </div>
             </div>

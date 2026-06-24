@@ -1068,3 +1068,43 @@ h1, h2, h3, h4, h5, h6 {
   to { opacity: 1; transform: translateY(0); }
 }
 
+
+.excluded-words-dropdown {
+  margin-top: 1rem;
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.excluded-words-dropdown summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  user-select: none;
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+.excluded-words-dropdown summary:hover {
+  color: var(--primary-color);
+}
+
+.excluded-words-list {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.excluded-word-tag {
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+}
