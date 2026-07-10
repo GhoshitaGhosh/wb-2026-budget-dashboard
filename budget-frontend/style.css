@@ -1141,10 +1141,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Dark Mode Map Tiles Override */
-body.dark-mode .leaflet-layer,
-body.dark-mode .leaflet-control-zoom-in,
-body.dark-mode .leaflet-control-zoom-out,
-body.dark-mode .leaflet-control-attribution {
+[data-theme="dark"] .leaflet-layer,
+[data-theme="dark"] .leaflet-control-zoom-in,
+[data-theme="dark"] .leaflet-control-zoom-out,
+[data-theme="dark"] .leaflet-control-attribution {
   filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
