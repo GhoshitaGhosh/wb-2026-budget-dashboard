@@ -954,8 +954,8 @@ function initMap() {
   const mapContainer = document.getElementById('budget-map');
   if (!mapContainer) return;
   const wbBounds = L.latLngBounds(
-      L.latLng(21.0, 85.0), // South-West
-      L.latLng(27.5, 90.0)  // North-East
+      L.latLng(20.5, 84.5), // South-West
+      L.latLng(28.0, 90.5)  // North-East
     );
     budgetMap = L.map('budget-map', {
       maxBounds: wbBounds,
