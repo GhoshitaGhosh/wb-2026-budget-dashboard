@@ -967,7 +967,16 @@ function updateMap(schemesToRender) {
 
   geoSchemes.forEach(s => {
     const marker = L.marker([s.lat, s.lng]).addTo(budgetMap);
-    marker.bindPopup("<h4>" + s.name + "</h4><p><strong>" + s.departmentName + ":</strong> " + (s.allocation_crore ? '₹' + s.allocation_crore + ' Cr' : 'N/A') + "</p><p>Location: " + s.locationName + "</p>");
+    const emoji = getSchemeEmoji(s.name, s.details);
+    const customIcon = L.divIcon({
+      html: `<div style="font-size: 24px; text-align: center; line-height: 1.2; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">${emoji}</div>`,
+      className: 'custom-emoji-marker',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15],
+      popupAnchor: [0, -15]
+    });
+    marker.setIcon(customIcon);
+    marker.bindPopup("<h4>" + s.name + "</h4><p><strong>" + s.departmentName + ":</strong> " + (s.outlay || 'N/A') + "</p><p>Location: " + s.locationName + "</p>");
     mapMarkers.push(marker);
   });
 }

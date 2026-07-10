@@ -1148,3 +1148,5 @@ h1, h2, h3, h4, h5, h6 {
   filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
+
+.custom-emoji-marker { background: none; border: none; }

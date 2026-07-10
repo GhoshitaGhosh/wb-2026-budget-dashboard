@@ -73,7 +73,10 @@
             "Law & Order",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.57872846032308,
+          "lng": 88.35752904498503,
+          "locationName": "Kolkata"
         },
         {
           "name": "Projects under Crime and Criminal Tracking & Network System (CCTNS)",
@@ -273,7 +276,10 @@
             "Infrastructure",
             "Regional Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 27.05113022334921,
+          "lng": 88.24882981179844,
+          "locationName": "Darjeeling"
         },
         {
           "name": "Development of Sports Activities for Police Personnel",
@@ -425,7 +431,10 @@
             "Law & Order",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 23.324573672613393,
+          "lng": 86.36917510571735,
+          "locationName": "Purulia"
         },
         {
           "name": "State Crime Records Bureau",
@@ -492,9 +501,9 @@
             "Education"
           ],
           "outlay": "",
-          "lat": 22.5804,
-          "lng": 88.4643,
-          "locationName": "Civil Services Welfare"
+          "lat": 22.59406039647916,
+          "lng": 88.36724861190181,
+          "locationName": "Kolkata"
         },
         {
           "name": "Bangla Sahayata Kendra (BSK)",
@@ -549,9 +558,9 @@
             "IT & Tech"
           ],
           "outlay": "₹26 crore",
-          "lat": 26.73,
-          "lng": 88.38,
-          "locationName": "Siliguri IT Park"
+          "lat": 26.705254918106387,
+          "lng": 88.38378459580994,
+          "locationName": "Siliguri"
         },
         {
           "name": "Global Capability Centre (GCC) & Data Centre Policy",
@@ -702,7 +711,10 @@
             "Public Safety",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.584016500419576,
+          "lng": 88.38267560092477,
+          "locationName": "Kolkata"
         }
       ]
     },
@@ -744,7 +756,10 @@
             "Agriculture",
             "Environment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 27.02215737004745,
+          "lng": 88.28166440367464,
+          "locationName": "Darjeeling"
         },
         {
           "name": "Precision Agriculture",
@@ -753,7 +768,10 @@
             "Agriculture",
             "Innovation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.31299697873579,
+          "lng": 87.32438854938215,
+          "locationName": "Kharagpur"
         },
         {
           "name": "Paddy Procurement (MSP) Enhancements",
@@ -1018,9 +1036,9 @@
             "Agriculture"
           ],
           "outlay": "",
-          "lat": 22.4344,
-          "lng": 87.8732,
-          "locationName": "Floriculture Clusters & Kolaghat Market Hub"
+          "lat": 22.580940976857516,
+          "lng": 88.24039663136071,
+          "locationName": "Howrah"
         },
         {
           "name": "Mango Export & Post-Harvest",
@@ -1664,8 +1682,8 @@
             "Industries"
           ],
           "outlay": "",
-          "lat": 23.5204,
-          "lng": 87.3119,
+          "lat": 23.520884548337598,
+          "lng": 87.30894636921316,
           "locationName": "Durgapur"
         },
         {
@@ -1695,9 +1713,9 @@
             "Logistics"
           ],
           "outlay": "₹100 crore",
-          "lat": 26.71,
-          "lng": 88.43,
-          "locationName": "Tea Industry Revitalization"
+          "lat": 26.70939401017921,
+          "lng": 88.41103449683413,
+          "locationName": "Siliguri"
         },
         {
           "name": "Export Promotion Infrastructure",
@@ -1717,8 +1735,8 @@
             "Public Transport"
           ],
           "outlay": "₹200 crore",
-          "lat": 26.71,
-          "lng": 88.43,
+          "lat": 26.709780689229586,
+          "lng": 88.4139653325405,
           "locationName": "Siliguri"
         },
         {
@@ -1729,9 +1747,9 @@
             "Industries"
           ],
           "outlay": "",
-          "lat": 23.5204,
-          "lng": 87.3119,
-          "locationName": "Semiconductor Unit & Defence Hub"
+          "lat": 23.50888298037866,
+          "lng": 87.28955262478624,
+          "locationName": "Durgapur"
         },
         {
           "name": "State Land Bank & Ease of Doing Business",
@@ -1759,7 +1777,10 @@
             "Finance",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.54803667132566,
+          "lng": 88.36571684808102,
+          "locationName": "Kolkata"
         },
         {
           "name": "Purvodaya Scheme",
@@ -1915,7 +1936,10 @@
             "Environment",
             "Social Welfare"
           ],
-          "outlay": "₹50 crore"
+          "outlay": "₹50 crore",
+          "lat": 21.931244474767045,
+          "lng": 89.20712611225345,
+          "locationName": "Sundarbans"
         },
         {
           "name": "Jal Dharo Jal Bharo",
@@ -1981,7 +2005,10 @@
             "Capital Infrastructure",
             "Energy"
           ],
-          "outlay": "₹1130 crore"
+          "outlay": "₹1130 crore",
+          "lat": 23.35617381616638,
+          "lng": 86.36045512871225,
+          "locationName": "Purulia"
         },
         {
           "name": "West Bengal Electricity Distribution Grid Modernization Project",
@@ -2009,7 +2036,10 @@
             "Energy",
             "Renewable Energy"
           ],
-          "outlay": "₹150 crore"
+          "outlay": "₹150 crore",
+          "lat": 22.42792622775517,
+          "lng": 87.32373416460314,
+          "locationName": "Medinipur"
         },
         {
           "name": "Deucha Pachami Coal Block Ancillary Works",
@@ -2018,7 +2048,10 @@
             "Energy",
             "Mining"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 24.02866152848197,
+          "lng": 87.60258026736768,
+          "locationName": "Deocha Pachami Coal Block"
         },
         {
           "name": "Deen Dayal Upadhyaya Gram Jyoti Yojana (DDUGJY)",
@@ -2062,7 +2095,10 @@
             "Health",
             "Healthcare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 27.057578678494796,
+          "lng": 88.28027874218215,
+          "locationName": "Darjeeling"
         },
         {
           "name": "PMBJY and AMRIT Stores",
@@ -2081,7 +2117,10 @@
             "Health",
             "Healthcare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 26.480962840599943,
+          "lng": 89.53874583090446,
+          "locationName": "Alipurduar"
         },
         {
           "name": "New AYUSH Department",
@@ -2474,7 +2513,10 @@
             "Environment",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 21.93713812918087,
+          "lng": 89.15914992945966,
+          "locationName": "Sundarbans"
         },
         {
           "name": "Flood Management Programme & Protection Projects",
@@ -2485,7 +2527,10 @@
             "Infrastructure",
             "Urban Flooding"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 25.011126053667198,
+          "lng": 88.1625759493252,
+          "locationName": "Malda"
         },
         {
           "name": "Teesta Barrage Project (PMKSY-AIBP)",
@@ -2514,7 +2559,10 @@
             "Capital Infrastructure",
             "Environment"
           ],
-          "outlay": "₹50 crore"
+          "outlay": "₹50 crore",
+          "lat": 27.05601188651928,
+          "lng": 88.24907422205769,
+          "locationName": "Darjeeling"
         },
         {
           "name": "West Bengal Drinking Water Sector Improvement Project (WBDWSIP)",
@@ -2534,7 +2582,10 @@
             "Health",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 25.014647238250035,
+          "lng": 88.15781329368667,
+          "locationName": "Malda"
         },
         {
           "name": "Jal Jeevan Mission - Piped Water Supply for Rural Areas",
@@ -2605,7 +2656,10 @@
             "Infrastructure",
             "Irrigation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 23.31294278320409,
+          "lng": 86.37514951889152,
+          "locationName": "Purulia"
         },
         {
           "name": "Mahananda Embankment Scheme",
@@ -2718,7 +2772,10 @@
             "Public Transport",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.574545521339395,
+          "lng": 88.36218342934193,
+          "locationName": "Kolkata"
         },
         {
           "name": "Aviation & Airport Up-gradation",
@@ -3100,7 +3157,10 @@
             "Environment",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 27.04929798776505,
+          "lng": 88.26540757332441,
+          "locationName": "Darjeeling"
         },
         {
           "name": "Purulia Integrated Tourism Circuit",
@@ -3109,7 +3169,10 @@
             "Environment",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 23.321176957688717,
+          "lng": 86.33748786017068,
+          "locationName": "Purulia"
         },
         {
           "name": "Jungle Mahal Zoo Tiger Safari",
@@ -3492,7 +3555,10 @@
             "Social Welfare",
             "Tribal Welfare"
           ],
-          "outlay": "₹150 crore estimated (₹10 crore in current FY)"
+          "outlay": "₹150 crore estimated (₹10 crore in current FY)",
+          "lat": 22.474532221865378,
+          "lng": 86.98459415813092,
+          "locationName": "Jhargram"
         },
         {
           "name": "Food Security for PVTGs",
@@ -3511,7 +3577,10 @@
             "Social Welfare",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.467414835372235,
+          "lng": 87.00019862070924,
+          "locationName": "Jhargram"
         }
       ]
     },
@@ -3828,7 +3897,10 @@
             "Governance",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.56941683325727,
+          "lng": 88.34913152336432,
+          "locationName": "Kolkata"
         },
         {
           "name": "Anti-Extortion Legislation",
@@ -4240,8 +4312,8 @@
             "Infrastructure"
           ],
           "outlay": "",
-          "lat": 22.0624,
-          "lng": 88.0715,
+          "lat": 22.043752582465405,
+          "lng": 88.08494025023761,
           "locationName": "Haldia"
         },
         {
@@ -4254,9 +4326,9 @@
             "Water Supply"
           ],
           "outlay": "",
-          "lat": 23.5204,
-          "lng": 87.3119,
-          "locationName": "Durgapur"
+          "lat": 22.561006312977696,
+          "lng": 88.35310640954673,
+          "locationName": "Kolkata"
         }
       ]
     },
@@ -4377,7 +4449,10 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.458482931747394,
+          "lng": 86.99076445949822,
+          "locationName": "Jhargram"
         },
         {
           "name": "Development of Paschimanchal",
@@ -5128,7 +5203,10 @@
             "Infrastructure",
             "Research"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.563772061071475,
+          "lng": 88.36119224027952,
+          "locationName": "Kolkata"
         },
         {
           "name": "Financial Assistance for Patents and Intellectual Property",
@@ -5413,7 +5491,10 @@
             "Civil Defence",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 26.316923460157177,
+          "lng": 89.46891932678997,
+          "locationName": "Cooch Behar"
         },
         {
           "name": "Home Guards and Border Wing Home Guards",
