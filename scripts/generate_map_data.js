@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const data = JSON.parse(fs.readFileSync('budget-frontend/public/data.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('../budget-frontend/public/data.json', 'utf8'));
 
 // Coordinates for major West Bengal districts, cities, and special economic zones
 const geoDictionary = [
@@ -106,5 +106,5 @@ data.departments.forEach(dept => {
   });
 });
 
-fs.writeFileSync('budget-frontend/public/data.json', JSON.stringify(data, null, 2), 'utf8');
+fs.writeFileSync('../budget-frontend/public/data.json', JSON.stringify(data, null, 2), 'utf8');
 console.log(`Successfully mapped ${appliedSchemes} schemes to ${totalLocationsMappped} geographic coordinates.`);
