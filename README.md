@@ -10,13 +10,14 @@ This dashboard parses and presents the massive West Bengal state budget into dig
 - **Initiatives Word Map:** A dynamic word cloud visualization automatically analyzing textual frequency across all budget allocations to highlight key thematic focus areas, complete with customizable filters.
 - **Departmental Drill-down:** A comprehensive breakdown of over 50 state departments, sorting schemes dynamically by allocation size and department footprint.
 - **Enriched Scheme Data:** Over 550 state-run schemes, projects, and welfare programs deeply enriched with detailed context and precise budgetary outlays.
+- **Geographic Footprint Map:** An interactive, zero-cost `Leaflet.js` map utilizing OpenStreetMap tiles to pinpoint the geographical locations of major state infrastructure projects, dynamically synced with the active search and filter state.
 - **Smart Filtering & Search:** A fast, real-time search engine with smart, multi-select tag filtering (e.g., `#Agriculture`, `#Infrastructure`, `#Education`, `#WomenEmpowerment`) to quickly isolate specific policy areas.
 - **Modern Adaptive UI:** A premium user interface built from scratch utilizing clean CSS glassmorphism, fluid micro-animations, and seamless Dark/Light Mode toggling.
 
 ## Technical Stack
 - **Frontend Framework:** Built with [Vite](https://vitejs.dev/) for lightning-fast HMR and optimized production builds.
 - **Data Architecture:** A purely static, serverless architecture driven entirely by compiled `data.json` and `charts_data.json` artifacts, resulting in zero-latency data querying.
-- **Visualization:** Integrated with `chart.js` and `chartjs-chart-wordcloud` for responsive, accessible data graphics.
+- **Visualization:** Integrated with `chart.js`, `chartjs-chart-wordcloud`, and `Leaflet.js` for responsive, accessible data graphics and mapping.
 - **Styling:** Vanilla CSS3 emphasizing modularity, CSS variables (tokens), and modern layout techniques without the overhead of heavy utility frameworks.
 - **Hosting:** Fully configured for CI/CD deployment via GitHub Actions and hosted statically on GitHub Pages.
 
