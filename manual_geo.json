@@ -1,0 +1,22 @@
+{
+  "Major Road Corridors and Bridges": [
+    { "lat": 22.6738, "lng": 88.2913, "name": "Dankuni (Corridor Start)" },
+    { "lat": 22.9784, "lng": 88.3756, "name": "Mogra (Corridor End)" },
+    { "lat": 23.91, "lng": 87.52, "name": "Mayurakshi Bridge (NH14)" },
+    { "lat": 22.5833, "lng": 88.4667, "name": "New Town Elevated Corridor" },
+    { "lat": 23.21, "lng": 88.36, "name": "Bhagirathi Major Bridge (Kalna Side)" },
+    { "lat": 23.23, "lng": 88.42, "name": "Bhagirathi Major Bridge (Santipur Side)" },
+    { "lat": 21.84, "lng": 88.16, "name": "Muriganga Bridge (Sagar Island)" },
+    { "lat": 21.99, "lng": 87.97, "name": "Nandigram to Haldia Bridge" }
+  ],
+  "Logistics Connectivity Projects": [
+    { "lat": 22.6738, "lng": 88.2913, "name": "Dankuni Logistics Hub" }
+  ],
+  "Rail, Water & Air Connectivity": [
+    { "lat": 22.09, "lng": 88.23, "name": "Minor Port (Kulpi)" },
+    { "lat": 23.3321, "lng": 86.3616, "name": "Purulia Airport" },
+    { "lat": 25.2269, "lng": 88.7612, "name": "Balurghat Airport" },
+    { "lat": 25.0108, "lng": 88.1411, "name": "Malda Airport" },
+    { "lat": 22.9751, "lng": 88.4345, "name": "Kalyani Greenfield Airport" }
+  ]
+}

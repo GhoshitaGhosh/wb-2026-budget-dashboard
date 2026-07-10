@@ -51,6 +51,13 @@ const geoDictionary = [
   { keywords: ['Bantala'], lat: 22.5293, lng: 88.4839, name: 'Bantala' }
 ];
 
+let manualGeo = {};
+try {
+  manualGeo = JSON.parse(fs.readFileSync('manual_geo.json', 'utf8'));
+} catch (e) {
+  console.log("No manual_geo.json found or invalid, proceeding with automatic only.");
+}
+
 let appliedSchemes = 0;
 let totalLocationsMappped = 0;
 
@@ -64,20 +71,33 @@ data.departments.forEach(dept => {
     scheme.locations = [];
     const text = (scheme.name + ' ' + scheme.details).toLowerCase();
     
-    // Find ALL matching locations
-    for (const geo of geoDictionary) {
-      // Check if keyword is found as a distinct word (using regex bounds) to avoid substring matching like "pur"
-      if (geo.keywords.some(kw => new RegExp('\\b' + kw.toLowerCase() + '\\b', 'i').test(text))) {
-        // Only add if not already added to avoid duplicate names in the locations array
-        if (!scheme.locations.find(l => l.name === geo.name)) {
+    // Check manual override first
+    if (manualGeo[scheme.name]) {
+        // Use exact manual coordinates
+        manualGeo[scheme.name].forEach(loc => {
             scheme.locations.push({
-                lat: geo.lat + (Math.random() - 0.5) * 0.05,
-                lng: geo.lng + (Math.random() - 0.5) * 0.05,
-                name: geo.name
+                lat: loc.lat, // precise, no random jitter
+                lng: loc.lng,
+                name: loc.name
             });
             totalLocationsMappped++;
+        });
+    } else {
+        // Fallback to Find ALL matching locations via generic keywords
+        for (const geo of geoDictionary) {
+          // Check if keyword is found as a distinct word (using regex bounds) to avoid substring matching like "pur"
+          if (geo.keywords.some(kw => new RegExp('\\b' + kw.toLowerCase() + '\\b', 'i').test(text))) {
+            // Only add if not already added to avoid duplicate names in the locations array
+            if (!scheme.locations.find(l => l.name === geo.name)) {
+                scheme.locations.push({
+                    lat: geo.lat + (Math.random() - 0.5) * 0.05,
+                    lng: geo.lng + (Math.random() - 0.5) * 0.05,
+                    name: geo.name
+                });
+                totalLocationsMappped++;
+            }
+          }
         }
-      }
     }
     
     if (scheme.locations.length > 0) {
