@@ -3,6 +3,9 @@ import Chart from 'chart.js/auto';
 import { WordCloudController, WordElement } from 'chartjs-chart-wordcloud';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 // Fix broken Leaflet marker icons in Vite
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -19,6 +22,7 @@ L.Icon.Default.mergeOptions({
 Chart.register(WordCloudController, WordElement);
 
 let budgetMap = null;
+let markerClusterGroup = null;
 let mapMarkers = [];
 
 let globalData = null;
@@ -948,7 +952,15 @@ document.addEventListener('DOMContentLoaded', init);
 function initMap() {
   const mapContainer = document.getElementById('budget-map');
   if (!mapContainer) return;
-  budgetMap = L.map('budget-map').setView([22.9868, 87.8550], 7);
+  const wbBounds = L.latLngBounds(
+      L.latLng(21.0, 85.0), // South-West
+      L.latLng(27.5, 90.0)  // North-East
+    );
+    budgetMap = L.map('budget-map', {
+      maxBounds: wbBounds,
+      maxBoundsViscosity: 1.0,
+      minZoom: 6
+    }).setView([23.5, 87.8], 7);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
