@@ -10,7 +10,7 @@ This dashboard parses and presents the massive West Bengal state budget into dig
 - **Initiatives Word Map:** A dynamic word cloud visualization automatically analyzing textual frequency across all budget allocations to highlight key thematic focus areas, complete with customizable filters.
 - **Departmental Drill-down:** A comprehensive breakdown of over 50 state departments, sorting schemes dynamically by allocation size and department footprint.
 - **Enriched Scheme Data:** Over 550 state-run schemes, projects, and welfare programs deeply enriched with detailed context and precise budgetary outlays.
-- **Geographic Footprint Map:** An interactive, zero-cost `Leaflet.js` map utilizing CARTO Voyager tiles to pinpoint the geographical locations of major state infrastructure projects, dynamically synced with the active search and filter state.
+- **Geographic Footprint Map:** An interactive, zero-cost `Leaflet.js` map utilizing CARTO Voyager tiles to pinpoint the geographical locations of dozens of state infrastructure projects across major districts. Features dynamic spatial clustering and custom thematic emoji markers synced with the active search and filter state.
 - **Smart Filtering & Search:** A fast, real-time search engine with smart, multi-select tag filtering (e.g., `#Agriculture`, `#Infrastructure`, `#Education`, `#WomenEmpowerment`) to quickly isolate specific policy areas.
 - **Modern Adaptive UI:** A premium user interface built from scratch utilizing clean CSS glassmorphism, fluid micro-animations, and seamless Dark/Light Mode toggling.
 
