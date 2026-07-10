@@ -244,18 +244,18 @@ function updateStats() {
   
   if (globalData.sdgs && globalData.sdgs.length > 0) {
     const totalSdg = globalData.sdgs.reduce((sum, sdg) => sum + sdg.allocation_crore, 0);
-    document.getElementById('stat-total-sdg').textContent = `â‚¹${Math.round(totalSdg).toLocaleString('en-IN')} Cr`;
+    document.getElementById('stat-total-sdg').textContent = `₹${Math.round(totalSdg).toLocaleString('en-IN')} Cr`;
   }
 
   if (chartsData) {
     const totalRevEl = document.getElementById('stat-total-revenue');
     if (totalRevEl && chartsData.total_revenue) {
-      totalRevEl.textContent = `â‚¹${Math.round(chartsData.total_revenue).toLocaleString('en-IN')} Cr`;
+      totalRevEl.textContent = `₹${Math.round(chartsData.total_revenue).toLocaleString('en-IN')} Cr`;
     }
 
     const totalExpEl = document.getElementById('stat-total-expenditure');
     if (totalExpEl && chartsData.total_expenditure) {
-      totalExpEl.textContent = `â‚¹${Math.round(chartsData.total_expenditure).toLocaleString('en-IN')} Cr`;
+      totalExpEl.textContent = `₹${Math.round(chartsData.total_expenditure).toLocaleString('en-IN')} Cr`;
     }
   }
 }
@@ -559,7 +559,7 @@ function initCharts() {
       data: {
         labels: labels,
         datasets: [{
-          label: 'Allocation (Crore â‚¹)',
+          label: 'Allocation (Crore ₹)',
           data: data,
           backgroundColor: '#f28500',
           hoverBackgroundColor: '#db7700',
@@ -579,7 +579,7 @@ function initCharts() {
             cornerRadius: 8,
             callbacks: {
               title: (context) => globalData.sdgs[context[0].dataIndex].name,
-              label: (context) => `â‚¹${context.raw.toLocaleString('en-IN')} Crore`
+              label: (context) => `₹${context.raw.toLocaleString('en-IN')} Crore`
             }
           }
         },
@@ -682,7 +682,7 @@ function initCharts() {
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (context) => ' â‚¹' + context.raw.toLocaleString('en-IN') + ' Cr'
+                label: (context) => ' ₹' + context.raw.toLocaleString('en-IN') + ' Cr'
               }
             }
           }
@@ -715,7 +715,7 @@ function initCharts() {
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (context) => ' â‚¹' + context.raw.toLocaleString('en-IN') + ' Cr'
+                label: (context) => ' ₹' + context.raw.toLocaleString('en-IN') + ' Cr'
               }
             }
           }
@@ -763,7 +763,7 @@ function initCharts() {
                   const val = context.raw;
                   const total = data.reduce((a, b) => a + b, 0);
                   const percentage = ((val / total) * 100).toFixed(2);
-                  return ' â‚¹' + val.toLocaleString('en-IN') + ' Cr (' + percentage + '%)';
+                  return ' ₹' + val.toLocaleString('en-IN') + ' Cr (' + percentage + '%)';
                 }
               }
             }
