@@ -443,6 +443,7 @@ function renderContent(filteredDepartments = globalData.departments) {
   document.querySelectorAll('#departments-container .animate-on-scroll').forEach(el => {
     animationObserver.observe(el);
   });
+    updateMap(activeSchemes);
 }
 
 function applyFilters() {
@@ -971,14 +972,23 @@ function initMap() {
 
 function updateMap(schemesToRender) {
   if (!budgetMap) return;
-  mapMarkers.forEach(marker => budgetMap.removeLayer(marker));
+  
+  if (markerClusterGroup) {
+    budgetMap.removeLayer(markerClusterGroup);
+  }
+  markerClusterGroup = L.markerClusterGroup({
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    maxClusterRadius: 40
+  });
+  
   mapMarkers = [];
 
-  const geoSchemes = schemesToRender.filter(s => s.lat && s.lng);
+  const geoSchemes = schemesToRender.filter(s => s.locations && s.locations.length > 0);
   if (geoSchemes.length === 0) return;
 
   geoSchemes.forEach(s => {
-    const marker = L.marker([s.lat, s.lng]).addTo(budgetMap);
     const emoji = getSchemeEmoji(s.name, s.details);
     const customIcon = L.divIcon({
       html: `<div style="font-size: 24px; text-align: center; line-height: 1.2; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">${emoji}</div>`,
@@ -987,8 +997,14 @@ function updateMap(schemesToRender) {
       iconAnchor: [15, 15],
       popupAnchor: [0, -15]
     });
-    marker.setIcon(customIcon);
-    marker.bindPopup("<h4>" + s.name + "</h4><p><strong>" + s.departmentName + ":</strong> " + (s.outlay || 'N/A') + "</p><p>Location: " + s.locationName + "</p>");
-    mapMarkers.push(marker);
+    
+    s.locations.forEach(loc => {
+      const marker = L.marker([loc.lat, loc.lng], { icon: customIcon });
+      marker.bindPopup("<h4>" + s.name + "</h4><p><strong>" + s.departmentName + ":</strong> " + (s.outlay || 'N/A') + "</p><p>Location: " + loc.name + "</p>");
+      markerClusterGroup.addLayer(marker);
+      mapMarkers.push(marker);
+    });
   });
+  
+  budgetMap.addLayer(markerClusterGroup);
 }

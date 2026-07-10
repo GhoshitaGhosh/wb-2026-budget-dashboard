@@ -15,7 +15,8 @@
             "Social Welfare",
             "Youth"
           ],
-          "outlay": "₹18.50 crore"
+          "outlay": "₹18.50 crore",
+          "locations": []
         }
       ]
     },
@@ -29,7 +30,8 @@
             "Law & Order",
             "Public Safety"
           ],
-          "outlay": "₹100 crore"
+          "outlay": "₹100 crore",
+          "locations": []
         },
         {
           "name": "Women's Safety Policing",
@@ -41,7 +43,8 @@
             "Public Safety",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Remuneration Enhancements",
@@ -51,7 +54,8 @@
             "Law & Order",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Integrated Forensic Lab",
@@ -61,7 +65,8 @@
             "Infrastructure",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Modernisation of Police Force",
@@ -74,9 +79,13 @@
             "Public Safety"
           ],
           "outlay": "",
-          "lat": 22.57872846032308,
-          "lng": 88.35752904498503,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.557107507552193,
+              "lng": 88.38660742602072,
+              "name": "Kolkata"
+            }
+          ]
         },
         {
           "name": "Projects under Crime and Criminal Tracking & Network System (CCTNS)",
@@ -88,7 +97,8 @@
             "Law And Order",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Setting up of Women Grievances Cell at District Level",
@@ -100,7 +110,8 @@
             "Public Safety",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Vibrant Villages Programme (SNA-SPARSH)",
@@ -112,7 +123,8 @@
             "Rural Development",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Welfare Scheme of State & District Sainik Board",
@@ -123,7 +135,8 @@
             "Gender Budget",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Women Safety under Nirbhaya Fund",
@@ -136,7 +149,8 @@
             "Public Safety",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Acid Attack Compensation Fund for Acid Victims",
@@ -147,7 +161,8 @@
             "Public Safety",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Agricultural Sector - Construction of Market Complex",
@@ -158,7 +173,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Allowances and Gratuities to Political Sufferers and their Families",
@@ -167,7 +183,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance for Admission to Rashtriya Indian Military College",
@@ -177,7 +194,8 @@
             "Education",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to Nagar Panchayats and Notified Area Committees",
@@ -186,7 +204,8 @@
             "Governance",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to Puja Organizers (PUJA)",
@@ -196,7 +215,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to States for Narcotic Control",
@@ -205,7 +225,8 @@
             "Governance",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Central Scheme for Assistance to Civilian Victims of Violence",
@@ -215,7 +236,8 @@
             "Public Safety",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Coastal Security Scheme",
@@ -226,7 +248,8 @@
             "Law & Order",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Community Policing Initiative",
@@ -236,7 +259,8 @@
             "Governance",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Compensation for Police Personnel and Civic Volunteers",
@@ -247,7 +271,8 @@
             "Public Safety",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Contribution to the Baleswar Martyrdom Remembrance",
@@ -256,7 +281,8 @@
             "Culture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Counter Insurgency & Anti-Terrorism School (CIAT)",
@@ -266,7 +292,8 @@
             "Governance",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Hill Areas",
@@ -277,9 +304,13 @@
             "Regional Development"
           ],
           "outlay": "",
-          "lat": 27.05113022334921,
-          "lng": 88.24882981179844,
-          "locationName": "Darjeeling"
+          "locations": [
+            {
+              "lat": 27.049897360632833,
+              "lng": 88.28152240387844,
+              "name": "Darjeeling"
+            }
+          ]
         },
         {
           "name": "Development of Sports Activities for Police Personnel",
@@ -290,7 +321,8 @@
             "Public Safety",
             "Sports"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Traffic Infrastructure",
@@ -301,7 +333,8 @@
             "Law & Order",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Award of Prizes to Territorial Army",
@@ -310,7 +343,8 @@
             "Defense",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Expenditure Related to Rath Yatra and Other Programmes",
@@ -319,7 +353,8 @@
             "Culture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Expenses for Holding Rallies for Recruitment in Army/Air Force",
@@ -329,7 +364,8 @@
             "Employment",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Financial Benefit to World War II Ex-Servicemen",
@@ -339,7 +375,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Gangasagar Mela",
@@ -348,7 +385,8 @@
             "Culture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Border Area Development Programme (BADP)",
@@ -363,7 +401,8 @@
             "Rural Development",
             "Urban Flooding"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Implementation of RIDF Projects",
@@ -374,7 +413,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Other Rehabilitation Schemes",
@@ -383,7 +423,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pensions and Awards for Distinguished Services",
@@ -392,7 +433,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pensions under Social Security Schemes",
@@ -402,7 +444,8 @@
             "Law & Order",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rewards for Gallantry",
@@ -411,7 +454,8 @@
             "Defense",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Scholarship to National Defence Academy Cadets",
@@ -421,7 +465,8 @@
             "Education",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Security Related Expenditure in Naxal Affected Districts",
@@ -432,9 +477,28 @@
             "Public Safety"
           ],
           "outlay": "",
-          "lat": 23.324573672613393,
-          "lng": 86.36917510571735,
-          "locationName": "Purulia"
+          "locations": [
+            {
+              "lat": 23.32160774171918,
+              "lng": 86.37123467487342,
+              "name": "Purulia"
+            },
+            {
+              "lat": 23.246766741166798,
+              "lng": 87.07138981513722,
+              "name": "Bankura"
+            },
+            {
+              "lat": 22.450104206345753,
+              "lng": 87.32594290253694,
+              "name": "Medinipur"
+            },
+            {
+              "lat": 22.020266814190837,
+              "lng": 87.75226687280158,
+              "name": "Purba Medinipur"
+            }
+          ]
         },
         {
           "name": "State Crime Records Bureau",
@@ -444,7 +508,8 @@
             "IT",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Upkeep of Shrines and Temples",
@@ -454,7 +519,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "WB Cyber Crime Wing",
@@ -465,7 +531,8 @@
             "IT",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -481,7 +548,8 @@
             "Law & Order",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Decentralization of Administration",
@@ -491,7 +559,8 @@
             "Governance",
             "Law & Order"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Civil Services Welfare",
@@ -501,9 +570,13 @@
             "Education"
           ],
           "outlay": "",
-          "lat": 22.59406039647916,
-          "lng": 88.36724861190181,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.58448905885986,
+              "lng": 88.37927378233852,
+              "name": "Kolkata"
+            }
+          ]
         },
         {
           "name": "Bangla Sahayata Kendra (BSK)",
@@ -512,7 +585,8 @@
             "Governance",
             "IT"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "e-Governance and Citizen Government Interface",
@@ -522,7 +596,8 @@
             "Governance",
             "IT"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -536,7 +611,8 @@
             "IT",
             "Innovation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "AVGC-XR Content Creator Labs",
@@ -547,7 +623,8 @@
             "Innovation",
             "Youth"
           ],
-          "outlay": "₹50 crore"
+          "outlay": "₹50 crore",
+          "locations": []
         },
         {
           "name": "Siliguri IT Park",
@@ -558,9 +635,13 @@
             "IT & Tech"
           ],
           "outlay": "₹26 crore",
-          "lat": 26.705254918106387,
-          "lng": 88.38378459580994,
-          "locationName": "Siliguri"
+          "locations": [
+            {
+              "lat": 26.70783961397265,
+              "lng": 88.4015323647607,
+              "name": "Siliguri"
+            }
+          ]
         },
         {
           "name": "Global Capability Centre (GCC) & Data Centre Policy",
@@ -570,7 +651,8 @@
             "IT & Tech",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "CM's Science and Technology Talent Attraction Fund",
@@ -581,7 +663,8 @@
             "Innovation",
             "Science"
           ],
-          "outlay": "₹50 crore"
+          "outlay": "₹50 crore",
+          "locations": []
         }
       ]
     },
@@ -596,7 +679,8 @@
             "IT",
             "Urban Development"
           ],
-          "outlay": "₹50 crore"
+          "outlay": "₹50 crore",
+          "locations": []
         },
         {
           "name": "Profession Tax Restructuring",
@@ -605,7 +689,8 @@
             "Finance",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Profession Tax Exemption for BSF",
@@ -614,7 +699,8 @@
             "Finance",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Decriminalization of Profession Tax Law",
@@ -623,7 +709,8 @@
             "Finance",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Public Finance Management Reforms Programme",
@@ -632,7 +719,8 @@
             "Finance",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Implementation of e-Governance",
@@ -642,7 +730,8 @@
             "Governance",
             "IT"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Creation of Public Digital Infrastructure for Strengthening Social Protection Delivery",
@@ -654,7 +743,8 @@
             "IT",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Victim Compensation Scheme",
@@ -664,7 +754,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to Freedom Fighter's Scheme",
@@ -674,7 +765,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Provident Fund Deposits for Unorganised Workers and Landless Agricultural Labourers (PROFLAL)",
@@ -687,7 +779,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -701,7 +794,8 @@
             "Governance",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Liquor Shop Restrictions",
@@ -712,9 +806,13 @@
             "Urban Development"
           ],
           "outlay": "",
-          "lat": 22.584016500419576,
-          "lng": 88.38267560092477,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.578326218965255,
+              "lng": 88.34322904410588,
+              "name": "Kolkata"
+            }
+          ]
         }
       ]
     },
@@ -728,7 +826,8 @@
             "Agriculture",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM Fasal Bima Yojana (PMFBY) Expansion",
@@ -736,7 +835,8 @@
           "tags": [
             "Agriculture"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Digital Agriculture Mission & RBI ULI",
@@ -747,7 +847,8 @@
             "Financial Assistance",
             "IT"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM National Mission on Natural Farming & DDKY",
@@ -757,9 +858,28 @@
             "Environment"
           ],
           "outlay": "",
-          "lat": 27.02215737004745,
-          "lng": 88.28166440367464,
-          "locationName": "Darjeeling"
+          "locations": [
+            {
+              "lat": 27.03388450965928,
+              "lng": 88.25067807852747,
+              "name": "Darjeeling"
+            },
+            {
+              "lat": 26.516410224868658,
+              "lng": 89.53961720818873,
+              "name": "Alipurduar"
+            },
+            {
+              "lat": 23.351456416842254,
+              "lng": 86.38287948887638,
+              "name": "Purulia"
+            },
+            {
+              "lat": 22.45714031867364,
+              "lng": 86.99373577204926,
+              "name": "Jhargram"
+            }
+          ]
         },
         {
           "name": "Precision Agriculture",
@@ -769,9 +889,13 @@
             "Innovation"
           ],
           "outlay": "",
-          "lat": 22.31299697873579,
-          "lng": 87.32438854938215,
-          "locationName": "Kharagpur"
+          "locations": [
+            {
+              "lat": 22.340120032800428,
+              "lng": 87.3258756069139,
+              "name": "Kharagpur"
+            }
+          ]
         },
         {
           "name": "Paddy Procurement (MSP) Enhancements",
@@ -779,7 +903,8 @@
           "tags": [
             "Agriculture"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM-AASHA & State Price Stabilization Fund",
@@ -788,7 +913,8 @@
             "Agriculture",
             "Financial Assistance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Electricity Subsidy for Agricultural Irrigation",
@@ -799,7 +925,8 @@
             "Financial Assistance",
             "Irrigation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Potato Seed Distribution",
@@ -807,7 +934,8 @@
           "tags": [
             "Agriculture"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Financial Assistance to Farmers and Sharecroppers",
@@ -816,7 +944,8 @@
             "Agriculture",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Krishi Yantradi Samabaya Samiti (KYSS)",
@@ -826,7 +955,8 @@
             "Mechanization",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Old Age Pension Scheme for Farmers under Jai Bangla",
@@ -836,7 +966,8 @@
             "Rural Development",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Special Nutrition Programme / Applied Nutrition Programme",
@@ -845,7 +976,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to Farmers in case of Natural Calamities",
@@ -854,7 +986,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
@@ -863,7 +996,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Support to State Extension Programme for Extension Reforms",
@@ -872,7 +1006,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Diversified Cropping Programme under Dryland/Rainfed Condition",
@@ -881,7 +1016,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Mission for Atmanirbharta in Pulses-Seed Component",
@@ -890,7 +1026,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sub-Mission on Agricultural Mechanization (SMAM)",
@@ -899,7 +1036,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sub Mission on Seeds and Planting Material (SMSP)",
@@ -908,7 +1046,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Targeting Rice Fallow Area (TRFA) under Edible Oil",
@@ -917,7 +1056,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bangla Krishi Sech Yojana / Per Drop More Crop (PDMC)",
@@ -926,7 +1066,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Krishionnati Yojana",
@@ -936,7 +1077,8 @@
             "Digital Governance",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Krishak Bandhu Scheme",
@@ -946,7 +1088,8 @@
             "Rural Development",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rainfed Area Development (RAD) Programme",
@@ -955,7 +1098,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sustainable Sericulture Development Project",
@@ -964,7 +1108,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Implementation of schemes under Micro Irrigation Fund (MIF)",
@@ -975,7 +1120,8 @@
             "Irrigation",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "World Bank Project on Agricultural Development",
@@ -984,7 +1130,8 @@
             "Agriculture",
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bangla Shasya Bima Yojana",
@@ -993,7 +1140,8 @@
             "Agriculture",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Integrated Watershed Programme",
@@ -1002,7 +1150,8 @@
             "Agriculture",
             "Environment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Food Security Mission",
@@ -1012,7 +1161,8 @@
             "Food Security",
             "Law & Order"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -1027,7 +1177,8 @@
             "Capital Infrastructure",
             "Financial Assistance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Floriculture Clusters & Kolaghat Market Hub",
@@ -1036,9 +1187,33 @@
             "Agriculture"
           ],
           "outlay": "",
-          "lat": 22.580940976857516,
-          "lng": 88.24039663136071,
-          "locationName": "Howrah"
+          "locations": [
+            {
+              "lat": 22.620683805368003,
+              "lng": 88.27022293335598,
+              "name": "Howrah"
+            },
+            {
+              "lat": 22.442692053586043,
+              "lng": 87.29654786607287,
+              "name": "Medinipur"
+            },
+            {
+              "lat": 23.478021209394445,
+              "lng": 88.57657212209259,
+              "name": "Nadia"
+            },
+            {
+              "lat": 22.412039152312364,
+              "lng": 87.88879593166733,
+              "name": "Kolaghat"
+            },
+            {
+              "lat": 22.012264684751102,
+              "lng": 87.75104859043253,
+              "name": "Purba Medinipur"
+            }
+          ]
         },
         {
           "name": "Mango Export & Post-Harvest",
@@ -1047,7 +1222,8 @@
             "Agriculture",
             "Logistics"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Hilly Area Horticulture & DIY Polyhouse",
@@ -1055,7 +1231,8 @@
           "tags": [
             "Agriculture"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "North Bengal Spice Hub",
@@ -1064,7 +1241,8 @@
             "Agriculture",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Agri Export Zone",
@@ -1073,7 +1251,8 @@
             "Agriculture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Ipecac Cultivation",
@@ -1082,7 +1261,8 @@
             "Agriculture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Grants to Paschim Banga Rajya Talsilpa Samabay Mahasangha",
@@ -1091,7 +1271,8 @@
             "Agriculture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Honey Processing Hub",
@@ -1100,7 +1281,8 @@
             "Agriculture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Integrated Spices Development Programme",
@@ -1109,7 +1291,8 @@
             "Agriculture",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Horticulture Mission Including Micro Irrigation",
@@ -1119,7 +1302,8 @@
             "Governance",
             "Irrigation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM Formalization of Micro Food Processing Enterprises (PMFME)",
@@ -1128,7 +1312,8 @@
             "Governance",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pradhan Mantri Janajatiya Unnat Gram Abhiyan under FPI",
@@ -1137,7 +1322,8 @@
             "Governance",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Scheme on packaging and grading for Women Self-Help",
@@ -1146,7 +1332,8 @@
             "Governance",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Conservation of Aquatic Ecosystems",
@@ -1155,7 +1342,8 @@
             "Ecology",
             "Environment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Coastal Mission",
@@ -1164,7 +1352,8 @@
             "Ecology",
             "Environment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Mission for a Green India",
@@ -1173,7 +1362,8 @@
             "Ecology",
             "Environment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Schemes for forestry under Jalatirtha",
@@ -1182,7 +1372,8 @@
             "Environment",
             "Forestry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -1197,7 +1388,8 @@
             "Animal Husbandry",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Goshala Subsidy Scheme",
@@ -1208,7 +1400,8 @@
             "Financial Assistance",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Livestock Health and Disease Control Programme",
@@ -1218,7 +1411,8 @@
             "Animal Husbandry",
             "Healthcare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Livestock Mission",
@@ -1228,7 +1422,8 @@
             "Animal Husbandry",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Livestock Census & Integrated Sample Survey",
@@ -1237,7 +1432,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Societies for the Prevention of Cruelty to Animals",
@@ -1246,7 +1442,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Poultry Production-cum-Marketing Centre",
@@ -1256,7 +1453,8 @@
             "Animal Husbandry",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pig Breeding Station cum Bacon Factory",
@@ -1265,7 +1463,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Resettlement of City-Kept Animals",
@@ -1274,7 +1473,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Compensation for loss of livestock due to natural calamities",
@@ -1283,7 +1483,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal University of Animal and Fishery Sciences Support",
@@ -1293,7 +1494,8 @@
             "Animal Husbandry",
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Paschim Banga Go-sampad Bikas Sanstha",
@@ -1302,7 +1504,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Himalayan Co-operative Milk Producers Union Limited",
@@ -1311,7 +1514,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Exotic Cattle Breeding Farm at Salboni",
@@ -1320,7 +1524,8 @@
             "Agriculture",
             "Animal Husbandry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -1336,7 +1541,8 @@
             "Industries",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to Seed Collectors in Brackish Water Fisheries Sector",
@@ -1347,7 +1553,8 @@
             "Governance",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Construction and Management of Hatcheries",
@@ -1356,7 +1563,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Support to Fishermen's Co-operatives",
@@ -1366,7 +1574,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development Action Plan for SC/ST in Fisheries",
@@ -1376,7 +1585,8 @@
             "SC/ST Welfare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Aquaculture (FFDA)",
@@ -1385,7 +1595,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Coastal Fishing with Mechanised Boats",
@@ -1394,7 +1605,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Derelict Fisheries",
@@ -1403,7 +1615,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Reservoir, Sewage-fed and Tank Fisheries",
@@ -1412,7 +1625,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Transit and Terminal Market",
@@ -1421,7 +1635,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Distribution of Minikits and Water Conditioner",
@@ -1431,7 +1646,8 @@
             "Governance",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Diversified Production of Fish Byproducts",
@@ -1441,7 +1657,8 @@
             "Governance",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Estuarine and Brackish Water Fisheries",
@@ -1451,7 +1668,8 @@
             "Governance",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Samudra Sathi Scheme",
@@ -1461,7 +1679,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Infrastructure Facilities under RIDF and FIDF",
@@ -1470,7 +1689,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Introduction of Cold Chain System",
@@ -1479,7 +1699,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Marine Resources Survey and Standardisation",
@@ -1488,7 +1709,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Mechanisation and Improvement of Fishing Crafts",
@@ -1497,7 +1719,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Minor Fishing Harbour and Fish Landing Centres",
@@ -1507,7 +1730,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Old Age Pension Scheme for Fishermen under Jai Bangla",
@@ -1516,7 +1740,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Operation of Fish Farms for Adaptive Trials",
@@ -1525,7 +1750,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pilot Project for Development of Fisheries in Hill Areas",
@@ -1534,7 +1760,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Project for Reclamation of Beels",
@@ -1543,7 +1770,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Swarna Matsya Yojona",
@@ -1553,7 +1781,8 @@
             "Governance",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Projects under PM Gatishakti Scheme",
@@ -1562,7 +1791,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rural Electrification Work in Fishing Areas",
@@ -1572,7 +1802,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Setting Bundh Breeding Fish Farm",
@@ -1582,7 +1813,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Laboratories for Fisheries",
@@ -1591,7 +1823,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "State Grants to WBFC Ltd / SFDC",
@@ -1601,7 +1834,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Matsyajeebi Bandhu (Death Benefit) Scheme",
@@ -1610,7 +1844,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Studies on Ecological and Environment Conditions",
@@ -1619,7 +1854,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Subsidy for Fishing Nets and Fishery Requisites",
@@ -1629,7 +1865,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Subsidy on Short-Term Credit to Fish Farmers",
@@ -1639,7 +1876,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Survey on Hilsa Fishery",
@@ -1648,7 +1886,8 @@
             "Fisheries",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to Tribal Fish Farmers under Pisciculture",
@@ -1658,7 +1897,8 @@
             "Governance",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -1672,7 +1912,8 @@
             "Governance",
             "Mining"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Flagship Central Schemes Onboarding",
@@ -1682,9 +1923,13 @@
             "Industries"
           ],
           "outlay": "",
-          "lat": 23.520884548337598,
-          "lng": 87.30894636921316,
-          "locationName": "Durgapur"
+          "locations": [
+            {
+              "lat": 23.516333997272405,
+              "lng": 87.31731519008433,
+              "name": "Durgapur"
+            }
+          ]
         },
         {
           "name": "West Bengal Investment Promotion Framework",
@@ -1694,7 +1939,8 @@
             "Industries",
             "MSME"
           ],
-          "outlay": "₹5,000 crore"
+          "outlay": "₹5,000 crore",
+          "locations": []
         },
         {
           "name": "Rejuvenation of Legacy Industrial Clusters",
@@ -1702,7 +1948,8 @@
           "tags": [
             "Industries"
           ],
-          "outlay": "₹1,000 crore"
+          "outlay": "₹1,000 crore",
+          "locations": []
         },
         {
           "name": "Tea Industry Revitalization",
@@ -1713,9 +1960,13 @@
             "Logistics"
           ],
           "outlay": "₹100 crore",
-          "lat": 26.70939401017921,
-          "lng": 88.41103449683413,
-          "locationName": "Siliguri"
+          "locations": [
+            {
+              "lat": 26.746921084056165,
+              "lng": 88.3834208732244,
+              "name": "Siliguri"
+            }
+          ]
         },
         {
           "name": "Export Promotion Infrastructure",
@@ -1724,7 +1975,8 @@
             "Industries",
             "Logistics"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Siliguri Logistics and Trade Hub",
@@ -1735,9 +1987,13 @@
             "Public Transport"
           ],
           "outlay": "₹200 crore",
-          "lat": 26.709780689229586,
-          "lng": 88.4139653325405,
-          "locationName": "Siliguri"
+          "locations": [
+            {
+              "lat": 26.732872997342202,
+              "lng": 88.40054121086261,
+              "name": "Siliguri"
+            }
+          ]
         },
         {
           "name": "Semiconductor Unit & Defence Hub",
@@ -1747,9 +2003,23 @@
             "Industries"
           ],
           "outlay": "",
-          "lat": 23.50888298037866,
-          "lng": 87.28955262478624,
-          "locationName": "Durgapur"
+          "locations": [
+            {
+              "lat": 23.51714603585281,
+              "lng": 87.31861014990297,
+              "name": "Durgapur"
+            },
+            {
+              "lat": 23.22440854660237,
+              "lng": 87.09029527683103,
+              "name": "Bankura"
+            },
+            {
+              "lat": 23.927489824491715,
+              "lng": 87.51732631929919,
+              "name": "Birbhum"
+            }
+          ]
         },
         {
           "name": "State Land Bank & Ease of Doing Business",
@@ -1759,7 +2029,8 @@
             "Industries",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Urban Land Ceiling Re-examination",
@@ -1768,7 +2039,8 @@
             "Industries",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Listing SPSUs & Calcutta Stock Exchange Revival",
@@ -1778,9 +2050,13 @@
             "Governance"
           ],
           "outlay": "",
-          "lat": 22.54803667132566,
-          "lng": 88.36571684808102,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.55254539465793,
+              "lng": 88.36639716563778,
+              "name": "Kolkata"
+            }
+          ]
         },
         {
           "name": "Purvodaya Scheme",
@@ -1790,7 +2066,8 @@
             "Industries",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "World Bank Assisted West Bengal Boosting Logistics Efficiency",
@@ -1799,7 +2076,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -1813,7 +2091,8 @@
             "Employment",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Banglar Udyam Credit Card Scheme",
@@ -1824,7 +2103,8 @@
             "Innovation",
             "Youth"
           ],
-          "outlay": "₹200 crore"
+          "outlay": "₹200 crore",
+          "locations": []
         },
         {
           "name": "National Fibre Mission & Textile Park",
@@ -1833,7 +2113,8 @@
             "Industries",
             "Industry"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Tex-RAMPS & National Institute of Design",
@@ -1842,7 +2123,8 @@
             "Education",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Startup Policy & Venture Funds",
@@ -1853,7 +2135,8 @@
             "Innovation",
             "Startups"
           ],
-          "outlay": "₹100 crore"
+          "outlay": "₹100 crore",
+          "locations": []
         },
         {
           "name": "Karma Sathi Prakalpa",
@@ -1863,7 +2146,8 @@
             "Industries",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Bhavisyat Credit Card",
@@ -1874,7 +2158,8 @@
             "Industries",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Micro & Small Enterprises Cluster Development",
@@ -1883,7 +2168,8 @@
             "Employment",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Artisans Financial Benefit",
@@ -1894,7 +2180,8 @@
             "Industries",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Old Age Pension Scheme for Artisans and Weavers",
@@ -1903,7 +2190,8 @@
             "Employment",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Jai Bangla (Weavers and Artisans)",
@@ -1912,7 +2200,8 @@
             "Employment",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -1927,7 +2216,8 @@
             "Financial Assistance",
             "Innovation"
           ],
-          "outlay": "₹200 crore"
+          "outlay": "₹200 crore",
+          "locations": []
         },
         {
           "name": "Mangrove Afforestation",
@@ -1937,9 +2227,13 @@
             "Social Welfare"
           ],
           "outlay": "₹50 crore",
-          "lat": 21.931244474767045,
-          "lng": 89.20712611225345,
-          "locationName": "Sundarbans"
+          "locations": [
+            {
+              "lat": 21.9618139536522,
+              "lng": 89.19653930586277,
+              "name": "Sundarbans"
+            }
+          ]
         },
         {
           "name": "Jal Dharo Jal Bharo",
@@ -1949,7 +2243,8 @@
             "Environment",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -1963,7 +2258,8 @@
             "Capital Infrastructure",
             "Energy"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Solar Projects (Floating & Rooftop)",
@@ -1975,7 +2271,8 @@
             "Renewable Energy",
             "SC/ST Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Electricity Substations and Cabling",
@@ -1984,7 +2281,8 @@
             "Capital Infrastructure",
             "Energy"
           ],
-          "outlay": "₹200 crore"
+          "outlay": "₹200 crore",
+          "locations": []
         },
         {
           "name": "Paschimanchal Solar Irrigation (PM-KUSUM) Subsidy Top-up",
@@ -1996,7 +2294,8 @@
             "Irrigation",
             "Renewable Energy"
           ],
-          "outlay": "₹50 crore"
+          "outlay": "₹50 crore",
+          "locations": []
         },
         {
           "name": "Turga Pump Storage Projects (1000 MW)",
@@ -2006,9 +2305,13 @@
             "Energy"
           ],
           "outlay": "₹1130 crore",
-          "lat": 23.35617381616638,
-          "lng": 86.36045512871225,
-          "locationName": "Purulia"
+          "locations": [
+            {
+              "lat": 23.329088350463987,
+              "lng": 86.38141634698243,
+              "name": "Purulia"
+            }
+          ]
         },
         {
           "name": "West Bengal Electricity Distribution Grid Modernization Project",
@@ -2018,7 +2321,8 @@
             "Energy",
             "Financial Assistance"
           ],
-          "outlay": "₹970 crore"
+          "outlay": "₹970 crore",
+          "locations": []
         },
         {
           "name": "Loss Reduction under Revamped Distribution Sector Scheme (RDSS)",
@@ -2026,7 +2330,8 @@
           "tags": [
             "Energy"
           ],
-          "outlay": "₹100 crore"
+          "outlay": "₹100 crore",
+          "locations": []
         },
         {
           "name": "Goaltore Solar Power Project",
@@ -2037,9 +2342,18 @@
             "Renewable Energy"
           ],
           "outlay": "₹150 crore",
-          "lat": 22.42792622775517,
-          "lng": 87.32373416460314,
-          "locationName": "Medinipur"
+          "locations": [
+            {
+              "lat": 22.422574683958494,
+              "lng": 87.33158092393066,
+              "name": "Medinipur"
+            },
+            {
+              "lat": 22.402101495129767,
+              "lng": 87.33691358542772,
+              "name": "Paschim Medinipur"
+            }
+          ]
         },
         {
           "name": "Deucha Pachami Coal Block Ancillary Works",
@@ -2049,9 +2363,13 @@
             "Mining"
           ],
           "outlay": "",
-          "lat": 24.02866152848197,
-          "lng": 87.60258026736768,
-          "locationName": "Deocha Pachami Coal Block"
+          "locations": [
+            {
+              "lat": 24.002535097647264,
+              "lng": 87.60252986120963,
+              "name": "Deocha Pachami Coal Block"
+            }
+          ]
         },
         {
           "name": "Deen Dayal Upadhyaya Gram Jyoti Yojana (DDUGJY)",
@@ -2060,7 +2378,8 @@
             "Energy",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Waste to Energy Scheme",
@@ -2070,7 +2389,8 @@
             "Environment",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -2085,7 +2405,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": "₹3,100 crore"
+          "outlay": "₹3,100 crore",
+          "locations": []
         },
         {
           "name": "New Super Specialty Hospitals & Upgrades",
@@ -2096,9 +2417,23 @@
             "Healthcare"
           ],
           "outlay": "",
-          "lat": 27.057578678494796,
-          "lng": 88.28027874218215,
-          "locationName": "Darjeeling"
+          "locations": [
+            {
+              "lat": 27.0399787548977,
+              "lng": 88.2510865260895,
+              "name": "Darjeeling"
+            },
+            {
+              "lat": 23.337782894787196,
+              "lng": 86.36222206395769,
+              "name": "Purulia"
+            },
+            {
+              "lat": 21.95073239183071,
+              "lng": 89.18793430029015,
+              "name": "Sundarbans"
+            }
+          ]
         },
         {
           "name": "PMBJY and AMRIT Stores",
@@ -2107,7 +2442,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "New Medical Colleges & Seats",
@@ -2118,9 +2454,18 @@
             "Healthcare"
           ],
           "outlay": "",
-          "lat": 26.480962840599943,
-          "lng": 89.53874583090446,
-          "locationName": "Alipurduar"
+          "locations": [
+            {
+              "lat": 26.5064195342802,
+              "lng": 89.52056712836826,
+              "name": "Alipurduar"
+            },
+            {
+              "lat": 23.236650407255716,
+              "lng": 87.8652895044349,
+              "name": "Bardhaman"
+            }
+          ]
         },
         {
           "name": "New AYUSH Department",
@@ -2129,7 +2474,8 @@
             "Governance",
             "Health"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Medical Value Tourism Hubs",
@@ -2139,7 +2485,8 @@
             "Healthcare",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Patient Welfare Enhancements",
@@ -2149,7 +2496,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "ASHA Workers Remuneration Enhancement",
@@ -2159,7 +2507,8 @@
             "Health",
             "Healthcare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Swasthya Sathi",
@@ -2169,7 +2518,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Chokher Alo (Universal Eye Health Project)",
@@ -2179,7 +2529,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Mental Health Programme",
@@ -2189,7 +2540,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Tertiary Care Cancer Centres",
@@ -2198,7 +2550,8 @@
             "Capital Infrastructure",
             "Health"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development Action Plan for SCs and STs (DAPSC/DAPST)",
@@ -2207,7 +2560,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National AIDS & STD Control Programme",
@@ -2216,7 +2570,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Mission on Ayush",
@@ -2225,7 +2580,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Programme for Health Care of the Elderly (NPHCE)",
@@ -2236,7 +2592,8 @@
             "Skill Development",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Disease Control Programmes (NTEP, NVBDCP, NVHCP)",
@@ -2246,7 +2603,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pulse Polio and Routine Immunization",
@@ -2255,7 +2613,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Telemedicine Services",
@@ -2265,7 +2624,8 @@
             "Innovation",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Matru Vandana Yojana",
@@ -2276,7 +2636,8 @@
             "Social Welfare",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pathabandhu Scheme",
@@ -2286,7 +2647,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "DFID Assisted Health System Development",
@@ -2296,7 +2658,8 @@
             "Health",
             "Healthcare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Employees State Insurance Scheme (ESIS)",
@@ -2306,7 +2669,8 @@
             "Healthcare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Free Diagnostic and Dialysis Services",
@@ -2315,7 +2679,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "World Bank Assisted Health Training",
@@ -2326,7 +2691,8 @@
             "Healthcare",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -2340,7 +2706,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pradhan Mantri Poshan Shakti Nirman (PM POSHAN) / Mid-Day Meal",
@@ -2349,7 +2716,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM Schools for Rising India (PM SHRI)",
@@ -2358,7 +2726,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "New India Literacy Programme (NILP)",
@@ -2369,7 +2738,8 @@
             "Gender Budget",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sishu Shiksha Kendra (SSK) and Madhya Shiksha Karmasuchi (MSK)",
@@ -2378,7 +2748,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Free and Compulsory Primary Education",
@@ -2387,7 +2758,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Scholarships for Talented/Handicapped Students",
@@ -2396,7 +2768,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Government and Non-Government Schools",
@@ -2405,7 +2778,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Public Libraries",
@@ -2416,7 +2790,8 @@
             "Gender Budget",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Institutions for Education of Handicapped",
@@ -2427,7 +2802,8 @@
             "Gender Budget",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Shramik Vidyapath",
@@ -2438,7 +2814,8 @@
             "Gender Budget",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -2452,7 +2829,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Setting of New District Forums",
@@ -2461,7 +2839,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Jagriti Shivir Yojana (JSY)",
@@ -2470,7 +2849,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Consumer Welfare Fund",
@@ -2480,7 +2860,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Adoption of Metric System of Weights and Measures",
@@ -2489,7 +2870,8 @@
             "Governance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -2503,7 +2885,8 @@
             "Agriculture",
             "Environment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Upper & Lower Sundarban Delta Projects",
@@ -2514,9 +2897,13 @@
             "Water Supply"
           ],
           "outlay": "",
-          "lat": 21.93713812918087,
-          "lng": 89.15914992945966,
-          "locationName": "Sundarbans"
+          "locations": [
+            {
+              "lat": 21.961067438654123,
+              "lng": 89.18752160468955,
+              "name": "Sundarbans"
+            }
+          ]
         },
         {
           "name": "Flood Management Programme & Protection Projects",
@@ -2528,9 +2915,28 @@
             "Urban Flooding"
           ],
           "outlay": "",
-          "lat": 25.011126053667198,
-          "lng": 88.1625759493252,
-          "locationName": "Malda"
+          "locations": [
+            {
+              "lat": 25.020611810347518,
+              "lng": 88.15642746501868,
+              "name": "Malda"
+            },
+            {
+              "lat": 24.170787191652764,
+              "lng": 88.30480400663113,
+              "name": "Murshidabad"
+            },
+            {
+              "lat": 23.455560845253295,
+              "lng": 88.53881403176848,
+              "name": "Nadia"
+            },
+            {
+              "lat": 21.967839444509735,
+              "lng": 89.20035025543648,
+              "name": "Sundarbans"
+            }
+          ]
         },
         {
           "name": "Teesta Barrage Project (PMKSY-AIBP)",
@@ -2540,7 +2946,8 @@
             "Capital Infrastructure",
             "Irrigation"
           ],
-          "outlay": "₹11,000 crore"
+          "outlay": "₹11,000 crore",
+          "locations": []
         },
         {
           "name": "Micro Irrigation & Drainage Systems",
@@ -2550,7 +2957,8 @@
             "Financial Assistance",
             "Irrigation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Spring Rejuvenation",
@@ -2560,9 +2968,13 @@
             "Environment"
           ],
           "outlay": "₹50 crore",
-          "lat": 27.05601188651928,
-          "lng": 88.24907422205769,
-          "locationName": "Darjeeling"
+          "locations": [
+            {
+              "lat": 27.024268786263008,
+              "lng": 88.28153750543406,
+              "name": "Darjeeling"
+            }
+          ]
         },
         {
           "name": "West Bengal Drinking Water Sector Improvement Project (WBDWSIP)",
@@ -2572,7 +2984,8 @@
             "Health",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Targeted Water Supply Schemes",
@@ -2583,9 +2996,23 @@
             "Water Supply"
           ],
           "outlay": "",
-          "lat": 25.014647238250035,
-          "lng": 88.15781329368667,
-          "locationName": "Malda"
+          "locations": [
+            {
+              "lat": 25.034914174375842,
+              "lng": 88.12817426210485,
+              "name": "Malda"
+            },
+            {
+              "lat": 23.679722216912275,
+              "lng": 87.71454394194289,
+              "name": "Bolpur"
+            },
+            {
+              "lat": 23.53495196533708,
+              "lng": 86.66658134389841,
+              "name": "Raghunathpur"
+            }
+          ]
         },
         {
           "name": "Jal Jeevan Mission - Piped Water Supply for Rural Areas",
@@ -2596,7 +3023,8 @@
             "Rural Development",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "JFPR Assisted Smart Water Management System at GP Level",
@@ -2607,7 +3035,8 @@
             "Rural Development",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Major Irrigation and Flood Management Project",
@@ -2618,7 +3047,8 @@
             "Irrigation",
             "Urban Flooding"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Dam Rehabilitation and Improvement Project (DRIP) II",
@@ -2627,7 +3057,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Damodar Valley Project",
@@ -2637,7 +3068,8 @@
             "Infrastructure",
             "Irrigation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Kangsabati & Mayurakshi Reservoir Projects",
@@ -2646,7 +3078,8 @@
             "Agriculture",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Medium Irrigation Schemes",
@@ -2657,9 +3090,18 @@
             "Irrigation"
           ],
           "outlay": "",
-          "lat": 23.31294278320409,
-          "lng": 86.37514951889152,
-          "locationName": "Purulia"
+          "locations": [
+            {
+              "lat": 23.32620262227858,
+              "lng": 86.35178429678544,
+              "name": "Purulia"
+            },
+            {
+              "lat": 22.430562658413724,
+              "lng": 87.30406560639456,
+              "name": "Medinipur"
+            }
+          ]
         },
         {
           "name": "Mahananda Embankment Scheme",
@@ -2668,7 +3110,8 @@
             "Environment",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
@@ -2677,7 +3120,8 @@
             "Agriculture",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rural Infrastructure Development Fund (RIDF) Projects",
@@ -2689,7 +3133,8 @@
             "Rural Development",
             "Urban Flooding"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Alo Shree Program",
@@ -2698,7 +3143,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -2712,7 +3158,8 @@
             "Transport",
             "Women Empowerment"
           ],
-          "outlay": "₹550 crore"
+          "outlay": "₹550 crore",
+          "locations": []
         },
         {
           "name": "Remuneration Enhancements for Transport Workers",
@@ -2722,7 +3169,8 @@
             "Public Transport",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM-eBus Sewa Scheme",
@@ -2731,7 +3179,8 @@
             "Infrastructure",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Faster Adoption and Manufacturing of Hybrid and Electric Vehicles (FAME)",
@@ -2740,7 +3189,8 @@
             "Environment",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Inland Water Transport (IWT) & Jaladhara Scheme",
@@ -2751,7 +3201,8 @@
             "Transport",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Road Safety Initiatives",
@@ -2762,7 +3213,8 @@
             "Safety",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of State Transport Corporations",
@@ -2773,9 +3225,13 @@
             "Transport"
           ],
           "outlay": "",
-          "lat": 22.574545521339395,
-          "lng": 88.36218342934193,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.567796699147834,
+              "lng": 88.37165300804696,
+              "name": "Kolkata"
+            }
+          ]
         },
         {
           "name": "Aviation & Airport Up-gradation",
@@ -2785,7 +3241,8 @@
             "Skill Development",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Smart Card Driving Licenses & Registration",
@@ -2794,7 +3251,8 @@
             "Governance",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bus Terminus & Parking Infrastructure",
@@ -2804,7 +3262,8 @@
             "Public Transport",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Metro Railway Expansion Studies",
@@ -2813,7 +3272,8 @@
             "Transport",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Welfare & Insurance Schemes for Transport Workers",
@@ -2824,7 +3284,8 @@
             "Social Welfare",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Udiyaman Swanirbhar Karmasansthan Prakalpa",
@@ -2834,7 +3295,8 @@
             "Transport",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Gangasagar Mela Transport Arrangements",
@@ -2844,7 +3306,8 @@
             "Public Transport",
             "Transport"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -2859,7 +3322,8 @@
             "Tourism",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Yuba Bharati Krirangan Stadium Upkeep",
@@ -2868,7 +3332,8 @@
             "Capital Infrastructure",
             "Sports"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Kishore Bharati Stadium Maintenance",
@@ -2877,7 +3342,8 @@
             "Capital Infrastructure",
             "Sports"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Netaji Indoor Stadium",
@@ -2886,7 +3352,8 @@
             "Capital Infrastructure",
             "Sports"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Khela Hobe Dibas Sports Grants",
@@ -2895,7 +3362,8 @@
             "Sports",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bangla Swanirbhar Karmasansthan Prakalpa",
@@ -2904,7 +3372,8 @@
             "Employment",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Rural Sports & Sports Academies",
@@ -2913,7 +3382,8 @@
             "Rural Development",
             "Sports"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Promotion of Socio-Economic Activities of Youth",
@@ -2922,7 +3392,8 @@
             "Social Welfare",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "New Sports Infrastructure",
@@ -2932,7 +3403,8 @@
             "Education",
             "Sports"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sports Financial Assistance & Rewards",
@@ -2941,7 +3413,8 @@
             "Social Welfare",
             "Sports"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -2956,7 +3429,8 @@
             "Employment",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pradhan Mantri Skilling and Employability Transformation",
@@ -2966,7 +3440,8 @@
             "Employment",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Apprenticeship Promotion Scheme (NAPS)",
@@ -2976,7 +3451,8 @@
             "Employment",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Grants to Paschim Banga Society for Skill Development (PBSSD)",
@@ -2986,7 +3462,8 @@
             "Employment",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Upgradation of Government ITIs into Model ITIs",
@@ -2996,7 +3473,8 @@
             "Education",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Community Development through Polytechnics",
@@ -3006,7 +3484,8 @@
             "Rural Development",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
@@ -3016,7 +3495,8 @@
             "Employment",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "SETU Project",
@@ -3025,7 +3505,8 @@
             "Education",
             "Gender Budget"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "DDU-GKY under DAY-NRLM",
@@ -3034,7 +3515,8 @@
             "Employment",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -3047,7 +3529,8 @@
           "tags": [
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Vande Mataram Commemoration (150 years)",
@@ -3056,7 +3539,8 @@
             "Culture",
             "Tourism"
           ],
-          "outlay": "₹25 crore"
+          "outlay": "₹25 crore",
+          "locations": []
         },
         {
           "name": "Tagore Cultural Centre",
@@ -3065,7 +3549,8 @@
             "Culture",
             "Education"
           ],
-          "outlay": "₹25 crore"
+          "outlay": "₹25 crore",
+          "locations": []
         },
         {
           "name": "PM Ekta Mall & ODOP",
@@ -3074,7 +3559,8 @@
             "Culture",
             "Industries"
           ],
-          "outlay": "₹150 crore"
+          "outlay": "₹150 crore",
+          "locations": []
         },
         {
           "name": "Conservation of State Protected Monuments",
@@ -3082,7 +3568,8 @@
           "tags": [
             "Culture"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Syama Prasad Mookerjee 125th Birth Anniversary",
@@ -3090,7 +3577,8 @@
           "tags": [
             "Culture"
           ],
-          "outlay": "₹200 crore"
+          "outlay": "₹200 crore",
+          "locations": []
         },
         {
           "name": "Language Promotion (Rajbanshi & Kurmali)",
@@ -3099,7 +3587,8 @@
             "Culture",
             "Social Welfare"
           ],
-          "outlay": "₹100 crore total"
+          "outlay": "₹100 crore total",
+          "locations": []
         },
         {
           "name": "Jai Bangla Scheme (Lok Prasar)",
@@ -3108,7 +3597,8 @@
             "Culture",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -3122,7 +3612,8 @@
             "Culture",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Heritage Commission Revival & Temple Restoration",
@@ -3131,7 +3622,8 @@
             "Culture",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Mayapur Tourist Centre",
@@ -3139,7 +3631,8 @@
           "tags": [
             "Tourism"
           ],
-          "outlay": "₹1,000 crore (over three years)"
+          "outlay": "₹1,000 crore (over three years)",
+          "locations": []
         },
         {
           "name": "Affordable Pilgrim Accommodation",
@@ -3148,7 +3641,8 @@
             "Social Welfare",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Eco-Adventure & Heritage Tourism",
@@ -3158,9 +3652,18 @@
             "Tourism"
           ],
           "outlay": "",
-          "lat": 27.04929798776505,
-          "lng": 88.26540757332441,
-          "locationName": "Darjeeling"
+          "locations": [
+            {
+              "lat": 27.04014661486356,
+              "lng": 88.24228382144011,
+              "name": "Darjeeling"
+            },
+            {
+              "lat": 21.95403073585197,
+              "lng": 89.17272997368904,
+              "name": "Sundarbans"
+            }
+          ]
         },
         {
           "name": "Purulia Integrated Tourism Circuit",
@@ -3170,9 +3673,13 @@
             "Tourism"
           ],
           "outlay": "",
-          "lat": 23.321176957688717,
-          "lng": 86.33748786017068,
-          "locationName": "Purulia"
+          "locations": [
+            {
+              "lat": 23.330877661622484,
+              "lng": 86.36631693073586,
+              "name": "Purulia"
+            }
+          ]
         },
         {
           "name": "Jungle Mahal Zoo Tiger Safari",
@@ -3180,7 +3687,8 @@
           "tags": [
             "Tourism"
           ],
-          "outlay": "₹25 crore"
+          "outlay": "₹25 crore",
+          "locations": []
         },
         {
           "name": "Mega Festivals Upgrade",
@@ -3189,7 +3697,8 @@
             "Culture",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Ropeways Development",
@@ -3198,7 +3707,8 @@
             "Tourism",
             "Transport"
           ],
-          "outlay": "₹10 crore"
+          "outlay": "₹10 crore",
+          "locations": []
         },
         {
           "name": "West Bengal Home Stay Tourism Policy",
@@ -3207,7 +3717,8 @@
             "Employment",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -3221,7 +3732,8 @@
             "Social Welfare",
             "Women Empowerment"
           ],
-          "outlay": "₹36,000 crore"
+          "outlay": "₹36,000 crore",
+          "locations": []
         },
         {
           "name": "Maternity Benefits (Pradhan Mantri Matru Vandana Yojana)",
@@ -3230,7 +3742,8 @@
             "Health",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pensions for Vulnerable Groups (Jai Bangla, Taposili Bandhu, Jai Johar)",
@@ -3238,7 +3751,8 @@
           "tags": [
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Remuneration Enhancement for Anganwadi Workers",
@@ -3247,7 +3761,8 @@
             "Employment",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Cloud Kitchen Policy",
@@ -3259,7 +3774,8 @@
             "Skill Development",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Special Nutrition Programme",
@@ -3268,7 +3784,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Beti Bachao Beti Padhao",
@@ -3277,7 +3794,8 @@
             "Child Budget",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Women Helpline (181 under Sambal)",
@@ -3286,7 +3804,8 @@
             "Social Welfare",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sakhi Niwas",
@@ -3295,7 +3814,8 @@
             "Infrastructure",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Hub for Empowerment of Women (NHEW)",
@@ -3303,7 +3823,8 @@
           "tags": [
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Free Bus Service in STU Buses for Women",
@@ -3313,7 +3834,8 @@
             "Transport",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Kanyashree Prakalpa",
@@ -3322,7 +3844,8 @@
             "Education",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rupashree Prakalpa",
@@ -3331,7 +3854,8 @@
             "Social Welfare",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Anandadhara",
@@ -3341,7 +3865,8 @@
             "Rural Development",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Poshan Abhiyaan (Saksham Anganwadi and Poshan 2.0)",
@@ -3351,7 +3876,8 @@
             "Health",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Mission Vatsalya",
@@ -3360,7 +3886,8 @@
             "Child Budget",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Lakshmir Bhandar",
@@ -3369,7 +3896,8 @@
             "Social Welfare",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Muktir Alo",
@@ -3378,7 +3906,8 @@
             "Social Welfare",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Action Plan for Drug Demand Reduction (NAPDDR)",
@@ -3387,7 +3916,8 @@
             "Health",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Ujjawala Scheme",
@@ -3396,7 +3926,8 @@
             "Social Welfare",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -3410,7 +3941,8 @@
             "Education",
             "Innovation"
           ],
-          "outlay": "₹2,100 crore"
+          "outlay": "₹2,100 crore",
+          "locations": []
         },
         {
           "name": "Atal Tinkering Labs (ATL)",
@@ -3420,7 +3952,8 @@
             "Education",
             "Innovation"
           ],
-          "outlay": "₹1200 crore"
+          "outlay": "₹1200 crore",
+          "locations": []
         },
         {
           "name": "School Infrastructure & Mid-Day Meal Enhancements",
@@ -3431,7 +3964,8 @@
             "Renewable Energy",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Higher Education Institutes & Upgrades",
@@ -3439,7 +3973,8 @@
           "tags": [
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "University Townships",
@@ -3448,7 +3983,8 @@
             "Development",
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Undergraduate Scheme for Girl Students",
@@ -3457,7 +3993,8 @@
             "Education",
             "Women Empowerment"
           ],
-          "outlay": "₹1,000 crore"
+          "outlay": "₹1,000 crore",
+          "locations": []
         },
         {
           "name": "Girls Hostels and Women's Colleges",
@@ -3466,7 +4003,14 @@
             "Education",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": [
+            {
+              "lat": 21.757866704694294,
+              "lng": 88.10149482139892,
+              "name": "Sagar Island"
+            }
+          ]
         },
         {
           "name": "Competitive Exams Support (Yogyashree Scheme)",
@@ -3475,7 +4019,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Swami Vivekananda Merit Cum Means Scholarship",
@@ -3484,7 +4029,8 @@
             "Education",
             "Healthcare"
           ],
-          "outlay": "₹100 crore"
+          "outlay": "₹100 crore",
+          "locations": []
         },
         {
           "name": "Remuneration Enhancements",
@@ -3493,7 +4039,8 @@
             "Education",
             "Employment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sabooj Sathi",
@@ -3502,7 +4049,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Aikyashree Scholarship",
@@ -3512,7 +4060,8 @@
             "Minority Affairs",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Shikhashree & Medhashree",
@@ -3521,7 +4070,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Student Credit Cards",
@@ -3531,7 +4081,8 @@
             "Financial Assistance",
             "Financial Inclusion"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Student Internship Scheme",
@@ -3540,7 +4091,8 @@
             "Education",
             "Employment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -3556,9 +4108,13 @@
             "Tribal Welfare"
           ],
           "outlay": "₹150 crore estimated (₹10 crore in current FY)",
-          "lat": 22.474532221865378,
-          "lng": 86.98459415813092,
-          "locationName": "Jhargram"
+          "locations": [
+            {
+              "lat": 22.440950671647265,
+              "lng": 86.9799447009245,
+              "name": "Jhargram"
+            }
+          ]
         },
         {
           "name": "Food Security for PVTGs",
@@ -3567,7 +4123,8 @@
             "Law & Order",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Tribal Livelihood Schemes",
@@ -3578,9 +4135,13 @@
             "Tribal Welfare"
           ],
           "outlay": "",
-          "lat": 22.467414835372235,
-          "lng": 87.00019862070924,
-          "locationName": "Jhargram"
+          "locations": [
+            {
+              "lat": 22.476838044269552,
+              "lng": 87.0054044446312,
+              "name": "Jhargram"
+            }
+          ]
         }
       ]
     },
@@ -3594,7 +4155,8 @@
             "Employment",
             "Rural Development"
           ],
-          "outlay": "₹14,000 crore"
+          "outlay": "₹14,000 crore",
+          "locations": []
         },
         {
           "name": "PMAY-G (Affordable Housing) / Banglar Bari",
@@ -3603,7 +4165,8 @@
             "Housing",
             "Rural Development"
           ],
-          "outlay": "₹13,000 crore"
+          "outlay": "₹13,000 crore",
+          "locations": []
         },
         {
           "name": "Vibrant Village Program",
@@ -3612,7 +4175,8 @@
             "Rural Development",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pathashree-Rastashree",
@@ -3621,7 +4185,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sahay Programme",
@@ -3630,7 +4195,8 @@
             "Governance",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Social Assistance Programme (NSAP)",
@@ -3639,7 +4205,8 @@
             "Rural Development",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Jai Bangla Pension Schemes",
@@ -3648,7 +4215,8 @@
             "Gender Budget",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Mahatma Gandhi National Rural Employment Guarantee Scheme (MGNREGA)",
@@ -3657,7 +4225,8 @@
             "Employment",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Swachh Bharat Mission / Nirmal Bharat Abhiyan",
@@ -3666,7 +4235,8 @@
             "Rural Development",
             "Sanitation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Promotion of Self-Help Groups (SHGs)",
@@ -3675,7 +4245,8 @@
             "Rural Development",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rashtriya Gram Swaraj Abhiyan (RGSA)",
@@ -3685,7 +4256,8 @@
             "Rural Development",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rastriya Krishi Vikash Yojana (RKVY)",
@@ -3694,7 +4266,8 @@
             "Agriculture",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Comprehensive Area & Community Development Project",
@@ -3703,7 +4276,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pradhan Mantri Gram Sadak Yojana (PMGSY) / Gram Sadak Yojana",
@@ -3712,7 +4286,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Aam Admi Bima Yojana",
@@ -3721,7 +4296,8 @@
             "Rural Development",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bangla Sahayata Kendra (BSK)",
@@ -3730,7 +4306,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Somobyathi Scheme",
@@ -3739,7 +4316,8 @@
             "Rural Development",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Jalatirtha (JLT)",
@@ -3749,7 +4327,8 @@
             "Rural Development",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Rural Livelihood Mission (NRLM - Aajeevika)",
@@ -3760,7 +4339,8 @@
             "Rural Development",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Rural Economic Transformation Project (NRETP)",
@@ -3769,7 +4349,8 @@
             "Economy",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Gangasagar Mela",
@@ -3778,7 +4359,8 @@
             "Culture",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Vector Borne Diseases Control Programme",
@@ -3787,7 +4369,8 @@
             "Health",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Legacy Rural Development Schemes",
@@ -3796,7 +4379,8 @@
             "Employment",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Integrated Wasteland Development Programme",
@@ -3805,7 +4389,8 @@
             "Environment",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Intensive Development of Fisheries",
@@ -3814,7 +4399,8 @@
             "Fisheries",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "World Bank Assisted Institutional Strengthening",
@@ -3823,7 +4409,8 @@
             "Governance",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -3838,7 +4425,8 @@
             "Social Welfare",
             "Tourism"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Gig and Platform Workers Welfare",
@@ -3848,7 +4436,8 @@
             "Social Welfare",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Migrant Workers Support / The West Bengal Migrant Workers’ Welfare Scheme",
@@ -3858,7 +4447,8 @@
             "Financial Assistance",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bhorsha Karmasuchi / Social Welfare Scheme for Unemployed",
@@ -3868,7 +4458,8 @@
             "Social Welfare",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM-SETU (Modernization of ITIs)",
@@ -3877,7 +4468,8 @@
             "Education",
             "Employment"
           ],
-          "outlay": "₹570 crore"
+          "outlay": "₹570 crore",
+          "locations": []
         },
         {
           "name": "Skills Strengthening for Industrial Value Enhancement (STRIVE)",
@@ -3887,7 +4479,8 @@
             "Employment",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "24x7 Economy / Shops and Establishments Act Amendment",
@@ -3898,9 +4491,13 @@
             "Urban Development"
           ],
           "outlay": "",
-          "lat": 22.56941683325727,
-          "lng": 88.34913152336432,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.59556407042105,
+              "lng": 88.38842087812789,
+              "name": "Kolkata"
+            }
+          ]
         },
         {
           "name": "Anti-Extortion Legislation",
@@ -3909,7 +4506,8 @@
             "Governance",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bidi Workers Welfare Scheme",
@@ -3918,7 +4516,8 @@
             "Employment",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development Action Plans (DAPSC / DAPST)",
@@ -3927,7 +4526,8 @@
             "Employment",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Career Service Project",
@@ -3936,7 +4536,8 @@
             "Employment",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rehabilitation of Bonded Labour (RBL)",
@@ -3945,7 +4546,8 @@
             "Employment",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bina Mulya Samajik Suraksha Yojana",
@@ -3955,7 +4557,8 @@
             "Law & Order",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Silicosis Prevention and Control Fund",
@@ -3965,7 +4568,8 @@
             "Financial Assistance",
             "Health"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Udiyaman Swanirbhar Karmasansthan Prakalpa-2008 (SVSKP)",
@@ -3975,7 +4579,8 @@
             "Social Welfare",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -3989,7 +4594,8 @@
             "Rural Development",
             "Social Welfare"
           ],
-          "outlay": "₹500 crore"
+          "outlay": "₹500 crore",
+          "locations": []
         },
         {
           "name": "Taposili Bandhu",
@@ -3998,7 +4604,8 @@
             "Backward Classes Welfare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Jai Johar",
@@ -4007,7 +4614,8 @@
             "Social Welfare",
             "Tribal Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sikhshashree",
@@ -4017,7 +4625,8 @@
             "Education",
             "SC/ST Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Medhasree Scholarship",
@@ -4026,7 +4635,8 @@
             "Backward Classes Welfare",
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pre-Matric & Post-Matric Scholarships",
@@ -4036,7 +4646,8 @@
             "Education",
             "SC/ST Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Relief to Victims of Atrocities",
@@ -4045,7 +4656,8 @@
             "Backward Classes Welfare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Tribal Development Co-operative Corporation Ltd. (WBTDCC)",
@@ -4055,7 +4667,8 @@
             "Tribal Development",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Dharti Aaba Janjatiya Gram Utkarsh Abhiyan (DA-JGUA)",
@@ -4065,7 +4678,8 @@
             "Tribal Development",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "PM-JANMAN (Pradhan Mantri Janjati Adivasi Nyaya Maha Abhiyan)",
@@ -4075,7 +4689,8 @@
             "Tribal Development",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Ambedkar Centre of Excellence",
@@ -4084,7 +4699,8 @@
             "Backward Classes Welfare",
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sabooj Sathi / Distribution of Bi-cycles",
@@ -4093,7 +4709,8 @@
             "Education",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Kendu Leaves Collectors Social Security Scheme",
@@ -4103,7 +4720,8 @@
             "Social Welfare",
             "Tribal Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Minimum Support Price for Minor Forest Produce (MSP for MFP)",
@@ -4113,7 +4731,8 @@
             "Environment",
             "Tribal Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pandit Raghunath Murmu Abasik Hostels",
@@ -4123,7 +4742,8 @@
             "Tribal Development",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Yogyashree Scheme",
@@ -4134,7 +4754,8 @@
             "SC/ST Welfare",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "YASASVI Scholarships",
@@ -4143,7 +4764,8 @@
             "Backward Classes Welfare",
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development Boards for Various Communities",
@@ -4152,7 +4774,8 @@
             "Backward Classes Welfare",
             "Culture"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -4167,7 +4790,8 @@
             "Gender Budget",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Atal Mission for Rejuvenation and Urban Transformation",
@@ -4177,7 +4801,8 @@
             "Infrastructure",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "City Economic Regions (CER) Scheme",
@@ -4187,7 +4812,8 @@
             "Housing",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Deendayal Jan Aajeevika Yojana- Shehari -DJAY(S) (Central",
@@ -4196,7 +4822,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Dhapa Integrated Waste Disposal Facility",
@@ -4206,7 +4833,8 @@
             "Environment",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Hawker Security Scheme, 2020 for One-time Assistance to",
@@ -4216,7 +4844,8 @@
             "Infrastructure",
             "Law & Order"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Ganga River Basin",
@@ -4225,7 +4854,8 @@
             "Environment",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Maa Ahar Centers",
@@ -4234,7 +4864,8 @@
             "Social Welfare",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Urban Digital Mission (NUDM)",
@@ -4245,7 +4876,8 @@
             "Gender Budget",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Urban Digital Mission (NUDM)(SNA-SPARSH)",
@@ -4256,7 +4888,8 @@
             "Infrastructure",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Urban Livelihood Mission",
@@ -4267,7 +4900,8 @@
             "Gender Budget",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Urban Livelihood Mission (Central Share) (OCASPS)",
@@ -4277,7 +4911,8 @@
             "Infrastructure",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Urban Livelihood Mission (State Share) (OCASPS)",
@@ -4287,7 +4922,8 @@
             "Infrastructure",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Smart City Mission",
@@ -4297,7 +4933,8 @@
             "Gender Budget",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -4312,9 +4949,18 @@
             "Infrastructure"
           ],
           "outlay": "",
-          "lat": 22.043752582465405,
-          "lng": 88.08494025023761,
-          "locationName": "Haldia"
+          "locations": [
+            {
+              "lat": 22.046107190410837,
+              "lng": 88.0954145527457,
+              "name": "Haldia"
+            },
+            {
+              "lat": 21.72287671290886,
+              "lng": 88.12611860677937,
+              "name": "Sagar Island"
+            }
+          ]
         },
         {
           "name": "Rail, Water & Air Connectivity",
@@ -4326,9 +4972,63 @@
             "Water Supply"
           ],
           "outlay": "",
-          "lat": 22.561006312977696,
-          "lng": 88.35310640954673,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.58686138998032,
+              "lng": 88.37656774371966,
+              "name": "Kolkata"
+            },
+            {
+              "lat": 26.731448949333796,
+              "lng": 88.40287648908377,
+              "name": "Siliguri"
+            },
+            {
+              "lat": 23.656164704018508,
+              "lng": 86.96222987996386,
+              "name": "Asansol"
+            },
+            {
+              "lat": 23.51242871174296,
+              "lng": 87.325321101165,
+              "name": "Durgapur"
+            },
+            {
+              "lat": 24.988588136104816,
+              "lng": 88.15935591976604,
+              "name": "Malda"
+            },
+            {
+              "lat": 26.559729876866548,
+              "lng": 88.7430253891065,
+              "name": "Jalpaiguri"
+            },
+            {
+              "lat": 23.308871104768,
+              "lng": 86.34552701665548,
+              "name": "Purulia"
+            },
+            {
+              "lat": 22.977583210264978,
+              "lng": 88.43374841400238,
+              "name": "Kalyani"
+            },
+            {
+              "lat": 22.878099817858843,
+              "lng": 88.40402633103243,
+              "name": "Hooghly"
+            },
+            {
+              "lat": 21.968677405442538,
+              "lng": 89.18174565539756,
+              "name": "Sundarbans"
+            },
+            {
+              "lat": 25.2457614873611,
+              "lng": 88.78582406397204,
+              "name": "Balurghat"
+            }
+          ]
         }
       ]
     },
@@ -4343,7 +5043,8 @@
             "Gender Budget",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Udiyaman Swanirbhar Karmasansthan Prakalpa",
@@ -4354,7 +5055,8 @@
             "Gender Budget",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -4369,7 +5071,8 @@
             "Gender Budget",
             "Minority Affairs"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Scheme for Housing for Destitute Minority Women",
@@ -4381,7 +5084,8 @@
             "Minority Affairs",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Destitute Minority Women Rehabilitation Programme",
@@ -4394,7 +5098,8 @@
             "Skill Development",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Yogyashree Scheme",
@@ -4405,7 +5110,8 @@
             "Minority Affairs",
             "SC/ST Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Madrasah Education Scholarship for students belonging to Jain Community",
@@ -4415,7 +5121,8 @@
             "Education",
             "Gender Budget"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Establishment of Sports School",
@@ -4426,7 +5133,8 @@
             "Gender Budget",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Expenditure for Nationalised Text book for Children",
@@ -4435,7 +5143,8 @@
             "Child Budget",
             "Gender Budget"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -4450,9 +5159,13 @@
             "Infrastructure"
           ],
           "outlay": "",
-          "lat": 22.458482931747394,
-          "lng": 86.99076445949822,
-          "locationName": "Jhargram"
+          "locations": [
+            {
+              "lat": 22.466789930625023,
+              "lng": 86.99890032141866,
+              "name": "Jhargram"
+            }
+          ]
         },
         {
           "name": "Development of Paschimanchal",
@@ -4461,7 +5174,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Jangal Mahal Action Plan",
@@ -4470,7 +5184,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Jalatirtha (JLT)",
@@ -4481,7 +5196,8 @@
             "Irrigation",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Repair, Renovation & Beautification Work of Guptomoni",
@@ -4490,7 +5206,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Information Commission",
@@ -4499,7 +5216,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -4514,7 +5232,8 @@
             "Infrastructure",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Financial Assistance to Poor Women of Self Help Groups (SHGs)",
@@ -4524,7 +5243,8 @@
             "Infrastructure",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Infrastructure Development, Training & Marketing Support to SHGs",
@@ -4534,7 +5254,8 @@
             "Infrastructure",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Insurance Scheme for SHG Members",
@@ -4543,7 +5264,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Large Sized Training Centres cum Marketing Complexes",
@@ -4553,7 +5275,8 @@
             "Infrastructure",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Muktidhara Scheme",
@@ -4565,7 +5288,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Personal Accident Insurance Scheme For Poor Families",
@@ -4574,7 +5298,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "RIDF Schemes",
@@ -4585,7 +5310,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "State-level Market Complex for SHG Products",
@@ -4594,7 +5320,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Swami Vivekananda Swanirbhar Karmasansthan Prakalpa",
@@ -4606,7 +5333,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Swanirbhar Sahayak Prakalpa (WBSSP)",
@@ -4618,7 +5346,8 @@
             "Infrastructure",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -4634,7 +5363,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Tea Directorate",
@@ -4645,7 +5375,8 @@
             "Infrastructure",
             "Tea Gardens"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Compensatory Entry Tax Fund (WBETF)",
@@ -4655,7 +5386,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Khas Development and Cultural Board",
@@ -4666,7 +5398,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -4682,7 +5415,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Assistance to LAMPS",
@@ -4694,7 +5428,8 @@
             "Infrastructure",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Computerisation of Primary Agricultural Credit Societies (PACS)",
@@ -4706,7 +5441,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Computerised Management of Co-operative Data and Records",
@@ -4716,7 +5452,8 @@
             "IT & Tech",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Construction of Godowns, Cold Storages, and Processing Units",
@@ -4725,7 +5462,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Deposit Guarantee Scheme",
@@ -4734,7 +5472,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development Action Plan for Scheduled Castes (DAPSC)",
@@ -4744,7 +5483,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development Action Plan for Scheduled Tribes (DAPST)",
@@ -4753,7 +5493,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Agricultural Marketing Societies",
@@ -4762,7 +5503,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Consumers Co-operatives",
@@ -4773,7 +5515,8 @@
             "Rural Development",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Dairy Co-operatives",
@@ -4787,7 +5530,8 @@
             "Rural Development",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Housing Co-operatives",
@@ -4798,7 +5542,8 @@
             "Infrastructure",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Labour Co-operatives",
@@ -4809,7 +5554,8 @@
             "Infrastructure",
             "Law & Order"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Long Term Cooperative Credit Structure",
@@ -4820,7 +5566,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Processing Co-operatives",
@@ -4829,7 +5576,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Unemployed Engineers Co-operatives",
@@ -4838,7 +5586,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Urban Credit Co-operatives",
@@ -4849,7 +5598,8 @@
             "Infrastructure",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of Women's/Mahila Co-operatives",
@@ -4859,7 +5609,8 @@
             "Infrastructure",
             "Women Empowerment"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Emergency Fund in Agriculture Credit Co-operatives",
@@ -4869,7 +5620,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Expansion of Co-operative Training and Education",
@@ -4881,7 +5633,8 @@
             "Infrastructure",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Integrated Co-operative Development Project",
@@ -4891,7 +5644,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Interest Subvention to Co-operative Banks",
@@ -4900,7 +5654,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Low Income Group Housing Scheme",
@@ -4910,7 +5665,8 @@
             "Housing",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Procurement, Processing and Supply of Parboiled Levy Rice",
@@ -4919,7 +5675,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
@@ -4931,7 +5688,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "RIDF/WIF Schemes",
@@ -4942,7 +5700,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Scheme for Co-operative Farming",
@@ -4951,7 +5710,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Special Bad Debt Reserve (Risk Fund) for Co-operatives",
@@ -4961,7 +5721,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Strengthening of Co-operative Banks and PACS",
@@ -4971,7 +5732,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Subsidies for Interest Liabilities of Share Croppers",
@@ -4981,7 +5743,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Training for Capacity Building of SHGs",
@@ -4993,7 +5756,8 @@
             "Infrastructure",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Tribal Area Sub-Plan",
@@ -5003,7 +5767,8 @@
             "Infrastructure",
             "Tribal Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Warehousing and Marketing Co-operatives",
@@ -5012,7 +5777,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Agricultural Credit Relief Fund",
@@ -5022,7 +5788,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Co-operative Service Commission",
@@ -5031,7 +5798,8 @@
             "Governance",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -5046,7 +5814,8 @@
             "Land Reforms",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Computerisation of Land Records and IT Infrastructure",
@@ -5056,7 +5825,8 @@
             "Infrastructure",
             "e Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Strengthening of Revenue Administration and Updating of Land Records",
@@ -5065,7 +5835,8 @@
             "Governance",
             "Land Reforms"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Infrastructural Development in Refugee Colonies",
@@ -5074,7 +5845,8 @@
             "Infrastructure",
             "Rehabilitation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "International Boundary Demarcation",
@@ -5083,7 +5855,8 @@
             "Border Management",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sodepur and Rajpur Development Schemes",
@@ -5092,7 +5865,8 @@
             "Infrastructure",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Integrated Scheme on Land Reforms",
@@ -5101,7 +5875,8 @@
             "Governance",
             "Land Reforms"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Implementation of the West Bengal Land Holding Revenue Act",
@@ -5110,7 +5885,8 @@
             "Governance",
             "Legislation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Agriculture Census Scheme (OCASPS)",
@@ -5119,7 +5895,8 @@
             "Agriculture",
             "Census"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Modernisation of ARTI and Training Institutes",
@@ -5129,7 +5906,8 @@
             "Governance",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Settlement Operations for Estates Acquisition",
@@ -5138,7 +5916,8 @@
             "Governance",
             "Land Reforms"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Creation of State Level Archives",
@@ -5148,7 +5927,8 @@
             "Heritage",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Land Reform and Tenancy Tribunal",
@@ -5157,7 +5937,8 @@
             "Governance",
             "Judiciary"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "State Land Use Board",
@@ -5168,7 +5949,8 @@
             "Rural Development",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -5183,7 +5965,8 @@
             "Infrastructure",
             "Science Promotion"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Centre for Rural and Cryogenic Technologies",
@@ -5192,7 +5975,8 @@
             "Research",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development of R&D Hub near Kolkata",
@@ -5204,9 +5988,13 @@
             "Research"
           ],
           "outlay": "",
-          "lat": 22.563772061071475,
-          "lng": 88.36119224027952,
-          "locationName": "Kolkata"
+          "locations": [
+            {
+              "lat": 22.58047515014855,
+              "lng": 88.38671783697066,
+              "name": "Kolkata"
+            }
+          ]
         },
         {
           "name": "Financial Assistance for Patents and Intellectual Property",
@@ -5215,7 +6003,8 @@
             "Innovation",
             "Research"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Pilot Schemes and Lab-to-Land Initiatives",
@@ -5224,7 +6013,8 @@
             "Applied Science",
             "Innovation"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "State Remote Sensing Projects",
@@ -5233,7 +6023,8 @@
             "Remote Sensing",
             "Technology"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Integrated Rural Energy Planning Programme (IREP)",
@@ -5242,7 +6033,8 @@
             "Energy",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Plant Tissue Culture Unit",
@@ -5252,7 +6044,8 @@
             "Art & Culture",
             "Biotechnology"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Science Clubs",
@@ -5262,7 +6055,8 @@
             "Science Promotion",
             "Youth"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Biotech Development",
@@ -5271,7 +6065,8 @@
             "Biotechnology",
             "Research"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal State Council of Bio-Technology",
@@ -5280,7 +6075,8 @@
             "Biotechnology",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal State Council of Science & Technology",
@@ -5289,7 +6085,8 @@
             "Governance",
             "Science"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Training Programmes in Geoinformatics",
@@ -5298,7 +6095,8 @@
             "Skill Development",
             "Technology"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "e-Governance Initiatives in Science & Technology",
@@ -5308,7 +6106,8 @@
             "Digital India",
             "e Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -5326,7 +6125,8 @@
             "Rural Development",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Duare Sarkar Campaign",
@@ -5339,7 +6139,8 @@
             "Rural Development",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Hasir Alo (Power Subsidy Scheme)",
@@ -5351,7 +6152,8 @@
             "Subsidy",
             "Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bidhayak Elaka Unnayan Prakalpa (BEUP)",
@@ -5361,7 +6163,8 @@
             "Local Development",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Amader Para, Amader Samadhan (APAS)",
@@ -5370,7 +6173,8 @@
             "Community Development",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Comprehensive Area Development Project",
@@ -5379,7 +6183,8 @@
             "Infrastructure",
             "Rural Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Development Action Plan for SCs & STs (DAPSC & DAPST)",
@@ -5388,7 +6193,8 @@
             "Inclusive Growth",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "State Strategic Statistical Plan",
@@ -5397,7 +6203,8 @@
             "Governance",
             "Statistics"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Crop Survey",
@@ -5406,7 +6213,8 @@
             "Agriculture",
             "Statistics"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "District Plan Scheme",
@@ -5415,7 +6223,8 @@
             "Decentralization",
             "Local Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Strengthening & Extending Electricity Distribution",
@@ -5427,7 +6236,8 @@
             "Rural Development",
             "Urban Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -5442,7 +6252,8 @@
             "Financial Assistance",
             "Relief"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "State Disaster Mitigation Fund (SDMF / SDRMF)",
@@ -5453,7 +6264,8 @@
             "Urban Development",
             "Urban Flooding"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Cyclone Risk Mitigation Project (NCRMP)",
@@ -5462,7 +6274,8 @@
             "Cyclone Mitigation",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Construction of Multi-Purpose Cyclone Shelters (MPCS)",
@@ -5471,7 +6284,8 @@
             "Disaster Preparedness",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "AAPDA MITRA and Community Volunteer Training",
@@ -5481,7 +6295,8 @@
             "Disaster Response",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Volunteer Force (NVF) & Bangiya Agragami",
@@ -5492,9 +6307,18 @@
             "Skill Development"
           ],
           "outlay": "",
-          "lat": 26.316923460157177,
-          "lng": 89.46891932678997,
-          "locationName": "Cooch Behar"
+          "locations": [
+            {
+              "lat": 26.3181901764743,
+              "lng": 89.47177670566477,
+              "name": "Cooch Behar"
+            },
+            {
+              "lat": 22.960954230179393,
+              "lng": 88.42799367391723,
+              "name": "Kalyani"
+            }
+          ]
         },
         {
           "name": "Home Guards and Border Wing Home Guards",
@@ -5504,7 +6328,8 @@
             "Security",
             "Skill Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "West Bengal Civil Emergency Force and Water Wing",
@@ -5514,7 +6339,8 @@
             "Disaster Response",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "National Cadet Corps (NCC)",
@@ -5525,7 +6351,8 @@
             "Youth",
             "Youth Development"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Post-Disaster Infrastructure Restoration",
@@ -5537,7 +6364,8 @@
             "Urban Development",
             "Urban Flooding"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Economic Rehabilitation of Disaster-Affected Families",
@@ -5547,7 +6375,8 @@
             "Rehabilitation",
             "Social Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Early Warning Dissemination System",
@@ -5556,7 +6385,8 @@
             "Disaster Preparedness",
             "Technology"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Air Raid Precautions (ARP)",
@@ -5567,7 +6397,8 @@
             "Healthcare",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Expansion and Modernization of Fire Services",
@@ -5576,7 +6407,8 @@
             "Fire Safety",
             "Modernization"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Strengthening of State Disaster Management Authority (SDMA)",
@@ -5585,7 +6417,8 @@
             "Capacity Building",
             "Governance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Gangasagar Mela Preparedness",
@@ -5595,7 +6428,8 @@
             "Healthcare",
             "Public Safety"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Sneher Paras (Financial Assistance)",
@@ -5604,7 +6438,8 @@
             "Financial Assistance",
             "Welfare"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     },
@@ -5618,7 +6453,8 @@
             "Governance",
             "Public Grievance"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Bidhayak Elaka Unnayan Prakalpa (BEUP)",
@@ -5629,7 +6465,8 @@
             "Infrastructure",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "SASCI Capital Investment Claim",
@@ -5638,7 +6475,8 @@
             "Capital Infrastructure",
             "Reform"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         },
         {
           "name": "Logistics Connectivity Projects",
@@ -5647,7 +6485,8 @@
             "Capital Infrastructure",
             "Logistics"
           ],
-          "outlay": ""
+          "outlay": "",
+          "locations": []
         }
       ]
     }
