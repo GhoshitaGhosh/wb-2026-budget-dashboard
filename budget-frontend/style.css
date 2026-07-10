@@ -1112,6 +1112,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Leaflet Map Styles */
 .map-section {
   margin-top: 1rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
 }
 
 .leaflet-popup-content-wrapper {
