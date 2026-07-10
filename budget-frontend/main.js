@@ -1,8 +1,13 @@
 import './style.css'; // Let Vite handle it
 import Chart from 'chart.js/auto';
 import { WordCloudController, WordElement } from 'chartjs-chart-wordcloud';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 Chart.register(WordCloudController, WordElement);
+
+let budgetMap = null;
+let mapMarkers = [];
 
 let globalData = null;
 let chartsData = null;
@@ -79,44 +84,44 @@ const animationObserver = new IntersectionObserver((entries) => {
 // Emoji Mapping Helpers
 const getDeptEmoji = (name) => {
   const n = name.toLowerCase();
-  if (n.includes('health') || n.includes('medical')) return '🏥';
-  if (n.includes('educat') || n.includes('school') || n.includes('high')) return '🎓';
-  if (n.includes('agri') || n.includes('farm')) return '🌾';
-  if (n.includes('financ') || n.includes('tax')) return '💰';
-  if (n.includes('women') || n.includes('child')) return '👩‍👧';
-  if (n.includes('industr') || n.includes('commerce') || n.includes('enterprise')) return '🏭';
-  if (n.includes('information') || n.includes('tech')) return '💻';
-  if (n.includes('touris')) return '🏖️';
-  if (n.includes('water') || n.includes('irrigation')) return '💧';
-  if (n.includes('transport') || n.includes('road')) return '🛣️';
-  if (n.includes('urban') || n.includes('municipal')) return '🏙️';
-  if (n.includes('rural') || n.includes('panchayat')) return '🏡';
-  if (n.includes('police') || n.includes('home') || n.includes('law')) return '🚓';
-  if (n.includes('power') || n.includes('energy')) return '⚡';
-  if (n.includes('forest') || n.includes('environment')) return '🌳';
-  if (n.includes('food') || n.includes('civil supplies')) return '🍚';
-  if (n.includes('sports') || n.includes('youth')) return '⚽';
-  if (n.includes('labour') || n.includes('employment')) return '👷';
-  if (n.includes('art') || n.includes('culture') || n.includes('library')) return '🎨';
-  if (n.includes('housing')) return '🏠';
-  return '🏛️';
+  if (n.includes('health') || n.includes('medical')) return 'ðŸ¥';
+  if (n.includes('educat') || n.includes('school') || n.includes('high')) return 'ðŸŽ“';
+  if (n.includes('agri') || n.includes('farm')) return 'ðŸŒ¾';
+  if (n.includes('financ') || n.includes('tax')) return 'ðŸ’°';
+  if (n.includes('women') || n.includes('child')) return 'ðŸ‘©â€ðŸ‘§';
+  if (n.includes('industr') || n.includes('commerce') || n.includes('enterprise')) return 'ðŸ­';
+  if (n.includes('information') || n.includes('tech')) return 'ðŸ’»';
+  if (n.includes('touris')) return 'ðŸ–ï¸';
+  if (n.includes('water') || n.includes('irrigation')) return 'ðŸ’§';
+  if (n.includes('transport') || n.includes('road')) return 'ðŸ›£ï¸';
+  if (n.includes('urban') || n.includes('municipal')) return 'ðŸ™ï¸';
+  if (n.includes('rural') || n.includes('panchayat')) return 'ðŸ¡';
+  if (n.includes('police') || n.includes('home') || n.includes('law')) return 'ðŸš“';
+  if (n.includes('power') || n.includes('energy')) return 'âš¡';
+  if (n.includes('forest') || n.includes('environment')) return 'ðŸŒ³';
+  if (n.includes('food') || n.includes('civil supplies')) return 'ðŸš';
+  if (n.includes('sports') || n.includes('youth')) return 'âš½';
+  if (n.includes('labour') || n.includes('employment')) return 'ðŸ‘·';
+  if (n.includes('art') || n.includes('culture') || n.includes('library')) return 'ðŸŽ¨';
+  if (n.includes('housing')) return 'ðŸ ';
+  return 'ðŸ›ï¸';
 };
 
 const getSchemeEmoji = (name, details) => {
   const text = (name + ' ' + details).toLowerCase();
-  if (text.includes('scholarship') || text.includes('student')) return '🎒';
-  if (text.includes('pension') || text.includes('old age')) return '🧓';
-  if (text.includes('loan') || text.includes('credit')) return '💳';
-  if (text.includes('digital') || text.includes('portal') || text.includes('app')) return '📱';
-  if (text.includes('skill') || text.includes('train')) return '🛠️';
-  if (text.includes('health') || text.includes('hospital') || text.includes('medicine')) return '💊';
-  if (text.includes('women') || text.includes('girl')) return '🚺';
-  if (text.includes('water') || text.includes('drinking')) return '🚰';
-  if (text.includes('road') || text.includes('highway') || text.includes('bridge') || text.includes('infrastructure')) return '🚧';
-  if (text.includes('farm') || text.includes('crop') || text.includes('seed')) return '🌱';
-  if (text.includes('solar') || text.includes('energy')) return '☀️';
-  if (text.includes('fund') || text.includes('grant') || text.includes('subsidy')) return '💸';
-  return '🔸';
+  if (text.includes('scholarship') || text.includes('student')) return 'ðŸŽ’';
+  if (text.includes('pension') || text.includes('old age')) return 'ðŸ§“';
+  if (text.includes('loan') || text.includes('credit')) return 'ðŸ’³';
+  if (text.includes('digital') || text.includes('portal') || text.includes('app')) return 'ðŸ“±';
+  if (text.includes('skill') || text.includes('train')) return 'ðŸ› ï¸';
+  if (text.includes('health') || text.includes('hospital') || text.includes('medicine')) return 'ðŸ’Š';
+  if (text.includes('women') || text.includes('girl')) return 'ðŸšº';
+  if (text.includes('water') || text.includes('drinking')) return 'ðŸš°';
+  if (text.includes('road') || text.includes('highway') || text.includes('bridge') || text.includes('infrastructure')) return 'ðŸš§';
+  if (text.includes('farm') || text.includes('crop') || text.includes('seed')) return 'ðŸŒ±';
+  if (text.includes('solar') || text.includes('energy')) return 'â˜€ï¸';
+  if (text.includes('fund') || text.includes('grant') || text.includes('subsidy')) return 'ðŸ’¸';
+  return 'ðŸ”¸';
 };
 
 // Initialize
@@ -160,6 +165,7 @@ async function init() {
     setupTagSelector();
     renderContent(); // Initially render all
     initCharts();
+    initMap();
     setupSearch();
     
     // Observe statically placed animated elements
@@ -226,18 +232,18 @@ function updateStats() {
   
   if (globalData.sdgs && globalData.sdgs.length > 0) {
     const totalSdg = globalData.sdgs.reduce((sum, sdg) => sum + sdg.allocation_crore, 0);
-    document.getElementById('stat-total-sdg').textContent = `₹${Math.round(totalSdg).toLocaleString('en-IN')} Cr`;
+    document.getElementById('stat-total-sdg').textContent = `â‚¹${Math.round(totalSdg).toLocaleString('en-IN')} Cr`;
   }
 
   if (chartsData) {
     const totalRevEl = document.getElementById('stat-total-revenue');
     if (totalRevEl && chartsData.total_revenue) {
-      totalRevEl.textContent = `₹${Math.round(chartsData.total_revenue).toLocaleString('en-IN')} Cr`;
+      totalRevEl.textContent = `â‚¹${Math.round(chartsData.total_revenue).toLocaleString('en-IN')} Cr`;
     }
 
     const totalExpEl = document.getElementById('stat-total-expenditure');
     if (totalExpEl && chartsData.total_expenditure) {
-      totalExpEl.textContent = `₹${Math.round(chartsData.total_expenditure).toLocaleString('en-IN')} Cr`;
+      totalExpEl.textContent = `â‚¹${Math.round(chartsData.total_expenditure).toLocaleString('en-IN')} Cr`;
     }
   }
 }
@@ -344,13 +350,13 @@ function generateSchemeCard(scheme) {
     : '';
     
   const deptHtml = scheme.departmentName && (!document.getElementById(scheme.departmentId) || document.getElementById(scheme.departmentId).style.display === 'none') 
-    ? `<div class="scheme-dept">${scheme.deptEmoji || '🏛️'} ${scheme.departmentName}</div>`
+    ? `<div class="scheme-dept">${scheme.deptEmoji || 'ðŸ›ï¸'} ${scheme.departmentName}</div>`
     : `<div class="scheme-dept">Initiative</div>`;
 
   return `
     <div class="scheme-card animate-on-scroll">
       ${deptHtml}
-      <h3 class="scheme-title">${scheme.emoji || '🔸'} ${scheme.name}</h3>
+      <h3 class="scheme-title">${scheme.emoji || 'ðŸ”¸'} ${scheme.name}</h3>
       ${outlayHtml}
       <p class="scheme-details">${scheme.details}</p>
       ${tagsHtml}
@@ -366,10 +372,12 @@ function renderContent(filteredDepartments = globalData.departments) {
   scrollObserver.observe(overviewSection);
 
   let schemeCount = 0;
+  let activeSchemes = [];
 
   filteredDepartments.forEach(dept => {
     if (dept.schemes.length === 0) return;
     schemeCount += dept.schemes.length;
+    activeSchemes = activeSchemes.concat(dept.schemes);
 
     // Sidebar Link
     const navItem = document.createElement('a');
@@ -472,6 +480,8 @@ function performSearch(query) {
     return matchText;
   });
 
+  updateMap(filteredSchemes);
+
   overviewSection.style.display = 'none';
   departmentsContainer.style.display = 'none';
   searchResultsSection.style.display = 'block';
@@ -537,7 +547,7 @@ function initCharts() {
       data: {
         labels: labels,
         datasets: [{
-          label: 'Allocation (Crore ₹)',
+          label: 'Allocation (Crore â‚¹)',
           data: data,
           backgroundColor: '#f28500',
           hoverBackgroundColor: '#db7700',
@@ -557,7 +567,7 @@ function initCharts() {
             cornerRadius: 8,
             callbacks: {
               title: (context) => globalData.sdgs[context[0].dataIndex].name,
-              label: (context) => `₹${context.raw.toLocaleString('en-IN')} Crore`
+              label: (context) => `â‚¹${context.raw.toLocaleString('en-IN')} Crore`
             }
           }
         },
@@ -660,7 +670,7 @@ function initCharts() {
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (context) => ' ₹' + context.raw.toLocaleString('en-IN') + ' Cr'
+                label: (context) => ' â‚¹' + context.raw.toLocaleString('en-IN') + ' Cr'
               }
             }
           }
@@ -693,7 +703,7 @@ function initCharts() {
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (context) => ' ₹' + context.raw.toLocaleString('en-IN') + ' Cr'
+                label: (context) => ' â‚¹' + context.raw.toLocaleString('en-IN') + ' Cr'
               }
             }
           }
@@ -741,7 +751,7 @@ function initCharts() {
                   const val = context.raw;
                   const total = data.reduce((a, b) => a + b, 0);
                   const percentage = ((val / total) * 100).toFixed(2);
-                  return ' ₹' + val.toLocaleString('en-IN') + ' Cr (' + percentage + '%)';
+                  return ' â‚¹' + val.toLocaleString('en-IN') + ' Cr (' + percentage + '%)';
                 }
               }
             }
@@ -922,3 +932,28 @@ if (backToTopBtn) {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+function initMap() {
+  const mapContainer = document.getElementById('budget-map');
+  if (!mapContainer) return;
+  budgetMap = L.map('budget-map').setView([22.9868, 87.8550], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+  }).addTo(budgetMap);
+  updateMap(allSchemes);
+}
+
+function updateMap(schemesToRender) {
+  if (!budgetMap) return;
+  mapMarkers.forEach(marker => budgetMap.removeLayer(marker));
+  mapMarkers = [];
+
+  const geoSchemes = schemesToRender.filter(s => s.lat && s.lng);
+  if (geoSchemes.length === 0) return;
+
+  geoSchemes.forEach(s => {
+    const marker = L.marker([s.lat, s.lng]).addTo(budgetMap);
+    marker.bindPopup("<h4>" + s.name + "</h4><p><strong>" + s.departmentName + ":</strong> " + (s.allocation_crore ? '₹' + s.allocation_crore + ' Cr' : 'N/A') + "</p><p>Location: " + s.locationName + "</p>");
+    mapMarkers.push(marker);
+  });
+}

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "chart.js": "^4.4.2",
-    "chartjs-chart-wordcloud": "^4.4.5"
+    "chartjs-chart-wordcloud": "^4.4.5",
+    "leaflet": "^1.9.4"
   }
 }

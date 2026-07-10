@@ -491,7 +491,10 @@
             "Administration",
             "Education"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.5804,
+          "lng": 88.4643,
+          "locationName": "Civil Services Welfare"
         },
         {
           "name": "Bangla Sahayata Kendra (BSK)",
@@ -545,7 +548,10 @@
             "IT",
             "IT & Tech"
           ],
-          "outlay": "₹26 crore"
+          "outlay": "₹26 crore",
+          "lat": 26.73,
+          "lng": 88.38,
+          "locationName": "Siliguri IT Park"
         },
         {
           "name": "Global Capability Centre (GCC) & Data Centre Policy",
@@ -1011,7 +1017,10 @@
           "tags": [
             "Agriculture"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.4344,
+          "lng": 87.8732,
+          "locationName": "Floriculture Clusters & Kolaghat Market Hub"
         },
         {
           "name": "Mango Export & Post-Harvest",
@@ -1654,7 +1663,10 @@
             "Capital Infrastructure",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 23.5204,
+          "lng": 87.3119,
+          "locationName": "Durgapur"
         },
         {
           "name": "West Bengal Investment Promotion Framework",
@@ -1682,7 +1694,10 @@
             "Industry",
             "Logistics"
           ],
-          "outlay": "₹100 crore"
+          "outlay": "₹100 crore",
+          "lat": 26.71,
+          "lng": 88.43,
+          "locationName": "Tea Industry Revitalization"
         },
         {
           "name": "Export Promotion Infrastructure",
@@ -1701,7 +1716,10 @@
             "Logistics",
             "Public Transport"
           ],
-          "outlay": "₹200 crore"
+          "outlay": "₹200 crore",
+          "lat": 26.71,
+          "lng": 88.43,
+          "locationName": "Siliguri"
         },
         {
           "name": "Semiconductor Unit & Defence Hub",
@@ -1710,7 +1728,10 @@
             "IT",
             "Industries"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 23.5204,
+          "lng": 87.3119,
+          "locationName": "Semiconductor Unit & Defence Hub"
         },
         {
           "name": "State Land Bank & Ease of Doing Business",
@@ -4218,7 +4239,10 @@
             "Capital Infrastructure",
             "Infrastructure"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 22.0624,
+          "lng": 88.0715,
+          "locationName": "Haldia"
         },
         {
           "name": "Rail, Water & Air Connectivity",
@@ -4229,7 +4253,10 @@
             "Transport",
             "Water Supply"
           ],
-          "outlay": ""
+          "outlay": "",
+          "lat": 23.5204,
+          "lng": 87.3119,
+          "locationName": "Durgapur"
         }
       ]
     },
