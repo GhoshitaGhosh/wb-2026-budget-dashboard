@@ -84,44 +84,44 @@ const animationObserver = new IntersectionObserver((entries) => {
 // Emoji Mapping Helpers
 const getDeptEmoji = (name) => {
   const n = name.toLowerCase();
-  if (n.includes('health') || n.includes('medical')) return 'ðŸ¥';
-  if (n.includes('educat') || n.includes('school') || n.includes('high')) return 'ðŸŽ“';
-  if (n.includes('agri') || n.includes('farm')) return 'ðŸŒ¾';
-  if (n.includes('financ') || n.includes('tax')) return 'ðŸ’°';
-  if (n.includes('women') || n.includes('child')) return 'ðŸ‘©â€ðŸ‘§';
-  if (n.includes('industr') || n.includes('commerce') || n.includes('enterprise')) return 'ðŸ­';
-  if (n.includes('information') || n.includes('tech')) return 'ðŸ’»';
-  if (n.includes('touris')) return 'ðŸ–ï¸';
-  if (n.includes('water') || n.includes('irrigation')) return 'ðŸ’§';
-  if (n.includes('transport') || n.includes('road')) return 'ðŸ›£ï¸';
-  if (n.includes('urban') || n.includes('municipal')) return 'ðŸ™ï¸';
-  if (n.includes('rural') || n.includes('panchayat')) return 'ðŸ¡';
-  if (n.includes('police') || n.includes('home') || n.includes('law')) return 'ðŸš“';
-  if (n.includes('power') || n.includes('energy')) return 'âš¡';
-  if (n.includes('forest') || n.includes('environment')) return 'ðŸŒ³';
-  if (n.includes('food') || n.includes('civil supplies')) return 'ðŸš';
-  if (n.includes('sports') || n.includes('youth')) return 'âš½';
-  if (n.includes('labour') || n.includes('employment')) return 'ðŸ‘·';
-  if (n.includes('art') || n.includes('culture') || n.includes('library')) return 'ðŸŽ¨';
-  if (n.includes('housing')) return 'ðŸ ';
-  return 'ðŸ›ï¸';
+  if (n.includes('health') || n.includes('medical')) return '🏥';
+  if (n.includes('education') || n.includes('school')) return '🎓';
+  if (n.includes('agri')) return '🌾';
+  if (n.includes('financ') || n.includes('tax')) return '💰';
+  if (n.includes('women') || n.includes('child')) return '👩‍👧';
+  if (n.includes('industr') || n.includes('commerce') || n.includes('enterprise')) return '🏭';
+  if (n.includes('information') || n.includes('tech')) return '💻';
+  if (n.includes('touris')) return '🏖️';
+  if (n.includes('water') || n.includes('irrigation')) return '💧';
+  if (n.includes('transport') || n.includes('road')) return '🛣️';
+  if (n.includes('urban') || n.includes('municipal')) return '🏙️';
+  if (n.includes('rural') || n.includes('panchayat')) return '🏡';
+  if (n.includes('police') || n.includes('home') || n.includes('law')) return '👮';
+  if (n.includes('power') || n.includes('energy')) return '⚡';
+  if (n.includes('forest') || n.includes('environment')) return '🌲';
+  if (n.includes('food') || n.includes('civil supplies')) return '🍚';
+  if (n.includes('sports') || n.includes('youth')) return '⚽';
+  if (n.includes('labour') || n.includes('employment')) return '👷';
+  if (n.includes('art') || n.includes('culture') || n.includes('library')) return '🎨';
+  if (n.includes('housing')) return '🏠';
+  return '🏢';
 };
 
 const getSchemeEmoji = (name, details) => {
   const text = (name + ' ' + details).toLowerCase();
-  if (text.includes('scholarship') || text.includes('student')) return 'ðŸŽ’';
-  if (text.includes('pension') || text.includes('old age')) return 'ðŸ§“';
-  if (text.includes('loan') || text.includes('credit')) return 'ðŸ’³';
-  if (text.includes('digital') || text.includes('portal') || text.includes('app')) return 'ðŸ“±';
-  if (text.includes('skill') || text.includes('train')) return 'ðŸ› ï¸';
-  if (text.includes('health') || text.includes('hospital') || text.includes('medicine')) return 'ðŸ’Š';
-  if (text.includes('women') || text.includes('girl')) return 'ðŸšº';
-  if (text.includes('water') || text.includes('drinking')) return 'ðŸš°';
-  if (text.includes('road') || text.includes('highway') || text.includes('bridge') || text.includes('infrastructure')) return 'ðŸš§';
-  if (text.includes('farm') || text.includes('crop') || text.includes('seed')) return 'ðŸŒ±';
-  if (text.includes('solar') || text.includes('energy')) return 'â˜€ï¸';
-  if (text.includes('fund') || text.includes('grant') || text.includes('subsidy')) return 'ðŸ’¸';
-  return 'ðŸ”¸';
+  if (text.includes('scholarship') || text.includes('student')) return '🎒';
+  if (text.includes('pension') || text.includes('old age')) return '👵';
+  if (text.includes('loan') || text.includes('credit')) return '💳';
+  if (text.includes('digital') || text.includes('portal') || text.includes('app')) return '📱';
+  if (text.includes('skill') || text.includes('train')) return '🛠️';
+  if (text.includes('health') || text.includes('hospital') || text.includes('medicine')) return '💊';
+  if (text.includes('women') || text.includes('girl')) return '👧';
+  if (text.includes('water') || text.includes('drinking')) return '🚰';
+  if (text.includes('road') || text.includes('highway') || text.includes('bridge') || text.includes('infrastructure')) return '🚧';
+  if (text.includes('farm') || text.includes('crop') || text.includes('seed')) return '🌱';
+  if (text.includes('solar') || text.includes('energy')) return '☀️';
+  if (text.includes('fund') || text.includes('grant') || text.includes('subsidy')) return '💸';
+  return '📋';
 };
 
 // Initialize
@@ -937,8 +937,10 @@ function initMap() {
   const mapContainer = document.getElementById('budget-map');
   if (!mapContainer) return;
   budgetMap = L.map('budget-map').setView([22.9868, 87.8550], 7);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
   }).addTo(budgetMap);
   updateMap(allSchemes);
 }
