@@ -372,9 +372,13 @@ function bindEvents() {
 async function init() {
   setupTheme();
   try {
-    const responses = await Promise.all(['metadata.json', 'departments.json', 'schemes.json', 'map-data.json'].map(file => fetch(`${BASE}${file}`)));
+    const metadataResponse = await fetch(`${BASE}metadata.json`, { cache: 'no-store' });
+    if (!metadataResponse.ok) throw new Error('Dashboard metadata could not be loaded.');
+    state.metadata = await metadataResponse.json();
+    const dataVersion = encodeURIComponent(`${state.metadata.schemaVersion}-${state.metadata.updatedAt}`);
+    const responses = await Promise.all(['departments.json', 'schemes.json', 'map-data.json'].map(file => fetch(`${BASE}${file}?v=${dataVersion}`, { cache: 'no-store' })));
     if (responses.some(response => !response.ok)) throw new Error('A dashboard data file could not be loaded.');
-    [state.metadata, state.departments, state.schemes, state.mapData] = await Promise.all(responses.map(response => response.json()));
+    [state.departments, state.schemes, state.mapData] = await Promise.all(responses.map(response => response.json()));
     renderHeadline(); renderTakeaways();
     renderBars('receipts-bars', 'receipts-table', state.metadata.receipts, state.metadata.totals.totalReceiptsCrore, true);
     renderBars('spending-bars', 'spending-table', state.metadata.expenditure, state.metadata.totals.totalExpenditureCrore);
