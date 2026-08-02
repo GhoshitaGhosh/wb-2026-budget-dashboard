@@ -1,17 +1,25 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "financialYear": "2026-27",
-  "updatedAt": "2026-08-02",
-  "publicationStatus": "Reconciled legacy catalogue; BP-3 row-level review in progress",
+  "updatedAt": "2026-08-03",
+  "publicationStatus": "BP-3 rows published; exact, grouped, aggregate, candidate, and unmatched relationships distinguished",
   "totals": {
     "departments": 58,
-    "catalogueEntries": 5883,
+    "catalogueEntries": 5933,
     "legacyCatalogueEntries": 550,
     "officialBudgetRows": 5383,
-    "reconciledLegacyEntries": 50,
-    "officialMatchedEntries": 5383,
+    "reconciledLegacyEntries": 97,
+    "reconciliationCandidates": 71,
+    "reconciliationBreakdown": {
+      "exact": 52,
+      "exact_alias": 16,
+      "grouped_exact": 28,
+      "verified_aggregate": 1,
+      "candidate": 71,
+      "unmatched": 382
+    },
     "entriesWithAnnouncedOutlay": 42,
-    "sourceGroundedDescriptions": 5640,
+    "sourceGroundedDescriptions": 5690,
     "mappedEntries": 38,
     "revenueReceiptsCrore": 320484.92000000004,
     "capitalReceiptsCrore": 106650.51000000001,
@@ -254,7 +262,7 @@
       "title": "Budget Speech 2026-2027 - English",
       "publication": "Government of West Bengal",
       "publishedAt": "2026-02",
-      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "url": "https://finance.wb.gov.in/writereaddata/Budget_Speech/2026-2027_English_I.pdf",
       "pages": null,
       "units": "As stated",
       "checksumSha256": null,
@@ -274,8 +282,12 @@
   ],
   "definitions": {
     "allocation": "An amount provided in the budget estimate; it is not the same as actual spending or a fund release.",
-    "announcedOutlay": "An amount stated in an announcement or legacy source that has not yet been reconciled to a BP-3 budget line.",
+    "announcedOutlay": "An amount stated in an announcement or legacy source. When reconciled, the official BP-3 derivation is shown alongside it.",
+    "groupedExact": "An exact-title initiative represented by more than one BP-3 head; financial periods are summed across the cited heads.",
+    "exactAlias": "A deterministic title alias that differs only by presentation prefixes, acronyms, or source codes.",
+    "verifiedAggregate": "A manually reviewed relationship that combines differently titled BP-3 lines. Included codes and overlap warnings are published.",
+    "candidate": "A same-department title similarity was found but has not been approved and is not presented as an official allocation.",
     "tokenProvision": "A nominal provision used to keep a budget head open.",
-    "unmatched": "The catalogue entry has not yet been linked to an exact official budget row."
+    "unmatched": "No reviewed relationship to an official budget row has been established."
   }
 }

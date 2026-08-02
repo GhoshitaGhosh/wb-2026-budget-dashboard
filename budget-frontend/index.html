@@ -43,7 +43,7 @@
     <main id="main-content">
       <section class="hero page-shell" id="overview" aria-labelledby="page-title">
         <div class="hero-copy">
-          <p class="eyebrow">Financial year 2026-27 · Updated 2 August 2026</p>
+          <p class="eyebrow">Financial year 2026-27 · Updated 3 August 2026</p>
           <h1 id="page-title">Follow the money through West Bengal’s budget.</h1>
           <p class="dek">A source-led view of receipts, spending, departments, and programme announcements—with gaps and definitions shown plainly.</p>
           <div class="hero-actions">
@@ -73,13 +73,17 @@
         <article class="analysis-panel" aria-labelledby="receipts-title">
           <div class="panel-heading"><div><p class="eyebrow">Money in</p><h2 id="receipts-title">Where receipts come from</h2></div><span class="unit-label">₹ crore</span></div>
           <p class="panel-intro">Borrowing is a capital receipt, not revenue. It is separated here to avoid overstating government income.</p>
-          <div id="receipts-bars" class="bar-list"></div>
+          <div class="chart-toolbar" role="group" aria-label="Receipt chart view"><button type="button" class="chart-mode active" data-chart="receipts" data-mode="composition" aria-pressed="true">Composition</button><button type="button" class="chart-mode" data-chart="receipts" data-mode="ranked" aria-pressed="false">Ranked</button></div>
+          <div class="chart-canvas-wrap" data-chart-view="receipts-composition"><canvas id="receipts-chart" role="img" aria-label="Doughnut chart showing the composition of total receipts"></canvas></div>
+          <div id="receipts-bars" class="bar-list" data-chart-view="receipts-ranked" hidden></div>
           <details class="data-table-toggle"><summary>View receipt data table</summary><div class="table-wrap"><table><caption>Receipts by source</caption><thead><tr><th>Source</th><th>Type</th><th class="number">₹ crore</th><th class="number">Share</th></tr></thead><tbody id="receipts-table"></tbody></table></div></details>
         </article>
         <article class="analysis-panel" aria-labelledby="spending-title">
           <div class="panel-heading"><div><p class="eyebrow">Money out</p><h2 id="spending-title">Where expenditure goes</h2></div><span class="unit-label">₹ crore</span></div>
           <p class="panel-intro">Budget estimates are provisions, not a measure of actual expenditure or fund release.</p>
-          <div id="spending-bars" class="bar-list"></div>
+          <div class="chart-toolbar" role="group" aria-label="Expenditure chart view"><button type="button" class="chart-mode active" data-chart="spending" data-mode="composition" aria-pressed="true">Composition</button><button type="button" class="chart-mode" data-chart="spending" data-mode="ranked" aria-pressed="false">Ranked</button></div>
+          <div class="chart-canvas-wrap" data-chart-view="spending-composition"><canvas id="spending-chart" role="img" aria-label="Doughnut chart showing the composition of total expenditure"></canvas></div>
+          <div id="spending-bars" class="bar-list" data-chart-view="spending-ranked" hidden></div>
           <details class="data-table-toggle"><summary>View expenditure data table</summary><div class="table-wrap"><table><caption>Expenditure by service</caption><thead><tr><th>Service</th><th class="number">₹ crore</th><th class="number">Share</th></tr></thead><tbody id="spending-table"></tbody></table></div></details>
         </article>
       </section>
@@ -94,13 +98,14 @@
 
       <section class="scheme-section" id="schemes" aria-labelledby="schemes-title">
         <div class="page-shell">
-          <div class="section-heading split"><div><p class="eyebrow">Catalogue and reconciliation</p><h2 id="schemes-title">Scheme explorer</h2><p>Every record shows whether it is linked to an official budget row, an announcement, or still unmatched.</p></div><div class="download-group"><button class="button secondary small" id="download-filtered" type="button">Download filtered CSV</button><button class="button secondary small" id="download-all" type="button">Download all CSV</button></div></div>
+          <div class="section-heading split"><div><p class="eyebrow">Catalogue and reconciliation</p><h2 id="schemes-title">Scheme explorer</h2><p>Every record shows whether it is an official row, an exact or grouped relationship, a review candidate, or still unmatched.</p></div><div class="download-group"><button class="button secondary small" id="download-filtered" type="button">Download filtered CSV</button><button class="button secondary small" id="download-all" type="button">Download official BP-3 CSV</button></div></div>
           <form class="filter-panel" id="scheme-filters" aria-label="Filter scheme catalogue">
             <label class="search-field"><span>Search</span><input id="filter-q" type="search" placeholder="Scheme, department, or keyword" autocomplete="off" /></label>
             <label><span>Department</span><select id="filter-department"><option value="">All departments</option></select></label>
             <label><span>Theme</span><select id="filter-theme"><option value="">All themes</option></select></label>
             <label><span>Record type</span><select id="filter-classification"><option value="">All record types</option><option value="official_budget_line">Official budget line</option><option value="speech_announcement">Speech / catalogue announcement</option><option value="aggregated_programme">Aggregated programme</option><option value="unmatched">Unmatched</option></select></label>
-            <label><span>Outlay status</span><select id="filter-amount"><option value="">Any amount status</option><option value="stated">Announced amount stated</option><option value="zero">Zero</option><option value="token_provision">Token provision</option><option value="not_stated">Not stated</option><option value="unmatched">Not yet matched</option></select></label>
+            <label><span>Reconciliation</span><select id="filter-match"><option value="">Any reconciliation</option><option value="official_row">Official BP-3 row</option><option value="exact">Exact one-row match</option><option value="exact_alias">Deterministic alias</option><option value="grouped_exact">Grouped exact match</option><option value="verified_aggregate">Verified aggregate</option><option value="candidate">Review candidate</option><option value="unmatched">Unmatched</option></select></label>
+            <label><span>Outlay status</span><select id="filter-amount"><option value="">Any amount status</option><option value="stated">Stated amount / provision</option><option value="zero">Zero</option><option value="token_provision">Token provision</option><option value="not_stated">Not stated</option><option value="unmatched">Not yet matched</option></select></label>
             <label><span>Sort</span><select id="filter-sort"><option value="amount-desc">Largest amount</option><option value="name">Name A–Z</option><option value="department">Department</option></select></label>
             <button class="text-button" id="clear-filters" type="button">Reset filters</button>
           </form>
@@ -123,7 +128,7 @@
           <div class="method-cards">
             <article><h3>Allocation ≠ spending</h3><p>A budget estimate authorises a provision. It does not show how much was released or actually spent.</p></article>
             <article><h3>Units are canonical</h3><p>Source department values are stored as integer thousand rupees, then converted to crore in one shared formatter.</p></article>
-            <article><h3>Announcements are separate</h3><p>An amount stated in a speech remains an announced outlay until it is linked to an exact BP-3 row.</p></article>
+            <article><h3>Relationships may span rows</h3><p>Exact, grouped, alias, and reviewed aggregate matches are distinct. Every included budget code remains visible.</p></article>
             <article><h3>Missing does not mean zero</h3><p>Not stated, unmatched, zero, and token provisions are represented as different data states.</p></article>
           </div>
           <div class="source-register"><h3>Primary sources</h3><div id="source-list"></div></div>

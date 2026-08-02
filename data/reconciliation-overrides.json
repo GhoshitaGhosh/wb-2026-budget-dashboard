@@ -1,5 +1,28 @@
 {
-  "version": 1,
-  "notes": "Only reviewed exact aliases or manually verified BP-3 mappings belong here. Fuzzy candidates must not be published as matches.",
-  "matches": []
+  "version": 2,
+  "reviewedAt": "2026-08-03",
+  "notes": "Reviewed aggregate and cross-title relationships. Exact same-title BP-3 groups are resolved automatically; fuzzy candidates are never promoted without an entry here.",
+  "matches": [
+    {
+      "legacyDepartment": "Women & Child Development and Social Welfare",
+      "legacyTitle": "Annapurna Yojana",
+      "relationship": "includes_legacy_programme",
+      "classification": "aggregated_programme",
+      "budgetCodes": [
+        "74-2235-02-103-099",
+        "74-2235-02-789-106",
+        "74-2235-02-796-107",
+        "74-2235-02-103-076",
+        "74-2235-02-789-078",
+        "74-2235-02-796-078"
+      ],
+      "relatedLegacyTitles": ["Lakshmir Bhandar"],
+      "note": "The 2026-27 Annapurna provision is ₹15,600 crore across three BP-3 heads. Including the continuing ₹20,400 crore Lakshmir Bhandar provision across three positive allocation heads reconciles the published ₹36,000 crore umbrella claim. The zero Lakshmir recovery head is related but excluded from the allocation sum.",
+      "sources": [
+        { "sourceId": "bp-3", "pages": [265, 266, 267] },
+        { "sourceId": "budget-speech-en", "page": 178 }
+      ],
+      "rollupSafe": false
+    }
+  ]
 }

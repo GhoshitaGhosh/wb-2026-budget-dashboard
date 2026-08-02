@@ -66,6 +66,47 @@ export function normaliseTag(tag) {
   return aliases.get(tag) || tag;
 }
 
+export function normaliseBudgetTitle(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/\{[^}]+\}/g, ' ')
+    .replace(/\([^)]*(?:share|sna|sparsh|spash|ocas|central|state)[^)]*\)/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+export function normaliseBudgetAliasTitle(value) {
+  return normaliseBudgetTitle(String(value || '').replace(/\(([A-Z0-9][A-Z0-9&./ -]{1,15})\)/g, ' '))
+    .replace(/^(?:implementation|introduction) of (?:the )?/, '')
+    .replace(/^the /, '')
+    .trim();
+}
+
+export function budgetTitleSimilarity(left, right) {
+  const stopWords = new Set(['the', 'of', 'for', 'and', 'under', 'scheme', 'schemes', 'programme', 'programmes', 'program', 'project', 'implementation', 'state', 'west', 'bengal']);
+  const tokens = value => new Set(normaliseBudgetTitle(value).split(' ').filter(token => token.length > 1 && !stopWords.has(token)));
+  const leftTokens = tokens(left);
+  const rightTokens = tokens(right);
+  if (!leftTokens.size || !rightTokens.size) return 0;
+  const intersection = [...leftTokens].filter(token => rightTokens.has(token)).length;
+  return (2 * intersection) / (leftTokens.size + rightTokens.size);
+}
+
+export function aggregateFinancials(rows) {
+  const periods = ['actual2024Thousand', 'budget2025Thousand', 'revised2025Thousand', 'budget2026Thousand'];
+  return Object.fromEntries(periods.map(period => {
+    const values = rows.map(row => row.financials?.[period]).filter(value => value != null);
+    return [period, values.length ? values.reduce((sum, value) => sum + value, 0) : null];
+  }));
+}
+
+export function amountStatusForFinancials(financials, fallback = 'unmatched') {
+  const value = financials?.budget2026Thousand;
+  if (value == null) return fallback;
+  return value === 0 ? 'zero' : 'stated';
+}
+
 export function csvEscape(value) {
   const text = value == null ? '' : String(value);
   return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;

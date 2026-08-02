@@ -5,6 +5,7 @@ const PAGE_SIZE = 20;
 const CRORE_DIVISOR = 10_000;
 const money = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 1 });
 const integer = new Intl.NumberFormat('en-IN');
+let ChartConstructor;
 
 const state = {
   metadata: null,
@@ -14,7 +15,8 @@ const state = {
   filtered: [],
   page: 1,
   selectedDepartmentId: null,
-  mapLoaded: false
+  mapLoaded: false,
+  charts: {}
 };
 
 const el = id => document.getElementById(id);
@@ -29,7 +31,13 @@ const labels = {
   speech_announcement: 'Announcement',
   aggregated_programme: 'Aggregated programme',
   unmatched: 'Unmatched',
-  stated: 'Announced amount stated',
+  official_row: 'Official BP-3 row',
+  exact: 'Exact match',
+  exact_alias: 'Deterministic alias',
+  grouped_exact: 'Grouped exact match',
+  verified_aggregate: 'Verified aggregate',
+  candidate: 'Review candidate',
+  stated: 'Amount stated',
   zero: 'Zero',
   token_provision: 'Token provision',
   not_stated: 'Not stated',
@@ -72,6 +80,49 @@ function renderBars(containerId, tableId, items, total, includeType = false) {
   el(tableId).innerHTML = sorted.map(item => `<tr><td>${escapeHtml(item.name)}</td>${includeType ? `<td>${item.kind === 'revenue' ? 'Revenue receipt' : 'Capital receipt'}</td>` : ''}<td class="number">${money.format(item.crore)}</td><td class="number">${percent(item.crore, total)}</td></tr>`).join('');
 }
 
+async function renderCompositionCharts() {
+  if (!state.metadata) return;
+  ChartConstructor ||= (await import('chart.js/auto')).default;
+  const styles = getComputedStyle(document.documentElement);
+  const textColor = styles.getPropertyValue('--ink').trim();
+  const lineColor = styles.getPropertyValue('--line').trim();
+  const palette = ['#b84a2b', '#1d5d6b', '#486c52', '#d38a35', '#795b8f', '#7b8580'];
+  const definitions = [
+    { key: 'receipts', canvas: 'receipts-chart', items: state.metadata.receipts, total: state.metadata.totals.totalReceiptsCrore },
+    { key: 'spending', canvas: 'spending-chart', items: state.metadata.expenditure, total: state.metadata.totals.totalExpenditureCrore }
+  ];
+  definitions.forEach(definition => {
+    state.charts[definition.key]?.destroy();
+    state.charts[definition.key] = new ChartConstructor(el(definition.canvas), {
+      type: 'doughnut',
+      data: {
+        labels: definition.items.map(item => item.name),
+        datasets: [{ data: definition.items.map(item => item.crore), backgroundColor: palette, borderColor: styles.getPropertyValue('--surface').trim(), borderWidth: 2, hoverOffset: 6 }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '48%',
+        animation: matchMedia('(prefers-reduced-motion: reduce)').matches ? false : { duration: 350 },
+        plugins: {
+          legend: { position: 'bottom', labels: { color: textColor, boxWidth: 12, boxHeight: 12, padding: 14, usePointStyle: true } },
+          tooltip: { callbacks: { label: context => `${context.label}: ${formatCrore(context.raw)} (${percent(context.raw, definition.total)})` } }
+        }
+      },
+      plugins: [{ id: 'theme-border', beforeDraw: chart => { chart.ctx.save(); chart.ctx.strokeStyle = lineColor; chart.ctx.restore(); } }]
+    });
+  });
+}
+
+function setChartMode(chart, mode) {
+  document.querySelectorAll(`[data-chart-view^="${chart}-"]`).forEach(view => { view.hidden = view.dataset.chartView !== `${chart}-${mode}`; });
+  document.querySelectorAll(`[data-chart="${chart}"]`).forEach(button => {
+    const active = button.dataset.mode === mode;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+}
+
 function renderDepartmentFocus(department) {
   state.selectedDepartmentId = department.id;
   document.querySelectorAll('.department-row').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.id === department.id)));
@@ -111,6 +162,7 @@ function populateFilters() {
   el('filter-department').value = params.get('department') || '';
   el('filter-theme').value = params.get('theme') || '';
   el('filter-classification').value = params.get('status') || '';
+  el('filter-match').value = params.get('match') || '';
   el('filter-amount').value = params.get('amountStatus') || '';
   el('filter-sort').value = params.get('sort') || 'amount-desc';
 }
@@ -121,6 +173,7 @@ function readFilters() {
     department: el('filter-department').value,
     theme: el('filter-theme').value,
     classification: el('filter-classification').value,
+    match: el('filter-match').value,
     amountStatus: el('filter-amount').value,
     sort: el('filter-sort').value
   };
@@ -132,6 +185,7 @@ function syncUrl(filters) {
   if (filters.department) params.set('department', filters.department);
   if (filters.theme) params.set('theme', filters.theme);
   if (filters.classification) params.set('status', filters.classification);
+  if (filters.match) params.set('match', filters.match);
   if (filters.amountStatus) params.set('amountStatus', filters.amountStatus);
   if (filters.sort !== 'amount-desc') params.set('sort', filters.sort);
   const query = params.toString();
@@ -147,6 +201,7 @@ function applyFilters(resetPage = false) {
       (!filters.department || item.departmentId === filters.department) &&
       (!filters.theme || item.themes.includes(filters.theme)) &&
       (!filters.classification || item.classification === filters.classification) &&
+      (!filters.match || item.reconciliationStatus === filters.match) &&
       (!filters.amountStatus || item.amountStatus === filters.amountStatus);
   });
   state.filtered.sort((a, b) => filters.sort === 'name' ? a.title.localeCompare(b.title) : filters.sort === 'department' ? a.departmentName.localeCompare(b.departmentName) || a.title.localeCompare(b.title) : (b.financials.budget2026Thousand ?? b.announcedAmountThousand ?? -Infinity) - (a.financials.budget2026Thousand ?? a.announcedAmountThousand ?? -Infinity));
@@ -156,15 +211,15 @@ function applyFilters(resetPage = false) {
 
 function schemeAmount(item) {
   if (item.financials.budget2026Thousand != null) return { value: formatThousandAsCrore(item.financials.budget2026Thousand), note: 'Official BE' };
-  if (item.announcedAmountThousand != null) return { value: formatThousandAsCrore(item.announcedAmountThousand), note: 'Announced; not reconciled' };
+  if (item.announcedAmountThousand != null) return { value: formatThousandAsCrore(item.announcedAmountThousand), note: item.reconciliationStatus === 'candidate' ? 'Announced; candidate unreviewed' : 'Announced; not reconciled' };
   if (item.amountStatus === 'zero') return { value: '₹0', note: 'Zero provision' };
   if (item.amountStatus === 'token_provision') return { value: 'Token', note: 'Nominal provision' };
   return { value: 'Not linked', note: labels[item.amountStatus] || 'Not available' };
 }
 
 function statusPill(item) {
-  const className = item.matchStatus === 'reviewed' ? 'matched' : item.classification === 'speech_announcement' ? 'announcement' : '';
-  return `<span class="status-pill ${className}">${escapeHtml(labels[item.classification] || item.classification)}</span>`;
+  const className = item.matchStatus === 'reviewed' ? 'matched' : item.reconciliationStatus === 'candidate' || item.classification === 'speech_announcement' ? 'announcement' : '';
+  return `<span class="status-pill ${className}">${escapeHtml(labels[item.reconciliationStatus] || labels[item.classification] || item.reconciliationStatus)}</span>`;
 }
 
 function renderSchemeResults(filters = readFilters()) {
@@ -187,7 +242,7 @@ function renderSchemeResults(filters = readFilters()) {
   el('page-status').textContent = `Page ${state.page} of ${totalPages}`;
   el('previous-page').disabled = state.page <= 1;
   el('next-page').disabled = state.page >= totalPages;
-  const active = [filters.q && `search “${filters.q}”`, filters.department && el('filter-department').selectedOptions[0]?.text, filters.theme, filters.classification && labels[filters.classification], filters.amountStatus && labels[filters.amountStatus]].filter(Boolean);
+  const active = [filters.q && `search “${filters.q}”`, filters.department && el('filter-department').selectedOptions[0]?.text, filters.theme, filters.classification && labels[filters.classification], filters.match && labels[filters.match], filters.amountStatus && labels[filters.amountStatus]].filter(Boolean);
   el('active-filter-summary').textContent = active.length ? `Filtered by ${active.join(' · ')}` : 'All catalogue entries';
 }
 
@@ -202,15 +257,25 @@ function openScheme(id, updateHash = true) {
   const sourceMarkup = item.sources.length ? item.sources.map(source => {
     const record = state.metadata.sources.find(entry => entry.id === source.sourceId);
     return `<a href="${escapeHtml(record?.url || '#')}" target="_blank" rel="noreferrer">${escapeHtml(record?.title || source.sourceId)}${source.page ? `, p. ${source.page}` : ''} ↗</a>`;
-  }).join('<br>') : 'No exact official row has been reviewed for this entry yet.';
+  }).join('<br>') : 'No reviewed official source relationship is attached to this entry.';
+  const linkedLines = (item.officialBudgetLineIds || []).map(lineId => state.schemes.find(record => record.id === lineId)).filter(Boolean);
+  const linkedLineMarkup = linkedLines.length ? `<div class="linked-lines">${linkedLines.map(line => `<button type="button" data-related-scheme-id="${line.id}"><span>${escapeHtml(line.budgetCode)}</span><strong>${escapeHtml(line.title)}</strong><em>${formatThousandAsCrore(line.financials.budget2026Thousand)}</em></button>`).join('')}</div>` : '';
+  const candidateMarkup = item.reconciliation?.candidates?.length ? `<div class="candidate-list">${item.reconciliation.candidates.map(candidate => `<div><strong>${escapeHtml(candidate.title)}</strong><span>${candidate.budgetCodes.length} possible ${candidate.budgetCodes.length === 1 ? 'head' : 'heads'} · ${formatThousandAsCrore(candidate.budget2026Thousand)} · confidence ${Math.round(candidate.score * 100)}%</span></div>`).join('')}</div>` : '';
+  const relatedRecords = [...new Set([...(item.relatedInitiativeIds || []), ...(item.reconciliation?.overlapsWith || [])])].map(relatedId => state.schemes.find(record => record.id === relatedId)).filter(Boolean);
+  const relationshipMarkup = relatedRecords.length ? `<p class="relationship-note"><strong>Related or overlapping initiatives:</strong> ${relatedRecords.map(record => `<button type="button" class="inline-link" data-related-scheme-id="${record.id}">${escapeHtml(record.title)}</button>`).join(', ')}. ${item.reconciliation.rollupSafe === false ? 'Do not sum these initiative totals together.' : ''}</p>` : '';
+  const announcedMarkup = item.announcedAmountThousand != null ? `<div class="detail-section"><h3>Legacy / announced claim</h3><p><strong>${formatThousandAsCrore(item.announcedAmountThousand)}</strong>${item.announcedOutlayNote ? ` · ${escapeHtml(item.announcedOutlayNote)}` : ''}</p></div>` : '';
   el('detail-content').innerHTML = `
     <p class="eyebrow">${escapeHtml(item.departmentName)}</p><h2 id="detail-title">${escapeHtml(item.title)}</h2>
-    <div class="detail-meta">${statusPill(item)}<span class="status-pill">${escapeHtml(labels[item.amountStatus] || item.amountStatus)}</span>${item.budgetCode ? `<span class="status-pill matched">${escapeHtml(item.budgetCode)}</span>` : ''}</div>
+    <div class="detail-meta">${statusPill(item)}<span class="status-pill">${escapeHtml(labels[item.amountStatus] || item.amountStatus)}</span>${item.budgetCodes?.length ? `<span class="status-pill matched">${item.budgetCodes.length === 1 ? escapeHtml(item.budgetCodes[0]) : `${item.budgetCodes.length} budget heads`}</span>` : ''}</div>
     <p class="detail-summary">${escapeHtml(item.summary)}</p>
     <div class="finance-grid">${financeCell('2024-25 actual', item.financials.actual2024Thousand)}${financeCell('2025-26 budget', item.financials.budget2025Thousand)}${financeCell('2025-26 revised', item.financials.revised2025Thousand)}${financeCell('2026-27 budget', item.financials.budget2026Thousand)}</div>
-    <div class="detail-section"><h3>Published / announced amount</h3><p><strong>${escapeHtml(amount.value)}</strong> · ${escapeHtml(amount.note)}${item.announcedOutlayNote ? `<br>${escapeHtml(item.announcedOutlayNote)}` : ''}</p></div>
+    <div class="detail-section"><h3>Displayed amount</h3><p><strong>${escapeHtml(amount.value)}</strong> · ${escapeHtml(amount.note)}</p></div>
+    ${announcedMarkup}
     <div class="detail-section"><h3>Themes</h3><p>${escapeHtml(item.themes.join(', ') || 'Not classified')}</p></div>
-    <div class="detail-section"><h3>Source and reconciliation</h3><p>${sourceMarkup}</p></div>`;
+    <div class="detail-section"><h3>Reconciliation method</h3><p><strong>${escapeHtml(labels[item.reconciliationStatus] || item.reconciliationStatus)}</strong><br>${escapeHtml(item.reconciliation?.note || 'No reconciliation note supplied.')}</p>${relationshipMarkup}${candidateMarkup}</div>
+    ${linkedLineMarkup ? `<div class="detail-section"><h3>Included official budget lines</h3>${linkedLineMarkup}</div>` : ''}
+    <div class="detail-section"><h3>Sources</h3><p>${sourceMarkup}</p></div>`;
+  el('detail-content').querySelectorAll('[data-related-scheme-id]').forEach(button => button.addEventListener('click', () => openScheme(button.dataset.relatedSchemeId)));
   if (!el('detail-dialog').open) el('detail-dialog').showModal();
   document.body.classList.add('no-scroll');
   if (updateHash) history.replaceState(null, '', `${location.pathname}${location.search}#scheme=${id}`);
@@ -223,8 +288,8 @@ function closeScheme() {
 }
 
 function csvFor(items) {
-  const rows = [['id', 'title', 'department', 'record_type', 'match_status', 'amount_status', 'budget_2026_thousand_rupees', 'announced_amount_thousand_rupees', 'budget_code', 'themes', 'source_ids']];
-  items.forEach(item => rows.push([item.id, item.title, item.departmentName, item.classification, item.matchStatus, item.amountStatus, item.financials.budget2026Thousand, item.announcedAmountThousand, item.budgetCode, item.themes.join('|'), item.sources.map(source => source.sourceId).join('|')]));
+  const rows = [['id', 'title', 'department', 'record_kind', 'record_type', 'reconciliation_status', 'amount_status', 'budget_2026_thousand_rupees', 'announced_amount_thousand_rupees', 'budget_codes', 'official_line_ids', 'rollup_safe', 'themes', 'source_ids']];
+  items.forEach(item => rows.push([item.id, item.title, item.departmentName, item.recordKind, item.classification, item.reconciliationStatus, item.amountStatus, item.financials.budget2026Thousand, item.announcedAmountThousand, item.budgetCodes.join('|'), item.officialBudgetLineIds.join('|'), item.reconciliation?.rollupSafe, item.themes.join('|'), item.sources.map(source => `${source.sourceId}${source.page ? `:p${source.page}` : ''}`).join('|')]));
   return rows.map(row => row.map(value => {
     const text = value == null ? '' : String(value);
     return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
@@ -241,7 +306,8 @@ function renderSources() {
   const primary = state.metadata.sources.filter(source => ['bp-3', 'bp-9', 'bp-31', 'budget-speech-en'].includes(source.id));
   el('source-list').innerHTML = primary.map(source => `<div class="source-item"><span><strong>${escapeHtml(source.title)}</strong><br>${escapeHtml(source.purpose)}</span><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open ↗</a></div>`).join('');
   const totals = state.metadata.totals;
-  el('quality-summary').textContent = `${integer.format(totals.legacyCatalogueEntries)} legacy catalogue entries are retained alongside ${integer.format(totals.officialBudgetRows)} extracted BP-3 budget rows. ${integer.format(totals.reconciledLegacyEntries)} legacy entries have a unique exact-title BP-3 match; the remainder stay explicitly labelled. Unreviewed amounts are never presented as official budget estimates.`;
+  const breakdown = totals.reconciliationBreakdown;
+  el('quality-summary').textContent = `${integer.format(totals.legacyCatalogueEntries)} legacy initiatives are retained alongside all ${integer.format(totals.officialBudgetRows)} BP-3 rows. ${integer.format(totals.reconciledLegacyEntries)} initiatives are reviewed: ${breakdown.exact} exact, ${breakdown.exact_alias} deterministic aliases, ${breakdown.grouped_exact} grouped exact matches, and ${breakdown.verified_aggregate} cross-title aggregate. ${breakdown.candidate} similarities remain review candidates and do not populate official amounts.`;
   el('map-coverage').textContent = `${integer.format(totals.mappedEntries)} of ${integer.format(totals.catalogueEntries)} entries contain a location reference. Coordinates are currently approximate legacy geocoding, not a measure of district allocation.`;
 }
 
@@ -275,6 +341,7 @@ function setupTheme() {
     document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     localStorage.setItem('budget-theme', document.documentElement.dataset.theme);
     updateThemeButton();
+    renderCompositionCharts().catch(error => console.error(error));
   });
 }
 
@@ -286,6 +353,7 @@ function updateThemeButton() {
 }
 
 function bindEvents() {
+  document.querySelectorAll('.chart-mode').forEach(button => button.addEventListener('click', () => setChartMode(button.dataset.chart, button.dataset.mode)));
   el('department-sort').addEventListener('change', renderDepartments);
   el('scheme-filters').addEventListener('input', event => { if (event.target.matches('input')) applyFilters(true); });
   el('scheme-filters').addEventListener('change', event => { if (event.target.matches('select')) applyFilters(true); });
@@ -293,7 +361,7 @@ function bindEvents() {
   el('previous-page').addEventListener('click', () => { state.page -= 1; renderSchemeResults(); el('schemes-title').scrollIntoView(); });
   el('next-page').addEventListener('click', () => { state.page += 1; renderSchemeResults(); el('schemes-title').scrollIntoView(); });
   el('download-filtered').addEventListener('click', () => downloadCsv(state.filtered, 'west-bengal-budget-filtered.csv'));
-  el('download-all').addEventListener('click', () => downloadCsv(state.schemes, 'west-bengal-budget-schemes.csv'));
+  el('download-all').addEventListener('click', () => downloadCsv(state.schemes.filter(item => item.recordKind === 'official_budget_line'), 'west-bengal-budget-official-lines.csv'));
   el('detail-close').addEventListener('click', closeScheme);
   el('detail-dialog').addEventListener('click', event => { if (event.target === el('detail-dialog')) closeScheme(); });
   el('detail-dialog').addEventListener('close', () => { document.body.classList.remove('no-scroll'); });
@@ -310,6 +378,7 @@ async function init() {
     renderHeadline(); renderTakeaways();
     renderBars('receipts-bars', 'receipts-table', state.metadata.receipts, state.metadata.totals.totalReceiptsCrore, true);
     renderBars('spending-bars', 'spending-table', state.metadata.expenditure, state.metadata.totals.totalExpenditureCrore);
+    await renderCompositionCharts();
     renderDepartments(); populateFilters(); applyFilters(); renderSources(); bindEvents();
     if (location.hash.startsWith('#scheme=')) openScheme(location.hash.slice(8), false);
   } catch (error) {
