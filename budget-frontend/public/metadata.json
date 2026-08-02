@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "financialYear": "2026-27",
+  "updatedAt": "2026-08-02",
+  "publicationStatus": "Reconciled legacy catalogue; BP-3 row-level review in progress",
+  "totals": {
+    "departments": 58,
+    "catalogueEntries": 5883,
+    "legacyCatalogueEntries": 550,
+    "officialBudgetRows": 5383,
+    "reconciledLegacyEntries": 50,
+    "officialMatchedEntries": 5383,
+    "entriesWithAnnouncedOutlay": 42,
+    "sourceGroundedDescriptions": 5640,
+    "mappedEntries": 38,
+    "revenueReceiptsCrore": 320484.92000000004,
+    "capitalReceiptsCrore": 106650.51000000001,
+    "totalReceiptsCrore": 427135.43,
+    "totalExpenditureCrore": 397075.79,
+    "sdgAllocationCrore": 301519.27
+  },
+  "receipts": [
+    {
+      "id": "state-s-own-tax-revenue",
+      "name": "State's Own Tax Revenue",
+      "crore": 130774.2,
+      "kind": "revenue"
+    },
+    {
+      "id": "share-of-central-taxes",
+      "name": "Share of Central Taxes",
+      "crore": 110014.82,
+      "kind": "revenue"
+    },
+    {
+      "id": "state-non-tax-revenue",
+      "name": "State Non-Tax Revenue",
+      "crore": 8302.71,
+      "kind": "revenue"
+    },
+    {
+      "id": "grants-in-aid-centre",
+      "name": "Grants-in-Aid (Centre)",
+      "crore": 71393.19,
+      "kind": "revenue"
+    },
+    {
+      "id": "public-debt-borrowings",
+      "name": "Public Debt (Borrowings)",
+      "crore": 105387.96,
+      "kind": "capital"
+    },
+    {
+      "id": "loan-recoveries",
+      "name": "Loan Recoveries",
+      "crore": 1262.55,
+      "kind": "capital"
+    }
+  ],
+  "expenditure": [
+    {
+      "id": "general-services",
+      "name": "General Services",
+      "crore": 103641.92
+    },
+    {
+      "id": "social-services",
+      "name": "Social Services",
+      "crore": 174475.53
+    },
+    {
+      "id": "economic-services",
+      "name": "Economic Services",
+      "crore": 62510.65
+    },
+    {
+      "id": "grants-in-aid",
+      "name": "Grants-in-Aid",
+      "crore": 1841.16
+    },
+    {
+      "id": "public-debt-repayment",
+      "name": "Public Debt Repayment",
+      "crore": 54606.53
+    }
+  ],
+  "sdgs": [
+    {
+      "id": "SDG-1",
+      "name": "No Poverty",
+      "allocation_crore": 31407.78
+    },
+    {
+      "id": "SDG-2",
+      "name": "Zero Hunger",
+      "allocation_crore": 22635.68
+    },
+    {
+      "id": "SDG-3",
+      "name": "Good Health and Well-being",
+      "allocation_crore": 25080.07
+    },
+    {
+      "id": "SDG-4",
+      "name": "Quality Education",
+      "allocation_crore": 28349.79
+    },
+    {
+      "id": "SDG-5",
+      "name": "Gender Equality",
+      "allocation_crore": 24412.44
+    },
+    {
+      "id": "SDG-6",
+      "name": "Clean Water and Sanitation",
+      "allocation_crore": 17133.25
+    },
+    {
+      "id": "SDG-7",
+      "name": "Affordable and Clean Energy",
+      "allocation_crore": 3281.02
+    },
+    {
+      "id": "SDG-8",
+      "name": "Decent Work and Economic Growth",
+      "allocation_crore": 28548.88
+    },
+    {
+      "id": "SDG-9",
+      "name": "Industry, Innovation and Infrastructure",
+      "allocation_crore": 23745.9
+    },
+    {
+      "id": "SDG-10",
+      "name": "Reduced Inequalities",
+      "allocation_crore": 53000.97
+    },
+    {
+      "id": "SDG-11",
+      "name": "Sustainable Cities and Communities",
+      "allocation_crore": 19231.7
+    },
+    {
+      "id": "SDG-12",
+      "name": "Responsible Consumption and Production",
+      "allocation_crore": 3325.62
+    },
+    {
+      "id": "SDG-13",
+      "name": "Climate Action",
+      "allocation_crore": 5171.78
+    },
+    {
+      "id": "SDG-14",
+      "name": "Life Below Water",
+      "allocation_crore": 209.13
+    },
+    {
+      "id": "SDG-15",
+      "name": "Life on Land",
+      "allocation_crore": 613.75
+    },
+    {
+      "id": "SDG-16",
+      "name": "Peace, Justice and Strong Institutions",
+      "allocation_crore": 13799.39
+    },
+    {
+      "id": "SDG-17",
+      "name": "Partnerships for the Goals",
+      "allocation_crore": 1572.12
+    }
+  ],
+  "sources": [
+    {
+      "id": "budget-publications",
+      "title": "Budget Speech and Publications 2026-2027",
+      "publication": "Finance Department, Government of West Bengal",
+      "publishedAt": "2026",
+      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "pages": null,
+      "units": "Varies by publication",
+      "checksumSha256": null,
+      "purpose": "Authoritative publication index"
+    },
+    {
+      "id": "bp-1",
+      "title": "BP-1 Civil Budget Estimate",
+      "publication": "Finance Department, Government of West Bengal",
+      "publishedAt": "2026-02",
+      "url": "https://finance.wb.gov.in/writereaddata/Budget_Publication/2026_bp1-1_I.pdf",
+      "pages": null,
+      "units": "Rupees",
+      "checksumSha256": null,
+      "purpose": "Demand-level civil budget estimates"
+    },
+    {
+      "id": "bp-3",
+      "title": "BP-3 Departmental Expenditure",
+      "publication": "Finance Department, Government of West Bengal",
+      "publishedAt": "2026-06",
+      "url": "https://finance.wb.gov.in/writereaddata/Budget_Publication/2026_bp3.pdf",
+      "pages": 397,
+      "units": "Rupees in thousand",
+      "checksumSha256": "17faf86652141607a4540a393329e7baecb7c1b17b2bbf952ad6d628ec0209be",
+      "purpose": "Canonical department totals and scheme/head rows"
+    },
+    {
+      "id": "bp-4",
+      "title": "BP-4 Revenue and Receipts",
+      "publication": "Finance Department, Government of West Bengal",
+      "publishedAt": "2026",
+      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "pages": null,
+      "units": "Rupees",
+      "checksumSha256": null,
+      "purpose": "Revenue and receipt classifications"
+    },
+    {
+      "id": "bp-9",
+      "title": "BP-9 Budget at a Glance",
+      "publication": "Finance Department, Government of West Bengal",
+      "publishedAt": "2026",
+      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "pages": null,
+      "units": "Rupees crore",
+      "checksumSha256": null,
+      "purpose": "Headline fiscal totals"
+    },
+    {
+      "id": "bp-30",
+      "title": "BP-30 Gender and Child Budget",
+      "publication": "Finance Department, Government of West Bengal",
+      "publishedAt": "2026",
+      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "pages": null,
+      "units": "Rupees",
+      "checksumSha256": null,
+      "purpose": "Gender and child budget classifications"
+    },
+    {
+      "id": "bp-31",
+      "title": "BP-31 SDG Budget",
+      "publication": "Finance Department, Government of West Bengal",
+      "publishedAt": "2026",
+      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "pages": null,
+      "units": "Rupees crore",
+      "checksumSha256": null,
+      "purpose": "SDG allocation mapping"
+    },
+    {
+      "id": "budget-speech-en",
+      "title": "Budget Speech 2026-2027 - English",
+      "publication": "Government of West Bengal",
+      "publishedAt": "2026-02",
+      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "pages": null,
+      "units": "As stated",
+      "checksumSha256": null,
+      "purpose": "Policy announcements and narrative"
+    },
+    {
+      "id": "budget-speech-bn",
+      "title": "Budget Speech 2026-2027 - Bengali",
+      "publication": "Government of West Bengal",
+      "publishedAt": "2026-02",
+      "url": "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
+      "pages": null,
+      "units": "As stated",
+      "checksumSha256": null,
+      "purpose": "Policy announcements and narrative"
+    }
+  ],
+  "definitions": {
+    "allocation": "An amount provided in the budget estimate; it is not the same as actual spending or a fund release.",
+    "announcedOutlay": "An amount stated in an announcement or legacy source that has not yet been reconciled to a BP-3 budget line.",
+    "tokenProvision": "A nominal provision used to keep a budget head open.",
+    "unmatched": "The catalogue entry has not yet been linked to an exact official budget row."
+  }
+}

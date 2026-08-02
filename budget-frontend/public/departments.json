@@ -1,0 +1,1328 @@
+[
+  {
+    "id": "dept-women-child-development-and-social-welfare",
+    "demandOrder": 1,
+    "name": "Women & Child Development and Social Welfare",
+    "aliases": [
+      "Women & Child Development and Social Welfare"
+    ],
+    "amount2026Thousand": 523085003,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 251,
+    "themes": [
+      "Child Budget",
+      "Digital Governance",
+      "Education",
+      "Employment",
+      "Health",
+      "Infrastructure",
+      "Labour Welfare",
+      "Public Transport",
+      "Rural Development",
+      "Skill Development",
+      "Social Welfare",
+      "Transport",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-panchayats-rural-development",
+    "demandOrder": 2,
+    "name": "Panchayats & Rural Development",
+    "aliases": [
+      "Panchayat & Rural Development"
+    ],
+    "amount2026Thousand": 518365544,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 193,
+    "themes": [
+      "Agriculture",
+      "Culture",
+      "Economy",
+      "Employment",
+      "Environment",
+      "Fisheries",
+      "Governance",
+      "Health",
+      "Housing",
+      "Infrastructure",
+      "Irrigation",
+      "Livelihood",
+      "Rural Development",
+      "Sanitation",
+      "Skill Development",
+      "Social Welfare",
+      "Tourism",
+      "Water Supply",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-school-education",
+    "demandOrder": 3,
+    "name": "School Education",
+    "aliases": [
+      "School & Mass Education"
+    ],
+    "amount2026Thousand": 449482073,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 252,
+    "themes": [
+      "Child Budget",
+      "Education",
+      "Social Welfare",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-health-family-welfare",
+    "demandOrder": 4,
+    "name": "Health & Family Welfare",
+    "aliases": [
+      "Health & Family Welfare / AYUSH"
+    ],
+    "amount2026Thousand": 247537246,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 364,
+    "themes": [
+      "Capital Infrastructure",
+      "Child Budget",
+      "Education",
+      "Employment",
+      "Governance",
+      "Health",
+      "Innovation",
+      "Rural Development",
+      "Skill Development",
+      "Social Welfare",
+      "Tourism",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-home-and-hill-affairs",
+    "demandOrder": 5,
+    "name": "Home and Hill Affairs",
+    "aliases": [
+      "Home & Hill Affairs Department"
+    ],
+    "amount2026Thousand": 179254231,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 264,
+    "themes": [
+      "Agriculture",
+      "Border Security",
+      "Child Budget",
+      "Community",
+      "Culture",
+      "Defense",
+      "Digital & Technology",
+      "Digital Governance",
+      "Education",
+      "Employment",
+      "Farmers Welfare",
+      "Financial Assistance",
+      "Governance",
+      "Health",
+      "Infrastructure",
+      "Irrigation",
+      "Law & Order",
+      "Public Transport",
+      "Regional Development",
+      "Rural Development",
+      "Safety & Security",
+      "Social Welfare",
+      "Sports",
+      "Tourism",
+      "Urban Development",
+      "Urban Flooding",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-urban-development-and-municipal-affairs",
+    "demandOrder": 6,
+    "name": "Urban Development and Municipal Affairs",
+    "aliases": [
+      "Urban Development & Municipal Affairs"
+    ],
+    "amount2026Thousand": 146097711,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 216,
+    "themes": [
+      "Capital Infrastructure",
+      "Child Budget",
+      "Digital Governance",
+      "Employment",
+      "Energy & Climate",
+      "Environment",
+      "Governance",
+      "Housing",
+      "Infrastructure",
+      "Law & Order",
+      "Social Welfare",
+      "Urban Development",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-public-health-engineering",
+    "demandOrder": 7,
+    "name": "Public Health Engineering",
+    "aliases": [],
+    "amount2026Thousand": 129353305,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 43,
+    "themes": []
+  },
+  {
+    "id": "dept-agriculture",
+    "demandOrder": 8,
+    "name": "Agriculture",
+    "aliases": [
+      "Agriculture Department"
+    ],
+    "amount2026Thousand": 85658430,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 292,
+    "themes": [
+      "Agriculture",
+      "Digital & Technology",
+      "Digital Governance",
+      "Education",
+      "Energy & Climate",
+      "Environment",
+      "Financial Assistance",
+      "Food Security",
+      "Innovation",
+      "Irrigation",
+      "Law & Order",
+      "Mechanization",
+      "Rural Development",
+      "Social Welfare"
+    ]
+  },
+  {
+    "id": "dept-food-supplies",
+    "demandOrder": 9,
+    "name": "Food & Supplies",
+    "aliases": [],
+    "amount2026Thousand": 80530301,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 65,
+    "themes": []
+  },
+  {
+    "id": "dept-public-works",
+    "demandOrder": 10,
+    "name": "Public Works",
+    "aliases": [
+      "Public Works Department (PWD) / Transport Infrastructure"
+    ],
+    "amount2026Thousand": 72401314,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 159,
+    "themes": [
+      "Capital Infrastructure",
+      "Energy & Climate",
+      "Infrastructure",
+      "Transport",
+      "Water Supply"
+    ]
+  },
+  {
+    "id": "dept-higher-education",
+    "demandOrder": 11,
+    "name": "Higher Education",
+    "aliases": [
+      "Education (School & Higher)"
+    ],
+    "amount2026Thousand": 71686041,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 186,
+    "themes": [
+      "Art & Culture",
+      "Capital Infrastructure",
+      "Development",
+      "Education",
+      "Employment",
+      "Energy & Climate",
+      "Financial Assistance",
+      "Financial Inclusion",
+      "Health",
+      "Innovation",
+      "Minority Affairs",
+      "Social Welfare",
+      "Water Supply",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-power",
+    "demandOrder": 12,
+    "name": "Power",
+    "aliases": [
+      "Power & Non-Conventional Energy"
+    ],
+    "amount2026Thousand": 53451601,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 38,
+    "themes": [
+      "Agriculture",
+      "Capital Infrastructure",
+      "Energy & Climate",
+      "Environment",
+      "Financial Assistance",
+      "Irrigation",
+      "Mining",
+      "Rural Development",
+      "SC/ST & Tribal Welfare",
+      "Urban Development"
+    ]
+  },
+  {
+    "id": "dept-irrigation-waterways",
+    "demandOrder": 13,
+    "name": "Irrigation & Waterways",
+    "aliases": [
+      "Irrigation & Waterways / Public Health Engineering"
+    ],
+    "amount2026Thousand": 36991083,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 116,
+    "themes": [
+      "Agriculture",
+      "Capital Infrastructure",
+      "Digital & Technology",
+      "Environment",
+      "Financial Assistance",
+      "Governance",
+      "Health",
+      "Infrastructure",
+      "Irrigation",
+      "Rural Development",
+      "Urban Flooding",
+      "Water Supply"
+    ]
+  },
+  {
+    "id": "dept-industry-commerce-and-enterprises",
+    "demandOrder": 14,
+    "name": "Industry Commerce and Enterprises",
+    "aliases": [
+      "Industry, Commerce and Enterprises / Mines"
+    ],
+    "amount2026Thousand": 32665907,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 98,
+    "themes": [
+      "Capital Infrastructure",
+      "Development",
+      "Digital & Technology",
+      "Finance",
+      "Governance",
+      "Industry & MSME",
+      "Infrastructure",
+      "Logistics",
+      "Mining",
+      "Public Transport",
+      "Rural Development",
+      "Tourism",
+      "Urban Development"
+    ]
+  },
+  {
+    "id": "dept-labour",
+    "demandOrder": 15,
+    "name": "Labour",
+    "aliases": [
+      "Labour & Employment / Urban Development"
+    ],
+    "amount2026Thousand": 31466851,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 117,
+    "themes": [
+      "Education",
+      "Employment",
+      "Financial Assistance",
+      "Governance",
+      "Health",
+      "Industry & MSME",
+      "Law & Order",
+      "Skill Development",
+      "Social Welfare",
+      "Tourism",
+      "Urban Development",
+      "Water Supply",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-disaster-management-and-civil-defence",
+    "demandOrder": 16,
+    "name": "Disaster Management and Civil Defence",
+    "aliases": [
+      "Disaster Management and Civil Defence Department"
+    ],
+    "amount2026Thousand": 30359480,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 109,
+    "themes": [
+      "Capacity Building",
+      "Civil Defence",
+      "Cyclone Mitigation",
+      "Digital & Technology",
+      "Disaster Management",
+      "Disaster Mitigation",
+      "Disaster Preparedness",
+      "Disaster Response",
+      "Emergency Preparedness",
+      "Event Management",
+      "Financial Assistance",
+      "Fire Safety",
+      "Governance",
+      "Health",
+      "Housing",
+      "Infrastructure",
+      "Irrigation",
+      "Modernization",
+      "Reconstruction",
+      "Rehabilitation",
+      "Relief",
+      "Safety & Security",
+      "Skill Development",
+      "Social Welfare",
+      "Urban Development",
+      "Urban Flooding",
+      "Water Supply",
+      "Welfare",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-transport",
+    "demandOrder": 17,
+    "name": "Transport",
+    "aliases": [
+      "Transport Department"
+    ],
+    "amount2026Thousand": 26974186,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 101,
+    "themes": [
+      "Aviation",
+      "Culture",
+      "Employment",
+      "Environment",
+      "Financial Assistance",
+      "Governance",
+      "Infrastructure",
+      "Public Transport",
+      "Safety",
+      "Skill Development",
+      "Social Welfare",
+      "Transport",
+      "Urban Development",
+      "Water Supply",
+      "Women & Gender",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-backward-classes-welfare",
+    "demandOrder": 18,
+    "name": "Backward Classes Welfare",
+    "aliases": [
+      "Backward Classes Welfare & Tribal Development"
+    ],
+    "amount2026Thousand": 25444816,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 172,
+    "themes": [
+      "Backward Classes Welfare",
+      "Culture",
+      "Economic Development",
+      "Education",
+      "Environment",
+      "Law & Order",
+      "Minority Affairs",
+      "Rural Development",
+      "SC/ST & Tribal Welfare",
+      "Social Welfare"
+    ]
+  },
+  {
+    "id": "dept-technical-education-training-skill-development",
+    "demandOrder": 19,
+    "name": "Technical Education, Training & Skill Development",
+    "aliases": [
+      "Technical Education, Training & Skill Development"
+    ],
+    "amount2026Thousand": 23932029,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 68,
+    "themes": [
+      "Capital Infrastructure",
+      "Education",
+      "Employment",
+      "Rural Development",
+      "Skill Development",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-minority-affairs-madrasah-education",
+    "demandOrder": 20,
+    "name": "Minority Affairs & Madrasah Education",
+    "aliases": [
+      "Minority Affairs / Madrasah Education"
+    ],
+    "amount2026Thousand": 21654174,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 87,
+    "themes": [
+      "Child Budget",
+      "Education",
+      "Housing",
+      "Law & Order",
+      "Minority Affairs",
+      "SC/ST & Tribal Welfare",
+      "Skill Development",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-judicial",
+    "demandOrder": 21,
+    "name": "Judicial",
+    "aliases": [
+      "Law / Judiciary / Correctional Services"
+    ],
+    "amount2026Thousand": 19648910,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 72,
+    "themes": [
+      "Child Budget",
+      "Employment",
+      "Women & Gender",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-north-bengal-development",
+    "demandOrder": 22,
+    "name": "North Bengal Development",
+    "aliases": [
+      "North Bengal Development Department"
+    ],
+    "amount2026Thousand": 18215249,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 18,
+    "themes": [
+      "Child Budget",
+      "Financial Assistance",
+      "Governance",
+      "Industry & MSME",
+      "Infrastructure",
+      "Tea Gardens",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-micro-small-medium-enterprises-and-textiles",
+    "demandOrder": 23,
+    "name": "Micro, Small & Medium Enterprises and Textiles",
+    "aliases": [
+      "Micro, Small & Medium Enterprises and Textiles"
+    ],
+    "amount2026Thousand": 18146025,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 176,
+    "themes": [
+      "Digital Governance",
+      "Education",
+      "Employment",
+      "Financial Assistance",
+      "Industry & MSME",
+      "Innovation",
+      "Rural Development",
+      "Social Welfare",
+      "Startups",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-paschimanchal-unnayan-affairs",
+    "demandOrder": 24,
+    "name": "Paschimanchal Unnayan Affairs",
+    "aliases": [
+      "Paschimanchal Unnayan Affairs"
+    ],
+    "amount2026Thousand": 16108515,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 31,
+    "themes": [
+      "Governance",
+      "Infrastructure",
+      "Irrigation",
+      "Water Supply"
+    ]
+  },
+  {
+    "id": "dept-land-land-reforms-and-refugee-relief-rehabilitation",
+    "demandOrder": 25,
+    "name": "Land & Land Reforms and Refugee Relief & Rehabilitation",
+    "aliases": [
+      "Land & Land Reforms Department"
+    ],
+    "amount2026Thousand": 15876215,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 101,
+    "themes": [
+      "Agriculture",
+      "Art & Culture",
+      "Border Management",
+      "Capacity Building",
+      "Census",
+      "Digital & Technology",
+      "Digital Governance",
+      "Governance",
+      "Heritage",
+      "Housing",
+      "Infrastructure",
+      "Judiciary",
+      "Land Management",
+      "Land Reforms",
+      "Legislation",
+      "Rehabilitation",
+      "Rural Development",
+      "Skill Development",
+      "Urban Development"
+    ]
+  },
+  {
+    "id": "dept-water-resources-investigation-development",
+    "demandOrder": 26,
+    "name": "Water Resources Investigation & Development",
+    "aliases": [],
+    "amount2026Thousand": 15509853,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 99,
+    "themes": []
+  },
+  {
+    "id": "dept-animal-resources-development",
+    "demandOrder": 27,
+    "name": "Animal Resources Development",
+    "aliases": [
+      "Animal Resources Development"
+    ],
+    "amount2026Thousand": 14044173,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 178,
+    "themes": [
+      "Agriculture",
+      "Animal Husbandry",
+      "Education",
+      "Employment",
+      "Financial Assistance",
+      "Health",
+      "Rural Development",
+      "Skill Development"
+    ]
+  },
+  {
+    "id": "dept-tribal-development",
+    "demandOrder": 28,
+    "name": "Tribal Development",
+    "aliases": [
+      "Tribal Development Department"
+    ],
+    "amount2026Thousand": 12951409,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 95,
+    "themes": [
+      "Education",
+      "Law & Order",
+      "Rural Development",
+      "SC/ST & Tribal Welfare",
+      "Social Welfare"
+    ]
+  },
+  {
+    "id": "dept-sunderban-affairs",
+    "demandOrder": 29,
+    "name": "Sunderban Affairs",
+    "aliases": [],
+    "amount2026Thousand": 12800658,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 11,
+    "themes": []
+  },
+  {
+    "id": "dept-forests",
+    "demandOrder": 30,
+    "name": "Forests",
+    "aliases": [],
+    "amount2026Thousand": 11981720,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 150,
+    "themes": []
+  },
+  {
+    "id": "dept-information-cultural-affairs",
+    "demandOrder": 31,
+    "name": "Information & Cultural Affairs",
+    "aliases": [
+      "Information & Cultural Affairs"
+    ],
+    "amount2026Thousand": 8150796,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 186,
+    "themes": [
+      "Culture",
+      "Education",
+      "Industry & MSME",
+      "Social Welfare",
+      "Tourism"
+    ]
+  },
+  {
+    "id": "dept-planning-statistics",
+    "demandOrder": 32,
+    "name": "Planning & Statistics",
+    "aliases": [
+      "Planning & Statistics Department / Programme Monitoring"
+    ],
+    "amount2026Thousand": 6324123,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 44,
+    "themes": [
+      "Agriculture",
+      "Child Budget",
+      "Community Development",
+      "Decentralization",
+      "Energy & Climate",
+      "Financial Assistance",
+      "Governance",
+      "Inclusive Growth",
+      "Infrastructure",
+      "Local Development",
+      "Power",
+      "Public Service",
+      "Rural Development",
+      "Social Welfare",
+      "Statistics",
+      "Subsidy",
+      "Urban Development",
+      "Water Supply",
+      "Welfare",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-cooperation",
+    "demandOrder": 33,
+    "name": "Cooperation",
+    "aliases": [
+      "Co-operation Department"
+    ],
+    "amount2026Thousand": 5866163,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 138,
+    "themes": [
+      "Agriculture",
+      "Animal Husbandry",
+      "Child Budget",
+      "Digital & Technology",
+      "Employment",
+      "Environment",
+      "Financial Assistance",
+      "Governance",
+      "Housing",
+      "Infrastructure",
+      "Law & Order",
+      "Rural Development",
+      "SC/ST & Tribal Welfare",
+      "Skill Development",
+      "Urban Development",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-correctional-administration",
+    "demandOrder": 34,
+    "name": "Correctional Administration",
+    "aliases": [],
+    "amount2026Thousand": 5805542,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 37,
+    "themes": []
+  },
+  {
+    "id": "dept-fisheries",
+    "demandOrder": 35,
+    "name": "Fisheries",
+    "aliases": [
+      "Fisheries Department"
+    ],
+    "amount2026Thousand": 5503793,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 99,
+    "themes": [
+      "Agriculture",
+      "Financial Assistance",
+      "Fisheries",
+      "Governance",
+      "Industry & MSME",
+      "Infrastructure",
+      "Rural Development",
+      "SC/ST & Tribal Welfare",
+      "Social Welfare",
+      "Water Supply",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-fire-emergency-services",
+    "demandOrder": 36,
+    "name": "Fire & Emergency Services",
+    "aliases": [],
+    "amount2026Thousand": 5463890,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 19,
+    "themes": []
+  },
+  {
+    "id": "dept-tourism",
+    "demandOrder": 37,
+    "name": "Tourism",
+    "aliases": [
+      "Tourism Department"
+    ],
+    "amount2026Thousand": 5278433,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 41,
+    "themes": [
+      "Culture",
+      "Employment",
+      "Environment",
+      "Social Welfare",
+      "Tourism",
+      "Transport"
+    ]
+  },
+  {
+    "id": "dept-information-technology-electronics",
+    "demandOrder": 38,
+    "name": "Information Technology & Electronics",
+    "aliases": [
+      "Information Technology and Electronics Department"
+    ],
+    "amount2026Thousand": 5061753,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 15,
+    "themes": [
+      "Capital Infrastructure",
+      "Digital & Technology",
+      "Employment",
+      "Financial Assistance",
+      "Industry & MSME",
+      "Innovation",
+      "Science",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-youth-services-and-sports",
+    "demandOrder": 39,
+    "name": "Youth Services and Sports",
+    "aliases": [
+      "Youth Services & Sports"
+    ],
+    "amount2026Thousand": 4905419,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 85,
+    "themes": [
+      "Capital Infrastructure",
+      "Education",
+      "Employment",
+      "Rural Development",
+      "Social Welfare",
+      "Sports",
+      "Tourism",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-personnel-administrative-reforms",
+    "demandOrder": 40,
+    "name": "Personnel & Administrative Reforms",
+    "aliases": [
+      "Personnel and Administrative Reforms"
+    ],
+    "amount2026Thousand": 3788741,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 37,
+    "themes": [
+      "Administration",
+      "Digital & Technology",
+      "Digital Governance",
+      "Education",
+      "Employment",
+      "Governance",
+      "Law & Order",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-agricultural-marketing",
+    "demandOrder": 41,
+    "name": "Agricultural Marketing",
+    "aliases": [],
+    "amount2026Thousand": 3649920,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 59,
+    "themes": []
+  },
+  {
+    "id": "dept-mass-education-extension-library-services",
+    "demandOrder": 42,
+    "name": "Mass Education Extension & Library Services",
+    "aliases": [],
+    "amount2026Thousand": 3516976,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 72,
+    "themes": []
+  },
+  {
+    "id": "dept-self-help-group-self-employment",
+    "demandOrder": 43,
+    "name": "Self-Help Group & Self-Employment",
+    "aliases": [
+      "Self Help Group and Self Employment"
+    ],
+    "amount2026Thousand": 3227975,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 33,
+    "themes": [
+      "Child Budget",
+      "Employment",
+      "Financial Assistance",
+      "Governance",
+      "Infrastructure",
+      "Rural Development",
+      "Skill Development",
+      "Women & Gender",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-non-conventional-and-renewable-energy-sources",
+    "demandOrder": 44,
+    "name": "Non-Conventional and Renewable Energy Sources",
+    "aliases": [],
+    "amount2026Thousand": 3058732,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 7,
+    "themes": []
+  },
+  {
+    "id": "dept-housing",
+    "demandOrder": 45,
+    "name": "Housing",
+    "aliases": [],
+    "amount2026Thousand": 3038267,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 48,
+    "themes": []
+  },
+  {
+    "id": "dept-food-processing-industries-and-horticulture",
+    "demandOrder": 46,
+    "name": "Food Processing Industries and Horticulture",
+    "aliases": [
+      "Food Processing Industries and Horticulture"
+    ],
+    "amount2026Thousand": 2306896,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 67,
+    "themes": [
+      "Agriculture",
+      "Capital Infrastructure",
+      "Ecology",
+      "Environment",
+      "Financial Assistance",
+      "Forestry",
+      "Governance",
+      "Industry & MSME",
+      "Irrigation",
+      "Logistics",
+      "SC/ST & Tribal Welfare",
+      "Women & Gender"
+    ]
+  },
+  {
+    "id": "dept-consumer-affairs",
+    "demandOrder": 47,
+    "name": "Consumer Affairs",
+    "aliases": [
+      "Consumer Affairs"
+    ],
+    "amount2026Thousand": 1484079,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 23,
+    "themes": [
+      "Financial Assistance",
+      "Governance",
+      "Social Welfare"
+    ]
+  },
+  {
+    "id": "dept-science-technology-and-bio-technology",
+    "demandOrder": 48,
+    "name": "Science & Technology and Bio-Technology",
+    "aliases": [
+      "Science, Technology and Bio-Technology Department"
+    ],
+    "amount2026Thousand": 1336249,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 32,
+    "themes": [
+      "Agriculture",
+      "Applied Science",
+      "Art & Culture",
+      "Biotechnology",
+      "Digital & Technology",
+      "Digital Governance",
+      "Education",
+      "Energy & Climate",
+      "Governance",
+      "Infrastructure",
+      "Innovation",
+      "Remote Sensing",
+      "Research",
+      "Rural Development",
+      "Science",
+      "Science Promotion",
+      "Skill Development",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-legislative-assembly-secretariat",
+    "demandOrder": 49,
+    "name": "Legislative Assembly Secretariat",
+    "aliases": [],
+    "amount2026Thousand": 1244180,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 8,
+    "themes": []
+  },
+  {
+    "id": "dept-environment",
+    "demandOrder": 50,
+    "name": "Environment",
+    "aliases": [
+      "Environment Department"
+    ],
+    "amount2026Thousand": 1028485,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 27,
+    "themes": [
+      "Conservation",
+      "Environment",
+      "Financial Assistance",
+      "Innovation",
+      "Social Welfare",
+      "Water Supply"
+    ]
+  },
+  {
+    "id": "dept-council-of-ministers",
+    "demandOrder": 51,
+    "name": "Council of Ministers",
+    "aliases": [],
+    "amount2026Thousand": 895820,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 8,
+    "themes": []
+  },
+  {
+    "id": "dept-public-enterprises-and-industrial-reconstruction",
+    "demandOrder": 52,
+    "name": "Public Enterprises and Industrial Reconstruction",
+    "aliases": [],
+    "amount2026Thousand": 586512,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 12,
+    "themes": []
+  },
+  {
+    "id": "dept-governor-s-secretariat",
+    "demandOrder": 53,
+    "name": "Governor's Secretariat",
+    "aliases": [],
+    "amount2026Thousand": 403869,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 15,
+    "themes": []
+  },
+  {
+    "id": "dept-law",
+    "demandOrder": 54,
+    "name": "Law",
+    "aliases": [],
+    "amount2026Thousand": 248657,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 7,
+    "themes": []
+  },
+  {
+    "id": "dept-parliamentary-affairs",
+    "demandOrder": 55,
+    "name": "Parliamentary Affairs",
+    "aliases": [
+      "Parliamentary Affairs Department"
+    ],
+    "amount2026Thousand": 238888,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 4,
+    "themes": [
+      "Education",
+      "Social Welfare",
+      "Youth"
+    ]
+  },
+  {
+    "id": "dept-chief-minister-s-office",
+    "demandOrder": 56,
+    "name": "Chief Minister's Office",
+    "aliases": [],
+    "amount2026Thousand": 159200,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 2,
+    "themes": []
+  },
+  {
+    "id": "dept-programme-monitoring",
+    "demandOrder": 57,
+    "name": "Programme Monitoring",
+    "aliases": [
+      "Multiple Departments / Uncategorized"
+    ],
+    "amount2026Thousand": 35639,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 4,
+    "themes": [
+      "Capital Infrastructure",
+      "Development",
+      "Financial Assistance",
+      "Governance",
+      "Infrastructure",
+      "Logistics",
+      "Public Grievance",
+      "Reform",
+      "Water Supply"
+    ]
+  },
+  {
+    "id": "dept-finance",
+    "demandOrder": 58,
+    "name": "Finance",
+    "aliases": [
+      "Excise Department",
+      "Finance Department"
+    ],
+    "amount2026Thousand": 8,
+    "source": {
+      "sourceId": "bp-3",
+      "page": null
+    },
+    "schemeCount": 632,
+    "themes": [
+      "Child Budget",
+      "Digital & Technology",
+      "Digital Governance",
+      "Finance",
+      "Financial Assistance",
+      "Governance",
+      "Industry & MSME",
+      "Safety & Security",
+      "Social Welfare",
+      "Urban Development",
+      "Women & Gender"
+    ]
+  }
+]

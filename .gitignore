@@ -18,5 +18,7 @@ template_enricher.py
 Budget 2026-27/
 Budget Initiatives.md
 *.py
+!scripts/*.py
+tmp/
 budget_data.json
 legend_logic.js

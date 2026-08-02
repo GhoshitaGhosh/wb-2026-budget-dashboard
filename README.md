@@ -1,52 +1,46 @@
-# West Bengal 2026 Budget Dashboard
+# West Bengal Budget Explorer 2026-27
 
-An interactive, responsive, and data-rich web dashboard designed to visualize the West Bengal State Budget for the 2026-2027 fiscal year. 
+An evidence-led, static civic data dashboard for exploring West Bengal's 2026-27 budget. It separates official budget rows from policy announcements, exposes missing and unmatched data states, and links reviewed figures back to their source publication.
 
-## Overview
-This dashboard parses and presents the massive West Bengal state budget into digestible, highly visual components. It breaks down budget allocations across all state departments, extracts hundreds of individual departmental schemes and initiatives, and allows users to explore the data dynamically through interactive charts and robust search capabilities.
+## What changed
 
-## Features
-- **Macro-level Budget Visualizations:** Interactive pie and bar charts depicting the distribution of the state's outlays, tracking exactly where the "Rupee Comes From" and where the "Rupee Goes To."
-- **Initiatives Word Map:** A dynamic word cloud visualization automatically analyzing textual frequency across all budget allocations to highlight key thematic focus areas, complete with customizable filters.
-- **Departmental Drill-down:** A comprehensive breakdown of over 50 state departments, sorting schemes dynamically by allocation size and department footprint.
-- **Enriched Scheme Data:** Over 550 state-run schemes, projects, and welfare programs deeply enriched with detailed context and precise budgetary outlays.
-- **Geographic Footprint Map:** An interactive, zero-cost `Leaflet.js` map utilizing CARTO Voyager tiles to pinpoint the geographical locations of dozens of state infrastructure projects across major districts. Features dynamic spatial clustering, custom thematic emoji markers synced with the active search and filter state, and a custom precision-geocoding dictionary that accurately maps highly specific infrastructure (like major bridges, corridors, ports, and logistic hubs) to their exact real-world coordinates.
-- **Smart Filtering & Search:** A fast, real-time search engine with smart, multi-select tag filtering (e.g., `#Agriculture`, `#Infrastructure`, `#Education`, `#WomenEmpowerment`) to quickly isolate specific policy areas.
-- **Modern Adaptive UI:** A premium user interface built from scratch utilizing clean CSS glassmorphism, fluid micro-animations, and seamless Dark/Light Mode toggling.
+- 58 canonical departments from BP-3, with the former department-unit display error corrected.
+- Revenue receipts, capital receipts, borrowing, and total receipts shown separately.
+- 5,383 extracted BP-3 budget-head rows with codes, source pages, and four financial periods.
+- The original 550-entry initiative catalogue retained and reconciled only when a unique exact-title match is available.
+- Paginated, shareable scheme search with department, theme, record-type, amount-status, and sorting controls.
+- Accessible tables for every analytical view, keyboard-operable controls, responsive layouts, dark mode, CSV downloads, and a lazy-loaded map with an explicit coverage warning.
+- Generated metadata, department, scheme, and map contracts validated before every production build.
 
-## Technical Stack
-- **Frontend Framework:** Built with [Vite](https://vitejs.dev/) for lightning-fast HMR and optimized production builds.
-- **Data Architecture:** A purely static, serverless architecture driven entirely by compiled `data.json` and `charts_data.json` artifacts, resulting in zero-latency data querying.
-- **Visualization:** Integrated with `chart.js`, `chartjs-chart-wordcloud`, and `Leaflet.js` for responsive, accessible data graphics and mapping.
-- **Styling:** Vanilla CSS3 emphasizing modularity, CSS variables (tokens), and modern layout techniques without the overhead of heavy utility frameworks.
-- **Hosting:** Fully configured for CI/CD deployment via GitHub Actions and hosted statically on GitHub Pages.
+## Data workflow
 
-## Local Development
+The official source registry is in `data/source-registry.json`. BP-3 is parsed with:
 
-To run this dashboard locally:
+```powershell
+python scripts/extract_bp3.py tmp/pdfs/2026_bp3.pdf data/extracted/bp3-budget-lines.json
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/GhoshitaGhosh/wb-2026-budget-dashboard.git
-   cd wb-2026-budget-dashboard/budget-frontend
-   ```
+The parser preserves integer thousand-rupee values. `scripts/build_dashboard_data.mjs` then combines the reviewed official rows with the legacy catalogue and writes the public JSON artifacts. Ambiguous or fuzzy title matches are not accepted automatically; reviewed exceptions belong in `data/reconciliation-overrides.json`.
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+The generated `data/DATA_QUALITY.md` report records coverage and reconciliation status.
 
-3. **Start the Vite development server**
-   ```bash
-   npm run dev
-   ```
+## Local development
 
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
+```powershell
+cd budget-frontend
+npm install
+npm run dev
+```
 
-## Deployment
-This repository is configured with a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys the Vite application to GitHub Pages whenever changes are pushed to the `main` branch. 
+Validation and production build:
 
-*Designed and engineered iteratively with an emphasis on data integrity, accessibility, and visual excellence.*
+```powershell
+npm test
+npm run build
+```
+
+The GitHub Actions workflow runs data checks, accessibility contract checks, and the Vite production build before deploying to GitHub Pages.
+
+## Sources and interpretation
+
+The primary baseline is the Finance Department's June 2026 BP-3 Departmental Expenditure publication. Budget estimates are allocations, not actual spending or releases. Announcement amounts remain separately labelled until linked to an exact official budget row.

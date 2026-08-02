@@ -1,1010 +1,321 @@
-import './style.css'; // Let Vite handle it
-import Chart from 'chart.js/auto';
-import { WordCloudController, WordElement } from 'chartjs-chart-wordcloud';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet.markercluster';
-import 'leaflet.markercluster/dist/MarkerCluster.css';
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-// Fix broken Leaflet marker icons in Vite
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import './style.css';
 
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-});
+const BASE = import.meta.env.BASE_URL;
+const PAGE_SIZE = 20;
+const CRORE_DIVISOR = 10_000;
+const money = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 1 });
+const integer = new Intl.NumberFormat('en-IN');
 
-
-Chart.register(WordCloudController, WordElement);
-
-let budgetMap = null;
-let markerClusterGroup = null;
-let mapMarkers = [];
-
-let globalData = null;
-let chartsData = null;
-let allSchemes = [];
-let uniqueTags = new Set();
-let activeTags = new Set();
-let currentSearchQuery = '';
-
-// DOM Elements
-const sidebarNavDepts = document.getElementById('nav-departments');
-const departmentsContainer = document.getElementById('departments-container');
-const globalSearchInput = document.getElementById('global-search');
-const searchResultsSection = document.getElementById('search-results-section');
-const searchSchemesContainer = document.getElementById('search-schemes-container');
-const searchTitle = document.getElementById('search-title');
-const overviewSection = document.getElementById('overview-section');
-const themeToggle = document.getElementById('theme-toggle');
-const sidebarToggleBtn = document.getElementById('sidebar-toggle');
-const sidebar = document.getElementById('sidebar');
-const mainContent = document.getElementById('main-content');
-const topNav = document.querySelector('.top-nav');
-
-// Tag UI Elements
-const tagSelectWrapper = document.getElementById('tag-select-wrapper');
-const tagSelectDisplay = document.getElementById('tag-select-display');
-const tagSearchInput = document.getElementById('tag-search-input');
-const tagDropdownList = document.getElementById('tag-dropdown-list');
-const activeTagsContainer = document.getElementById('active-tags-container');
-
-// Charts
-let sdgChartInstance = null;
-let deptChartInstance = null;
-let revenueChartInstance = null;
-let expenditureChartInstance = null;
-let departmentOutlayChartInstance = null;
-let wordCloudChartInstance = null;
-
-// Intersection Observer for scroll spy
-const observerOptions = {
-  root: null,
-  rootMargin: '-20% 0px -60% 0px',
-  threshold: 0
+const state = {
+  metadata: null,
+  departments: [],
+  schemes: [],
+  mapData: [],
+  filtered: [],
+  page: 1,
+  selectedDepartmentId: null,
+  mapLoaded: false
 };
 
-const scrollObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      document.querySelectorAll('.nav-item').forEach(nav => {
-        nav.classList.remove('active');
-        if (nav.getAttribute('href') === `#${id}`) {
-          nav.classList.add('active');
-          // Scroll sidebar to keep active item in view only if visible
-          if (!sidebar.classList.contains('collapsed') && window.innerWidth > 900) {
-              nav.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        }
-      });
-    }
+const el = id => document.getElementById(id);
+const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
+const croreFromThousand = value => value == null ? null : Number(value) / CRORE_DIVISOR;
+const formatCrore = value => value == null ? 'Not available' : `₹${money.format(value)} cr`;
+const formatThousandAsCrore = value => value == null ? 'Not reconciled' : formatCrore(croreFromThousand(value));
+const percent = (value, total) => total ? `${(value / total * 100).toFixed(1)}%` : '—';
+
+const labels = {
+  official_budget_line: 'Official budget line',
+  speech_announcement: 'Announcement',
+  aggregated_programme: 'Aggregated programme',
+  unmatched: 'Unmatched',
+  stated: 'Announced amount stated',
+  zero: 'Zero',
+  token_provision: 'Token provision',
+  not_stated: 'Not stated',
+  not_classified: 'Not classified'
+};
+
+function metric(label, value, help) {
+  return `<article class="metric"><div class="metric-value">${escapeHtml(value)}</div><div class="metric-label">${escapeHtml(label)}</div><p class="metric-help">${escapeHtml(help)}</p></article>`;
+}
+
+function renderHeadline() {
+  const totals = state.metadata.totals;
+  el('headline-metrics').innerHTML = [
+    metric('Total expenditure', formatCrore(totals.totalExpenditureCrore), 'Budget estimate, 2026-27'),
+    metric('Revenue receipts', formatCrore(totals.revenueReceiptsCrore), 'Taxes, non-tax income, and grants'),
+    metric('Total receipts', formatCrore(totals.totalReceiptsCrore), 'Includes borrowing and loan recoveries'),
+    metric('Official departments', integer.format(totals.departments), 'Canonical BP-3 department list')
+  ].join('');
+}
+
+function renderTakeaways() {
+  const totals = state.metadata.totals;
+  const largest = [...state.departments].sort((a, b) => b.amount2026Thousand - a.amount2026Thousand)[0];
+  const social = state.metadata.expenditure.find(item => item.name === 'Social Services');
+  const debt = state.metadata.receipts.find(item => item.name.includes('Public Debt'));
+  el('takeaways').innerHTML = `
+    <article class="takeaway"><span class="kicker">Largest department envelope</span><strong>${escapeHtml(largest.name)}</strong><p>${formatThousandAsCrore(largest.amount2026Thousand)} in the BP-3 departmental estimate.</p></article>
+    <article class="takeaway"><span class="kicker">Largest spending function</span><strong>${percent(social.crore, totals.totalExpenditureCrore)} social services</strong><p>${formatCrore(social.crore)} across health, education, welfare, and related services.</p></article>
+    <article class="takeaway"><span class="kicker">Borrowing share</span><strong>${percent(debt.crore, totals.totalReceiptsCrore)} of receipts</strong><p>${formatCrore(debt.crore)} is public debt, shown separately from revenue receipts.</p></article>`;
+}
+
+function renderBars(containerId, tableId, items, total, includeType = false) {
+  const sorted = [...items].sort((a, b) => b.crore - a.crore);
+  const max = sorted[0]?.crore || 1;
+  el(containerId).innerHTML = sorted.map(item => `
+    <div class="bar-row">
+      <div><div class="bar-meta"><span>${escapeHtml(item.name)}</span><strong>${percent(item.crore, total)}</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${Math.max(1, item.crore / max * 100)}%"></div></div></div>
+      <div class="number">${money.format(item.crore)}</div>
+    </div>`).join('');
+  el(tableId).innerHTML = sorted.map(item => `<tr><td>${escapeHtml(item.name)}</td>${includeType ? `<td>${item.kind === 'revenue' ? 'Revenue receipt' : 'Capital receipt'}</td>` : ''}<td class="number">${money.format(item.crore)}</td><td class="number">${percent(item.crore, total)}</td></tr>`).join('');
+}
+
+function renderDepartmentFocus(department) {
+  state.selectedDepartmentId = department.id;
+  document.querySelectorAll('.department-row').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.id === department.id)));
+  const topThemes = department.themes.slice(0, 6);
+  el('department-focus').innerHTML = `
+    <p class="eyebrow">Department focus</p>
+    <h3>${escapeHtml(department.name)}</h3>
+    <div class="focus-value">${formatThousandAsCrore(department.amount2026Thousand)}</div>
+    <p>2026-27 departmental budget estimate. Source: BP-3; stored in thousand rupees and displayed in crore.</p>
+    <ul><li>${integer.format(department.schemeCount)} catalogue ${department.schemeCount === 1 ? 'entry' : 'entries'} currently associated</li><li>${topThemes.length ? `Themes: ${topThemes.map(escapeHtml).join(', ')}` : 'No catalogue themes assigned'}</li></ul>
+    <button type="button" class="button primary" data-department-filter="${department.id}">View associated schemes</button>`;
+  el('department-focus').querySelector('[data-department-filter]').addEventListener('click', () => {
+    el('filter-department').value = department.id;
+    applyFilters(true);
+    el('schemes').scrollIntoView({ behavior: 'smooth' });
   });
-}, observerOptions);
+}
 
-// Animation Observer - simple trigger for entries moving into view
-const animationObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      // Stop observing once visible to prevent re-triggering constantly
-      animationObserver.unobserve(entry.target);
-    }
+function renderDepartments() {
+  const sort = el('department-sort').value;
+  const list = [...state.departments].sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : sort === 'schemes' ? b.schemeCount - a.schemeCount || a.name.localeCompare(b.name) : b.amount2026Thousand - a.amount2026Thousand);
+  el('department-ranking').innerHTML = list.map((department, index) => `
+    <button type="button" class="department-row" data-id="${department.id}" aria-pressed="${department.id === state.selectedDepartmentId}">
+      <span class="rank">${String(index + 1).padStart(2, '0')}</span><span class="dept-name">${escapeHtml(department.name)}</span><span class="dept-amount">${formatThousandAsCrore(department.amount2026Thousand)}</span>
+    </button>`).join('');
+  el('department-ranking').querySelectorAll('.department-row').forEach(button => button.addEventListener('click', () => renderDepartmentFocus(state.departments.find(item => item.id === button.dataset.id))));
+  renderDepartmentFocus(state.departments.find(item => item.id === state.selectedDepartmentId) || list[0]);
+}
+
+function populateFilters() {
+  const departmentSelect = el('filter-department');
+  [...state.departments].sort((a, b) => a.name.localeCompare(b.name)).forEach(department => departmentSelect.add(new Option(department.name, department.id)));
+  const themes = [...new Set(state.schemes.flatMap(item => item.themes))].sort();
+  themes.forEach(theme => el('filter-theme').add(new Option(theme, theme)));
+  const params = new URLSearchParams(location.search);
+  el('filter-q').value = params.get('q') || '';
+  el('filter-department').value = params.get('department') || '';
+  el('filter-theme').value = params.get('theme') || '';
+  el('filter-classification').value = params.get('status') || '';
+  el('filter-amount').value = params.get('amountStatus') || '';
+  el('filter-sort').value = params.get('sort') || 'amount-desc';
+}
+
+function readFilters() {
+  return {
+    q: el('filter-q').value.trim().toLowerCase(),
+    department: el('filter-department').value,
+    theme: el('filter-theme').value,
+    classification: el('filter-classification').value,
+    amountStatus: el('filter-amount').value,
+    sort: el('filter-sort').value
+  };
+}
+
+function syncUrl(filters) {
+  const params = new URLSearchParams();
+  if (filters.q) params.set('q', filters.q);
+  if (filters.department) params.set('department', filters.department);
+  if (filters.theme) params.set('theme', filters.theme);
+  if (filters.classification) params.set('status', filters.classification);
+  if (filters.amountStatus) params.set('amountStatus', filters.amountStatus);
+  if (filters.sort !== 'amount-desc') params.set('sort', filters.sort);
+  const query = params.toString();
+  history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
+}
+
+function applyFilters(resetPage = false) {
+  const filters = readFilters();
+  if (resetPage) state.page = 1;
+  state.filtered = state.schemes.filter(item => {
+    const haystack = `${item.title} ${item.departmentName} ${item.summary} ${item.themes.join(' ')}`.toLowerCase();
+    return (!filters.q || haystack.includes(filters.q)) &&
+      (!filters.department || item.departmentId === filters.department) &&
+      (!filters.theme || item.themes.includes(filters.theme)) &&
+      (!filters.classification || item.classification === filters.classification) &&
+      (!filters.amountStatus || item.amountStatus === filters.amountStatus);
   });
-}, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+  state.filtered.sort((a, b) => filters.sort === 'name' ? a.title.localeCompare(b.title) : filters.sort === 'department' ? a.departmentName.localeCompare(b.departmentName) || a.title.localeCompare(b.title) : (b.financials.budget2026Thousand ?? b.announcedAmountThousand ?? -Infinity) - (a.financials.budget2026Thousand ?? a.announcedAmountThousand ?? -Infinity));
+  syncUrl(filters);
+  renderSchemeResults(filters);
+}
 
-// Emoji Mapping Helpers
-const getDeptEmoji = (name) => {
-  const n = name.toLowerCase();
-  if (n.includes('health') || n.includes('medical')) return '🏥';
-  if (n.includes('education') || n.includes('school')) return '🎓';
-  if (n.includes('agri')) return '🌾';
-  if (n.includes('financ') || n.includes('tax')) return '💰';
-  if (n.includes('women') || n.includes('child')) return '👩‍👧';
-  if (n.includes('industr') || n.includes('commerce') || n.includes('enterprise')) return '🏭';
-  if (n.includes('information') || n.includes('tech')) return '💻';
-  if (n.includes('touris')) return '🏖️';
-  if (n.includes('water') || n.includes('irrigation')) return '💧';
-  if (n.includes('transport') || n.includes('road')) return '🛣️';
-  if (n.includes('urban') || n.includes('municipal')) return '🏙️';
-  if (n.includes('rural') || n.includes('panchayat')) return '🏡';
-  if (n.includes('police') || n.includes('home') || n.includes('law')) return '👮';
-  if (n.includes('power') || n.includes('energy')) return '⚡';
-  if (n.includes('forest') || n.includes('environment')) return '🌲';
-  if (n.includes('food') || n.includes('civil supplies')) return '🍚';
-  if (n.includes('sports') || n.includes('youth')) return '⚽';
-  if (n.includes('labour') || n.includes('employment')) return '👷';
-  if (n.includes('art') || n.includes('culture') || n.includes('library')) return '🎨';
-  if (n.includes('housing')) return '🏠';
-  return '🏢';
-};
+function schemeAmount(item) {
+  if (item.financials.budget2026Thousand != null) return { value: formatThousandAsCrore(item.financials.budget2026Thousand), note: 'Official BE' };
+  if (item.announcedAmountThousand != null) return { value: formatThousandAsCrore(item.announcedAmountThousand), note: 'Announced; not reconciled' };
+  if (item.amountStatus === 'zero') return { value: '₹0', note: 'Zero provision' };
+  if (item.amountStatus === 'token_provision') return { value: 'Token', note: 'Nominal provision' };
+  return { value: 'Not linked', note: labels[item.amountStatus] || 'Not available' };
+}
 
-const getSchemeEmoji = (name, details) => {
-  const text = (name + ' ' + details).toLowerCase();
-  if (text.includes('scholarship') || text.includes('student')) return '🎒';
-  if (text.includes('pension') || text.includes('old age')) return '👵';
-  if (text.includes('loan') || text.includes('credit')) return '💳';
-  if (text.includes('digital') || text.includes('portal') || text.includes('app')) return '📱';
-  if (text.includes('skill') || text.includes('train')) return '🛠️';
-  if (text.includes('health') || text.includes('hospital') || text.includes('medicine')) return '💊';
-  if (text.includes('women') || text.includes('girl')) return '👧';
-  if (text.includes('water') || text.includes('drinking')) return '🚰';
-  if (text.includes('road') || text.includes('highway') || text.includes('bridge') || text.includes('infrastructure')) return '🚧';
-  if (text.includes('farm') || text.includes('crop') || text.includes('seed')) return '🌱';
-  if (text.includes('solar') || text.includes('energy')) return '☀️';
-  if (text.includes('fund') || text.includes('grant') || text.includes('subsidy')) return '💸';
-  return '📋';
-};
+function statusPill(item) {
+  const className = item.matchStatus === 'reviewed' ? 'matched' : item.classification === 'speech_announcement' ? 'announcement' : '';
+  return `<span class="status-pill ${className}">${escapeHtml(labels[item.classification] || item.classification)}</span>`;
+}
 
-// Initialize
-async function init() {
-  try {
-    const [dataRes, chartsDataRes] = await Promise.all([
-      fetch('./data.json'),
-      fetch('./charts_data.json')
-    ]);
-    
-    if (!dataRes.ok) throw new Error('Failed to load data.json');
-    if (!chartsDataRes.ok) throw new Error('Failed to load charts_data.json');
-    
-    globalData = await dataRes.json();
-    chartsData = await chartsDataRes.json();
-    
-    // Sort departments alphabetically, but keep 'Multiple Departments / Uncategorized' at the bottom
-    globalData.departments.sort((a, b) => {
-      if (a.name === 'Multiple Departments / Uncategorized') return 1;
-      if (b.name === 'Multiple Departments / Uncategorized') return -1;
-      return a.name.localeCompare(b.name);
-    });
-    
-    // Flatten schemes and collect tags
-    globalData.departments.forEach((dept, i) => {
-      dept.id = `dept-${i}-${dept.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-      dept.emoji = getDeptEmoji(dept.name);
-      
-      dept.schemes.forEach(scheme => {
-        if (scheme.tags) {
-          scheme.tags.forEach(tag => uniqueTags.add(tag));
-        }
-        scheme.emoji = getSchemeEmoji(scheme.name, scheme.details);
-        allSchemes.push({ ...scheme, departmentName: dept.name, departmentId: dept.id, deptEmoji: dept.emoji });
-      });
-    });
+function renderSchemeResults(filters = readFilters()) {
+  const totalPages = Math.max(1, Math.ceil(state.filtered.length / PAGE_SIZE));
+  state.page = Math.min(state.page, totalPages);
+  const start = (state.page - 1) * PAGE_SIZE;
+  const pageItems = state.filtered.slice(start, start + PAGE_SIZE);
+  el('scheme-results').innerHTML = pageItems.length ? pageItems.map(item => {
+    const amount = schemeAmount(item);
+    return `<tr>
+      <td data-label="Scheme"><button class="scheme-title-button" type="button" data-scheme-id="${item.id}">${escapeHtml(item.title)}</button><span class="subline">${escapeHtml(item.themes.slice(0, 3).join(' · ') || 'No theme assigned')}</span></td>
+      <td data-label="Department">${escapeHtml(item.departmentName)}</td>
+      <td data-label="Record status">${statusPill(item)}</td>
+      <td data-label="Outlay" class="number"><strong>${escapeHtml(amount.value)}</strong><span class="subline">${escapeHtml(amount.note)}</span></td>
+      <td><button class="text-button" type="button" data-scheme-id="${item.id}" aria-label="Open details for ${escapeHtml(item.title)}">Details</button></td>
+    </tr>`;
+  }).join('') : `<tr><td colspan="5"><strong>No records match these filters.</strong><span class="subline">Try removing a filter or searching a broader term.</span></td></tr>`;
+  el('scheme-results').querySelectorAll('[data-scheme-id]').forEach(button => button.addEventListener('click', () => openScheme(button.dataset.schemeId)));
+  el('scheme-count').textContent = integer.format(state.filtered.length);
+  el('page-status').textContent = `Page ${state.page} of ${totalPages}`;
+  el('previous-page').disabled = state.page <= 1;
+  el('next-page').disabled = state.page >= totalPages;
+  const active = [filters.q && `search “${filters.q}”`, filters.department && el('filter-department').selectedOptions[0]?.text, filters.theme, filters.classification && labels[filters.classification], filters.amountStatus && labels[filters.amountStatus]].filter(Boolean);
+  el('active-filter-summary').textContent = active.length ? `Filtered by ${active.join(' · ')}` : 'All catalogue entries';
+}
 
-    setupTheme();
-    setupSidebarToggle();
-    updateStats();
-    setupTagSelector();
-    renderContent(); // Initially render all
-    initCharts();
-    initMap();
-    setupSearch();
-    
-    // Observe statically placed animated elements
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      animationObserver.observe(el);
-    });
+function financeCell(label, value) {
+  return `<div><span>${label}</span><strong>${value == null ? 'Not available' : formatThousandAsCrore(value)}</strong></div>`;
+}
 
-  } catch (error) {
-    console.error('Error loading data:', error);
-    departmentsContainer.innerHTML = '<div style="padding: 2rem; color: red;">Error loading budget data.</div>';
-  }
+function openScheme(id, updateHash = true) {
+  const item = state.schemes.find(scheme => scheme.id === id);
+  if (!item) return;
+  const amount = schemeAmount(item);
+  const sourceMarkup = item.sources.length ? item.sources.map(source => {
+    const record = state.metadata.sources.find(entry => entry.id === source.sourceId);
+    return `<a href="${escapeHtml(record?.url || '#')}" target="_blank" rel="noreferrer">${escapeHtml(record?.title || source.sourceId)}${source.page ? `, p. ${source.page}` : ''} ↗</a>`;
+  }).join('<br>') : 'No exact official row has been reviewed for this entry yet.';
+  el('detail-content').innerHTML = `
+    <p class="eyebrow">${escapeHtml(item.departmentName)}</p><h2 id="detail-title">${escapeHtml(item.title)}</h2>
+    <div class="detail-meta">${statusPill(item)}<span class="status-pill">${escapeHtml(labels[item.amountStatus] || item.amountStatus)}</span>${item.budgetCode ? `<span class="status-pill matched">${escapeHtml(item.budgetCode)}</span>` : ''}</div>
+    <p class="detail-summary">${escapeHtml(item.summary)}</p>
+    <div class="finance-grid">${financeCell('2024-25 actual', item.financials.actual2024Thousand)}${financeCell('2025-26 budget', item.financials.budget2025Thousand)}${financeCell('2025-26 revised', item.financials.revised2025Thousand)}${financeCell('2026-27 budget', item.financials.budget2026Thousand)}</div>
+    <div class="detail-section"><h3>Published / announced amount</h3><p><strong>${escapeHtml(amount.value)}</strong> · ${escapeHtml(amount.note)}${item.announcedOutlayNote ? `<br>${escapeHtml(item.announcedOutlayNote)}` : ''}</p></div>
+    <div class="detail-section"><h3>Themes</h3><p>${escapeHtml(item.themes.join(', ') || 'Not classified')}</p></div>
+    <div class="detail-section"><h3>Source and reconciliation</h3><p>${sourceMarkup}</p></div>`;
+  if (!el('detail-dialog').open) el('detail-dialog').showModal();
+  document.body.classList.add('no-scroll');
+  if (updateHash) history.replaceState(null, '', `${location.pathname}${location.search}#scheme=${id}`);
+}
+
+function closeScheme() {
+  if (el('detail-dialog').open) el('detail-dialog').close();
+  document.body.classList.remove('no-scroll');
+  if (location.hash.startsWith('#scheme=')) history.replaceState(null, '', `${location.pathname}${location.search}`);
+}
+
+function csvFor(items) {
+  const rows = [['id', 'title', 'department', 'record_type', 'match_status', 'amount_status', 'budget_2026_thousand_rupees', 'announced_amount_thousand_rupees', 'budget_code', 'themes', 'source_ids']];
+  items.forEach(item => rows.push([item.id, item.title, item.departmentName, item.classification, item.matchStatus, item.amountStatus, item.financials.budget2026Thousand, item.announcedAmountThousand, item.budgetCode, item.themes.join('|'), item.sources.map(source => source.sourceId).join('|')]));
+  return rows.map(row => row.map(value => {
+    const text = value == null ? '' : String(value);
+    return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+  }).join(',')).join('\n');
+}
+
+function downloadCsv(items, filename) {
+  const url = URL.createObjectURL(new Blob([`\uFEFF${csvFor(items)}`], { type: 'text/csv;charset=utf-8' }));
+  const anchor = document.createElement('a');
+  anchor.href = url; anchor.download = filename; document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
+}
+
+function renderSources() {
+  const primary = state.metadata.sources.filter(source => ['bp-3', 'bp-9', 'bp-31', 'budget-speech-en'].includes(source.id));
+  el('source-list').innerHTML = primary.map(source => `<div class="source-item"><span><strong>${escapeHtml(source.title)}</strong><br>${escapeHtml(source.purpose)}</span><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open ↗</a></div>`).join('');
+  const totals = state.metadata.totals;
+  el('quality-summary').textContent = `${integer.format(totals.legacyCatalogueEntries)} legacy catalogue entries are retained alongside ${integer.format(totals.officialBudgetRows)} extracted BP-3 budget rows. ${integer.format(totals.reconciledLegacyEntries)} legacy entries have a unique exact-title BP-3 match; the remainder stay explicitly labelled. Unreviewed amounts are never presented as official budget estimates.`;
+  el('map-coverage').textContent = `${integer.format(totals.mappedEntries)} of ${integer.format(totals.catalogueEntries)} entries contain a location reference. Coordinates are currently approximate legacy geocoding, not a measure of district allocation.`;
+}
+
+async function loadMap() {
+  if (state.mapLoaded) return;
+  el('load-map').disabled = true;
+  el('load-map').textContent = 'Loading map…';
+  const [{ default: L }] = await Promise.all([import('leaflet'), import('leaflet/dist/leaflet.css')]);
+  await Promise.all([import('leaflet.markercluster'), import('leaflet.markercluster/dist/MarkerCluster.css'), import('leaflet.markercluster/dist/MarkerCluster.Default.css')]);
+  el('budget-map').classList.remove('map-placeholder');
+  el('budget-map').innerHTML = '';
+  const map = L.map('budget-map', { minZoom: 6, maxBounds: [[20.5, 84.5], [28, 90.5]], maxBoundsViscosity: 1 }).setView([23.5, 87.8], 7);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors &copy; CARTO' }).addTo(map);
+  const clusters = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 42 });
+  state.mapData.forEach(item => item.locations.forEach(location => {
+    const marker = L.circleMarker([location.latitude, location.longitude], { radius: 7, color: '#fffdf8', weight: 2, fillColor: '#b84a2b', fillOpacity: .95 });
+    marker.bindPopup(`<strong>${escapeHtml(item.title)}</strong><br>${escapeHtml(item.departmentName)}<br><small>${escapeHtml(location.name)} · approximate location</small>`);
+    clusters.addLayer(marker);
+  }));
+  map.addLayer(clusters);
+  state.mapLoaded = true;
+  el('load-map').textContent = 'Map loaded';
 }
 
 function setupTheme() {
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', currentTheme);
-
-  themeToggle.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    let targetTheme = theme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', targetTheme);
-    localStorage.setItem('theme', targetTheme);
-    
-    if (sdgChartInstance) sdgChartInstance.update();
-    if (deptChartInstance) deptChartInstance.update();
-    if (revenueChartInstance) revenueChartInstance.update();
-    if (expenditureChartInstance) expenditureChartInstance.update();
-    if (departmentOutlayChartInstance) departmentOutlayChartInstance.update();
-    if (wordCloudChartInstance) wordCloudChartInstance.update();
+  const saved = localStorage.getItem('budget-theme');
+  const initial = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = initial;
+  updateThemeButton();
+  el('theme-toggle').addEventListener('click', () => {
+    document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('budget-theme', document.documentElement.dataset.theme);
+    updateThemeButton();
   });
 }
 
-function setupSidebarToggle() {
-  sidebarToggleBtn.addEventListener('click', () => {
-    if (window.innerWidth <= 900) {
-      sidebar.classList.toggle('open');
-    } else {
-      sidebar.classList.toggle('collapsed');
-      mainContent.classList.toggle('expanded');
-      topNav.classList.toggle('expanded');
-    }
-  });
-
-  // Close sidebar on link click (mobile)
-  document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 900) {
-      if (e.target.closest('.nav-item')) {
-        sidebar.classList.remove('open');
-      } else if (!e.target.closest('.sidebar') && !e.target.closest('#sidebar-toggle')) {
-        sidebar.classList.remove('open');
-      }
-    }
-  });
+function updateThemeButton() {
+  const dark = document.documentElement.dataset.theme === 'dark';
+  el('theme-toggle').setAttribute('aria-pressed', String(dark));
+  el('theme-toggle').setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
+  el('theme-toggle').querySelector('.theme-label').textContent = dark ? 'Light' : 'Dark';
 }
 
-function updateStats() {
-  if (chartsData && chartsData.department_outlays) {
-    document.getElementById('stat-depts').textContent = Object.keys(chartsData.department_outlays).length;
-  } else {
-    document.getElementById('stat-depts').textContent = globalData.departments.length;
-  }
-  
-  document.getElementById('stat-schemes').textContent = allSchemes.length;
-  
-  if (globalData.sdgs && globalData.sdgs.length > 0) {
-    const totalSdg = globalData.sdgs.reduce((sum, sdg) => sum + sdg.allocation_crore, 0);
-    document.getElementById('stat-total-sdg').textContent = `₹${Math.round(totalSdg).toLocaleString('en-IN')} Cr`;
-  }
+function bindEvents() {
+  el('department-sort').addEventListener('change', renderDepartments);
+  el('scheme-filters').addEventListener('input', event => { if (event.target.matches('input')) applyFilters(true); });
+  el('scheme-filters').addEventListener('change', event => { if (event.target.matches('select')) applyFilters(true); });
+  el('clear-filters').addEventListener('click', () => { el('scheme-filters').reset(); applyFilters(true); });
+  el('previous-page').addEventListener('click', () => { state.page -= 1; renderSchemeResults(); el('schemes-title').scrollIntoView(); });
+  el('next-page').addEventListener('click', () => { state.page += 1; renderSchemeResults(); el('schemes-title').scrollIntoView(); });
+  el('download-filtered').addEventListener('click', () => downloadCsv(state.filtered, 'west-bengal-budget-filtered.csv'));
+  el('download-all').addEventListener('click', () => downloadCsv(state.schemes, 'west-bengal-budget-schemes.csv'));
+  el('detail-close').addEventListener('click', closeScheme);
+  el('detail-dialog').addEventListener('click', event => { if (event.target === el('detail-dialog')) closeScheme(); });
+  el('detail-dialog').addEventListener('close', () => { document.body.classList.remove('no-scroll'); });
+  el('load-map').addEventListener('click', () => loadMap().catch(error => { console.error(error); el('load-map').disabled = false; el('load-map').textContent = 'Try loading map again'; }));
+  window.addEventListener('hashchange', () => { if (location.hash.startsWith('#scheme=')) openScheme(location.hash.slice(8), false); });
+}
 
-  if (chartsData) {
-    const totalRevEl = document.getElementById('stat-total-revenue');
-    if (totalRevEl && chartsData.total_revenue) {
-      totalRevEl.textContent = `₹${Math.round(chartsData.total_revenue).toLocaleString('en-IN')} Cr`;
-    }
-
-    const totalExpEl = document.getElementById('stat-total-expenditure');
-    if (totalExpEl && chartsData.total_expenditure) {
-      totalExpEl.textContent = `₹${Math.round(chartsData.total_expenditure).toLocaleString('en-IN')} Cr`;
-    }
+async function init() {
+  setupTheme();
+  try {
+    const responses = await Promise.all(['metadata.json', 'departments.json', 'schemes.json', 'map-data.json'].map(file => fetch(`${BASE}${file}`)));
+    if (responses.some(response => !response.ok)) throw new Error('A dashboard data file could not be loaded.');
+    [state.metadata, state.departments, state.schemes, state.mapData] = await Promise.all(responses.map(response => response.json()));
+    renderHeadline(); renderTakeaways();
+    renderBars('receipts-bars', 'receipts-table', state.metadata.receipts, state.metadata.totals.totalReceiptsCrore, true);
+    renderBars('spending-bars', 'spending-table', state.metadata.expenditure, state.metadata.totals.totalExpenditureCrore);
+    renderDepartments(); populateFilters(); applyFilters(); renderSources(); bindEvents();
+    if (location.hash.startsWith('#scheme=')) openScheme(location.hash.slice(8), false);
+  } catch (error) {
+    console.error(error);
+    el('headline-metrics').innerHTML = '<p role="alert">The dashboard data could not be loaded. Please refresh or consult the official publication index.</p>';
   }
 }
 
-function setupTagSelector() {
-  const sortedTags = Array.from(uniqueTags).sort();
-  
-  const renderDropdownList = (query = '') => {
-    tagDropdownList.innerHTML = '';
-    const filtered = sortedTags.filter(t => t.toLowerCase().includes(query.toLowerCase()));
-    
-    if (filtered.length === 0) {
-      tagDropdownList.innerHTML = '<div style="padding: 0.75rem 1.25rem; color: var(--text-tertiary); font-size: 0.875rem;">No tags found</div>';
-      return;
-    }
-    
-    filtered.forEach(tag => {
-      const item = document.createElement('div');
-      item.className = 'dropdown-item' + (activeTags.has(tag) ? ' selected' : '');
-      item.innerHTML = `
-        <span>${tag}</span>
-        ${activeTags.has(tag) ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' : ''}
-      `;
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleTag(tag);
-        // keep dropdown open but re-render list to show checkmark
-        renderDropdownList(tagSearchInput.value);
-      });
-      tagDropdownList.appendChild(item);
-    });
-  };
-
-  const renderActiveChips = () => {
-    activeTagsContainer.innerHTML = '';
-    activeTags.forEach(tag => {
-      const chip = document.createElement('div');
-      chip.className = 'tag-chip';
-      chip.innerHTML = `
-        <span>${tag}</span>
-        <button class="tag-remove" aria-label="Remove tag">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      `;
-      chip.querySelector('.tag-remove').addEventListener('click', () => {
-        toggleTag(tag);
-        renderDropdownList(tagSearchInput.value);
-      });
-      activeTagsContainer.appendChild(chip);
-    });
-    
-    const displaySpan = tagSelectDisplay.querySelector('span');
-    if (activeTags.size > 0) {
-      displaySpan.textContent = `${activeTags.size} tag${activeTags.size > 1 ? 's' : ''} selected...`;
-    } else {
-      displaySpan.textContent = 'Add a filter tag...';
-    }
-  };
-
-  const toggleTag = (tag) => {
-    if (activeTags.has(tag)) {
-      activeTags.delete(tag);
-    } else {
-      activeTags.add(tag);
-    }
-    renderActiveChips();
-    applyFilters();
-  };
-
-  // Event Listeners
-  tagSelectDisplay.addEventListener('click', (e) => {
-    e.stopPropagation();
-    tagSelectWrapper.classList.toggle('open');
-    tagSelectDisplay.classList.toggle('open');
-    if (tagSelectWrapper.classList.contains('open')) {
-      tagSearchInput.focus();
-    }
-  });
-
-  tagSearchInput.addEventListener('input', (e) => {
-    renderDropdownList(e.target.value);
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!tagSelectWrapper.contains(e.target)) {
-      tagSelectWrapper.classList.remove('open');
-      tagSelectDisplay.classList.remove('open');
-    }
-  });
-
-  // Initial render
-  renderDropdownList();
-  renderActiveChips();
-}
-
-function generateSchemeCard(scheme) {
-  const tagsHtml = scheme.tags && scheme.tags.length > 0 
-    ? `<div class="scheme-tags">${scheme.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>`
-    : '';
-    
-  const outlayHtml = scheme.outlay 
-    ? `<div class="scheme-outlay">${scheme.outlay}</div>`
-    : '';
-    
-  const deptHtml = scheme.departmentName && (!document.getElementById(scheme.departmentId) || document.getElementById(scheme.departmentId).style.display === 'none') 
-    ? `<div class="scheme-dept">${scheme.deptEmoji || 'ðŸ›ï¸'} ${scheme.departmentName}</div>`
-    : `<div class="scheme-dept">Initiative</div>`;
-
-  return `
-    <div class="scheme-card animate-on-scroll">
-      ${deptHtml}
-      <h3 class="scheme-title">${scheme.emoji || 'ðŸ”¸'} ${scheme.name}</h3>
-      ${outlayHtml}
-      <p class="scheme-details">${scheme.details}</p>
-      ${tagsHtml}
-    </div>
-  `;
-}
-
-// Renders the standard scrollable list of departments
-function renderContent(filteredDepartments = globalData.departments) {
-  sidebarNavDepts.innerHTML = '';
-  departmentsContainer.innerHTML = '';
-  
-  scrollObserver.observe(overviewSection);
-
-  let schemeCount = 0;
-  let activeSchemes = [];
-
-  filteredDepartments.forEach(dept => {
-    if (dept.schemes.length === 0) return;
-    schemeCount += dept.schemes.length;
-    activeSchemes = activeSchemes.concat(dept.schemes);
-
-    // Sidebar Link
-    const navItem = document.createElement('a');
-    navItem.href = `#${dept.id}`;
-    navItem.className = 'nav-item';
-    navItem.textContent = `${dept.emoji} ${dept.name}`;
-    sidebarNavDepts.appendChild(navItem);
-
-    // Section
-    const section = document.createElement('section');
-    section.id = dept.id;
-    section.className = 'content-section';
-    
-    section.innerHTML = `
-      <header class="section-header glass-header dept-header animate-on-scroll">
-        <h1>${dept.emoji} ${dept.name}</h1>
-        <p>${dept.schemes.length} Initiative${dept.schemes.length !== 1 ? 's' : ''}</p>
-      </header>
-      <div class="schemes-grid">
-        ${dept.schemes.map(scheme => generateSchemeCard(scheme)).join('')}
-      </div>
-    `;
-    
-    departmentsContainer.appendChild(section);
-    scrollObserver.observe(section);
-  });
-  
-  if (filteredDepartments.length === 0) {
-      departmentsContainer.innerHTML = `
-        <div class="empty-state" style="text-align: center; padding: 5rem 2rem; animation: fadeIn 0.4s ease-out;">
-           <div style="color: var(--primary-color-light); margin-bottom: 1.5rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-           </div>
-           <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">No initiatives found</h3>
-           <p style="color: var(--text-tertiary); max-width: 400px; margin: 0 auto 2rem auto; line-height: 1.5;">We couldn't find any schemes matching your selected tags.</p>
-           <button onclick="window.location.reload()" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='var(--shadow-sm)';">Clear All Filters</button>
-        </div>
-      `;
-  }
-
-  const resultsCountNum = document.getElementById('results-count-num');
-  if (resultsCountNum) {
-      resultsCountNum.textContent = schemeCount;
-  }
-
-  // After adding dynamic content, tell the animation observer to watch them
-  document.querySelectorAll('#departments-container .animate-on-scroll').forEach(el => {
-    animationObserver.observe(el);
-  });
-    updateMap(activeSchemes);
-}
-
-function applyFilters() {
-  if (currentSearchQuery.length >= 2) {
-    performSearch(currentSearchQuery);
-    return;
-  }
-  
-  if (activeTags.size === 0) {
-    renderContent(globalData.departments);
-    return;
-  }
-
-  const filteredDepartments = [];
-  globalData.departments.forEach(dept => {
-    const filteredSchemes = dept.schemes.filter(scheme => {
-      if (!scheme.tags) return false;
-      return scheme.tags.some(tag => activeTags.has(tag));
-    });
-
-    if (filteredSchemes.length > 0) {
-      filteredDepartments.push({
-        ...dept,
-        schemes: filteredSchemes
-      });
-    }
-  });
-
-  renderContent(filteredDepartments);
-}
-
-function performSearch(query) {
-  if (query.length < 2) {
-    searchResultsSection.style.display = 'none';
-    overviewSection.style.display = 'block';
-    departmentsContainer.style.display = 'block';
-    applyFilters(); 
-    return;
-  }
-
-  const filteredSchemes = allSchemes.filter(scheme => {
-    const matchName = scheme.name.toLowerCase().includes(query);
-    const matchDetails = scheme.details.toLowerCase().includes(query);
-    const matchText = matchName || matchDetails || scheme.departmentName.toLowerCase().includes(query);
-    
-    if (activeTags.size > 0) {
-        const hasTag = scheme.tags && scheme.tags.some(tag => activeTags.has(tag));
-        return matchText && hasTag;
-    }
-    
-    return matchText;
-  });
-
-  updateMap(filteredSchemes);
-
-  overviewSection.style.display = 'none';
-  departmentsContainer.style.display = 'none';
-  searchResultsSection.style.display = 'block';
-  
-  searchTitle.textContent = `Search Results (${filteredSchemes.length})`;
-  document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-
-  if (filteredSchemes.length === 0) {
-      searchSchemesContainer.innerHTML = `
-        <div class="empty-state" style="text-align: center; padding: 5rem 2rem; animation: fadeIn 0.4s ease-out;">
-           <div style="color: var(--primary-color-light); margin-bottom: 1.5rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-           </div>
-           <h3 style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 1.5rem;">No initiatives found</h3>
-           <p style="color: var(--text-tertiary); max-width: 400px; margin: 0 auto 2rem auto; line-height: 1.5;">We couldn't find any schemes matching your search query.</p>
-           <button onclick="window.clearSearch()" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='var(--shadow-sm)';">Clear Search</button>
-        </div>
-      `;
-  } else {
-      searchSchemesContainer.innerHTML = filteredSchemes.map(s => {
-        const searchScheme = {...s, departmentId: null}; 
-        return generateSchemeCard(searchScheme);
-      }).join('');
-      
-      // Observe new cards in search results
-      document.querySelectorAll('#search-schemes-container .animate-on-scroll').forEach(el => {
-        animationObserver.observe(el);
-      });
-  }
-}
-
-function setupSearch() {
-  globalSearchInput.addEventListener('input', (e) => {
-    currentSearchQuery = e.target.value.toLowerCase().trim();
-    performSearch(currentSearchQuery);
-  });
-}
-
-// Attach a global helper for the clear button empty state
-window.clearSearch = function() {
-  const input = document.getElementById('global-search');
-  if (input) {
-    input.value = '';
-  }
-  currentSearchQuery = '';
-  performSearch('');
-};
-
-function initCharts() {
-  const getTextColor = () => document.documentElement.getAttribute('data-theme') === 'dark' ? '#e6edf3' : '#4b5563';
-  const getGridColor = () => document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
-
-  Chart.defaults.color = getTextColor();
-  Chart.defaults.font.family = "'Inter', sans-serif";
-
-  const sdgCtx = document.getElementById('sdgChart');
-  if (sdgCtx && globalData.sdgs.length > 0) {
-    const labels = globalData.sdgs.map(s => s.id);
-    const data = globalData.sdgs.map(s => s.allocation_crore);
-
-    sdgChartInstance = new Chart(sdgCtx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Allocation (Crore ₹)',
-          data: data,
-          backgroundColor: '#f28500',
-          hoverBackgroundColor: '#db7700',
-          borderRadius: 8,
-          borderWidth: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            titleFont: { size: 14, family: 'Outfit' },
-            padding: 12,
-            cornerRadius: 8,
-            callbacks: {
-              title: (context) => globalData.sdgs[context[0].dataIndex].name,
-              label: (context) => `₹${context.raw.toLocaleString('en-IN')} Crore`
-            }
-          }
-        },
-        scales: {
-          y: {
-            grid: { color: getGridColor, drawBorder: false },
-            ticks: { color: getTextColor, callback: (value) => value / 1000 + 'k' }
-          },
-          x: {
-            grid: { display: false, drawBorder: false },
-            ticks: { color: getTextColor, maxRotation: 45, minRotation: 45 }
-          }
-        }
-      }
-    });
-  }
-
-  const deptCtx = document.getElementById('deptChart');
-  if (deptCtx && globalData.departments.length > 0) {
-    const sorted = [...globalData.departments]
-      .filter(d => d.schemes.length > 0)
-      .sort((a, b) => b.schemes.length - a.schemes.length)
-      .slice(0, 10);
-      
-    const labels = sorted.map(d => d.name.length > 25 ? d.name.substring(0, 22) + '...' : d.name);
-    const data = sorted.map(d => d.schemes.length);
-
-    deptChartInstance = new Chart(deptCtx, {
-      type: 'doughnut',
-      data: {
-        labels: labels,
-        datasets: [{
-          data: data,
-          backgroundColor: [
-            '#ff9933', '#f28500', '#e67300', '#d96200', '#cc5200', 
-            '#bf4100', '#b33000', '#a62000', '#991000', '#8c0000'
-          ],
-          borderWidth: 2,
-          borderColor: () => document.documentElement.getAttribute('data-theme') === 'dark' ? '#161b22' : '#ffffff',
-          hoverOffset: 4
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '75%',
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            padding: 12,
-            cornerRadius: 8,
-            callbacks: {
-              label: (context) => ` ${context.raw} Schemes`
-            }
-          }
-        }
-      }
-    });
-  }
-
-  // --- NEW CHARTS: MACRO BUDGET OVERVIEW ---
-
-  if (chartsData) {
-    const revCtx = document.getElementById('revenueChart');
-    if (revCtx) {
-      const revLabels = [];
-      const revData = [];
-      Object.entries(chartsData.state_tax_breakdown).forEach(([k,v]) => { revLabels.push(k); revData.push(v); });
-      Object.entries(chartsData.central_tax_breakdown).forEach(([k,v]) => { revLabels.push(k); revData.push(v); });
-      Object.entries(chartsData.non_tax_breakdown).forEach(([k,v]) => { revLabels.push(k); revData.push(v); });
-      revLabels.push('Grants-in-Aid (Centre)', 'Public Debt (Borrowings)', 'Loan Recoveries');
-      revData.push(
-        chartsData.revenue_sources['Grants-in-Aid (Centre)'], 
-        chartsData.revenue_sources['Public Debt (Borrowings)'], 
-        chartsData.revenue_sources['Loan Recoveries']
-      );
-      const revBgColors = [
-              '#e65100', '#ef6c00', '#f57c00', '#fb8c00', '#ff9800', '#ffa726', '#ffb74d', '#ffcc80',
-              '#1565c0', '#1976d2', '#1e88e5', '#2196f3', '#42a5f5', '#64b5f6', '#90caf9', '#bbdefb',
-              '#2e7d32', '#388e3c', '#43a047', '#4caf50', '#66bb6a', '#81c784', '#a5d6a7', '#c8e6c9'
-            ];
-
-      revenueChartInstance = new Chart(revCtx, {
-        type: 'pie',
-        data: {
-          labels: revLabels,
-          datasets: [{
-            data: revData,
-            backgroundColor: revBgColors,
-            borderWidth: 2,
-            borderColor: () => document.documentElement.getAttribute('data-theme') === 'dark' ? '#161b22' : '#ffffff',
-            hoverOffset: 6
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: (context) => ' ₹' + context.raw.toLocaleString('en-IN') + ' Cr'
-              }
-            }
-          }
-        }
-      });
-      buildCustomLegend(revenueChartInstance, revLabels, revData, revBgColors, 'customRevLegend');
-    }
-
-    const expCtx = document.getElementById('expenditureChart');
-    if (expCtx) {
-      const expLabels = Object.keys(chartsData.expenditure_breakdown);
-      const expData = Object.values(chartsData.expenditure_breakdown);
-      const expBgColors = ['#d32f2f', '#1976d2', '#388e3c', '#fbc02d', '#7b1fa2'];
-      expenditureChartInstance = new Chart(expCtx, {
-        type: 'pie',
-        data: {
-          labels: expLabels,
-          datasets: [{
-            data: expData,
-            backgroundColor: expBgColors,
-            borderWidth: 2,
-            borderColor: () => document.documentElement.getAttribute('data-theme') === 'dark' ? '#161b22' : '#ffffff',
-            hoverOffset: 6
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: (context) => ' ₹' + context.raw.toLocaleString('en-IN') + ' Cr'
-              }
-            }
-          }
-        }
-      });
-      buildCustomLegend(expenditureChartInstance, expLabels, expData, expBgColors, 'customExpLegend');
-    }
-
-    const deptOutlayCtx = document.getElementById('departmentOutlayChart');
-    if (deptOutlayCtx) {
-      const sortedOutlays = Object.entries(chartsData.department_outlays);
-      const labels = sortedOutlays.map(d => d[0].length > 25 ? d[0].substring(0, 25) + '...' : d[0]);
-      const data = sortedOutlays.map(d => d[1]);
-      const backgroundColors = [
-              '#e65100', '#ef6c00', '#f57c00', '#fb8c00', '#ff9800', '#ffa726', '#ffb74d', '#ffcc80',
-              '#1565c0', '#1976d2', '#1e88e5', '#2196f3', '#42a5f5', '#64b5f6', '#90caf9', '#bbdefb',
-              '#2e7d32', '#388e3c', '#43a047', '#4caf50', '#66bb6a', '#81c784', '#a5d6a7', '#c8e6c9',
-              '#c62828', '#d32f2f', '#e53935', '#f44336', '#ef5350', '#e57373', '#ef9a9a', '#ffcdd2',
-              '#6a1b9a', '#7b1fa2', '#8e24aa', '#9c27b0', '#ab47bc', '#ba68c8', '#ce93d8', '#e1bee7',
-              '#00695c', '#00796b', '#00897b', '#009688', '#26a69a', '#4db6ac', '#80cbc4', '#b2dfdb',
-              '#f9a825', '#fbc02d', '#fdd835', '#ffeb3b', '#ffee58', '#fff176', '#fff59d', '#fff9c4'
-      ];
-      
-      departmentOutlayChartInstance = new Chart(deptOutlayCtx, {
-        type: 'pie',
-        data: {
-          labels: labels,
-          datasets: [{
-            data: data,
-            backgroundColor: backgroundColors,
-            borderWidth: 1,
-            borderColor: () => document.documentElement.getAttribute('data-theme') === 'dark' ? '#161b22' : '#ffffff',
-            hoverOffset: 6
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                title: (context) => sortedOutlays[context[0].dataIndex][0],
-                label: (context) => {
-                  const val = context.raw;
-                  const total = data.reduce((a, b) => a + b, 0);
-                  const percentage = ((val / total) * 100).toFixed(2);
-                  return ' ₹' + val.toLocaleString('en-IN') + ' Cr (' + percentage + '%)';
-                }
-              }
-            }
-          }
-        }
-      });
-
-      buildCustomLegend(departmentOutlayChartInstance, labels, data, backgroundColors, 'customDeptLegend');
-    }
-  }
-}
-
-function buildCustomLegend(chartInstance, labels, data, backgroundColors, containerId) {
-  const legendContainer = document.getElementById(containerId);
-  if (!legendContainer) return;
-  legendContainer.innerHTML = '';
-  labels.forEach((label, index) => {
-    const item = document.createElement('div');
-    item.className = 'legend-item';
-    
-    const colorBox = document.createElement('div');
-    colorBox.className = 'legend-color-box';
-    colorBox.style.backgroundColor = backgroundColors[index % backgroundColors.length];
-    
-    const textNode = document.createElement('div');
-    textNode.className = 'legend-label';
-    textNode.title = label;
-    textNode.textContent = label;
-    
-    const valueNode = document.createElement('div');
-    valueNode.className = 'legend-value';
-    const percentage = ((data[index] / data.reduce((a, b) => a + b, 0)) * 100).toFixed(2);
-    valueNode.textContent = percentage + '%';
-
-    item.appendChild(colorBox);
-    item.appendChild(textNode);
-    item.appendChild(valueNode);
-    
-    item.addEventListener('click', () => {
-      const meta = chartInstance.getDatasetMeta(0);
-      const isHidden = meta.data[index].hidden;
-      meta.data[index].hidden = !isHidden;
-      item.classList.toggle('hidden', !isHidden);
-      chartInstance.update();
-    });
-    
-    item.addEventListener('mouseenter', () => {
-      chartInstance.setActiveElements([{ datasetIndex: 0, index: index }]);
-      chartInstance.tooltip.setActiveElements([{ datasetIndex: 0, index: index }]);
-      chartInstance.update();
-    });
-    
-    item.addEventListener('mouseleave', () => {
-      chartInstance.setActiveElements([]);
-      chartInstance.tooltip.setActiveElements([]);
-      chartInstance.update();
-    });
-
-    legendContainer.appendChild(item);
-  });
-
-  // Init Word Cloud Chart
-  const wordCloudCtx = document.getElementById('wordCloudChart');
-  if (wordCloudCtx && allSchemes.length > 0) {
-    const stopWords = new Set(["the", "and", "of", "to", "in", "for", "a", "on", "with", "as", "by", "is", "at", "an", "from", "this", "under", "will", "be", "it", "are", "that", "which", "scheme", "west", "state", "government", "has", "been", "have", "their", "all", "its", "other", "any", "not", "new", "through", "provided", "development", "crore", "lakh", "rs", "per", "assistance", "financial", "scheme", "schemes", "initiative", "initiatives", "programme", "programmes", "project", "projects", "department", "departments", "fund", "funds", "budget", "plan", "plans", "focusing", "ensuring", "effective", "providing", "promoting", "improving", "supporting", "strengthening", "developing", "creating", "building", "various", "activities", "system", "management", "related", "implementation", "support", "provide", "improve", "promote", "ensure", "focus", "develop", "create", "build", "strengthen", "activity", "systems", "towards", "among", "including", "also", "into", "about", "such", "than", "between", "these", "those", "can", "could", "would", "should", "strategic", "designated", "aimed", "aims", "provisions", "provision", "dedicated", "operational", "comprehensive", "public", "delivery", "deliveries"]);
-    const wordCounts = {};
-
-    allSchemes.forEach(s => {
-      const text = (s.name + ' ' + s.details).toLowerCase();
-      const words = text.match(/\b[a-z]{3,}\b/g) || []; // minimum 3 letters
-      words.forEach(w => {
-        if (!stopWords.has(w)) {
-          wordCounts[w] = (wordCounts[w] || 0) + 1;
-        }
-      });
-    });
-
-    const sortedWords = Object.entries(wordCounts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 150);
-
-    const maxFreq = Math.max(...sortedWords.map(w => w[1]));
-    const labels = sortedWords.map(w => w[0]);
-    const data = sortedWords.map(w => {
-      // Normalizing frequencies: max font size ~40px, min font size ~10px
-      return 10 + (Math.pow(w[1] / maxFreq, 0.6) * 30);
-    });
-
-    if (wordCloudChartInstance) wordCloudChartInstance.destroy();
-
-    wordCloudChartInstance = new Chart(wordCloudCtx, {
-      type: 'wordCloud',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Weight',
-          data: data,
-          color: (ctx) => {
-            const index = ctx.dataIndex;
-            const rank = index / data.length;
-            if (rank < 0.1) return '#f28500'; // primary saffron
-            if (rank < 0.3) return '#ff9933'; // lighter saffron
-            if (rank < 0.6) return document.documentElement.getAttribute('data-theme') === 'dark' ? '#9ca3af' : '#4b5563'; // secondary
-            return document.documentElement.getAttribute('data-theme') === 'dark' ? '#4b5563' : '#9ca3af'; // tertiary
-          }
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        layout: {
-          padding: 30
-        },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: (context) => `Frequency weight: ${Math.round(context.raw)}`
-            }
-          }
-        }
-      }
-    });
-
-    const excludedWordsList = document.getElementById('excluded-words-list');
-    if (excludedWordsList) {
-      excludedWordsList.innerHTML = '';
-      Array.from(stopWords).sort().forEach(word => {
-        const span = document.createElement('span');
-        span.className = 'excluded-word-tag';
-        span.textContent = word;
-        excludedWordsList.appendChild(span);
-      });
-    }
-  }
-}
-
-const originalUpdate = Chart.prototype.update;
-Chart.prototype.update = function(mode) {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  const textColor = isDark ? '#e6edf3' : '#4b5563';
-  const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
-  const borderColor = isDark ? '#161b22' : '#ffffff';
-  
-  if (this.options.scales && this.options.scales.y) {
-    this.options.scales.y.grid.color = gridColor;
-    this.options.scales.y.ticks.color = textColor;
-  }
-  if (this.options.scales && this.options.scales.x) {
-    this.options.scales.x.ticks.color = textColor;
-  }
-  
-  if (this.config.type === 'doughnut' || this.config.type === 'pie') {
-    this.data.datasets[0].borderColor = borderColor;
-  }
-  
-  if (this.options.plugins && this.options.plugins.legend && this.options.plugins.legend.labels) {
-    this.options.plugins.legend.labels.color = textColor;
-  }
-
-  originalUpdate.call(this, mode);
-};
-
-// Back to top logic
-const backToTopBtn = document.getElementById('back-to-top');
-if (backToTopBtn) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      backToTopBtn.classList.add('visible');
-    } else {
-      backToTopBtn.classList.remove('visible');
-    }
-  });
-
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-document.addEventListener('DOMContentLoaded', init);
-
-function initMap() {
-  const mapContainer = document.getElementById('budget-map');
-  if (!mapContainer) return;
-  const wbBounds = L.latLngBounds(
-      L.latLng(20.5, 84.5), // South-West
-      L.latLng(28.0, 90.5)  // North-East
-    );
-    budgetMap = L.map('budget-map', {
-      maxBounds: wbBounds,
-      maxBoundsViscosity: 1.0,
-      minZoom: 6
-    }).setView([23.5, 87.8], 7);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
-  }).addTo(budgetMap);
-  updateMap(allSchemes);
-}
-
-function updateMap(schemesToRender) {
-  if (!budgetMap) return;
-  
-  if (markerClusterGroup) {
-    budgetMap.removeLayer(markerClusterGroup);
-  }
-  markerClusterGroup = L.markerClusterGroup({
-    spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false,
-    zoomToBoundsOnClick: true,
-    maxClusterRadius: 40
-  });
-  
-  mapMarkers = [];
-
-  const geoSchemes = schemesToRender.filter(s => s.locations && s.locations.length > 0);
-  if (geoSchemes.length === 0) return;
-
-  geoSchemes.forEach(s => {
-    const emoji = getSchemeEmoji(s.name, s.details);
-    const customIcon = L.divIcon({
-      html: `<div style="font-size: 24px; text-align: center; line-height: 1.2; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">${emoji}</div>`,
-      className: 'custom-emoji-marker',
-      iconSize: [30, 30],
-      iconAnchor: [15, 15],
-      popupAnchor: [0, -15]
-    });
-    
-    s.locations.forEach(loc => {
-      const marker = L.marker([loc.lat, loc.lng], { icon: customIcon });
-      marker.bindPopup("<h4>" + s.name + "</h4><p><strong>" + s.departmentName + ":</strong> " + (s.outlay || 'N/A') + "</p><p>Location: " + loc.name + "</p>");
-      markerClusterGroup.addLayer(marker);
-      mapMarkers.push(marker);
-    });
-  });
-  
-  budgetMap.addLayer(markerClusterGroup);
-}
+init();
