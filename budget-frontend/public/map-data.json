@@ -1,875 +1,305 @@
 [
   {
-    "schemeId": "scheme-4-9f5459ef",
-    "title": "Modernisation of Police Force",
-    "departmentName": "Home and Hill Affairs",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kolkata",
-        "latitude": 22.566359385547894,
-        "longitude": 88.37569295909942,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-23-0931ffc7",
-    "title": "Development of Hill Areas",
-    "departmentName": "Home and Hill Affairs",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Darjeeling",
-        "latitude": 27.04407328896173,
-        "longitude": 88.24555141542447,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-38-43153d0e",
-    "title": "Security Related Expenditure in Naxal Affected Districts",
-    "departmentName": "Home and Hill Affairs",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Purulia",
-        "latitude": 23.3516939749052,
-        "longitude": 86.3771834808567,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Bankura",
-        "latitude": 23.233058235903158,
-        "longitude": 87.05832724379704,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Medinipur",
-        "latitude": 22.403512001574878,
-        "longitude": 87.30059272395047,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Purba Medinipur",
-        "latitude": 22.025908456402888,
-        "longitude": 87.7187161186868,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-2-8c8c4297",
-    "title": "Civil Services Welfare",
-    "departmentName": "Personnel & Administrative Reforms",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kolkata",
-        "latitude": 22.55049189622797,
-        "longitude": 88.3885065072042,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-2-913eb3de",
-    "title": "Siliguri IT Park",
-    "departmentName": "Information Technology & Electronics",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 260000,
-    "locations": [
-      {
-        "name": "Siliguri",
-        "latitude": 26.740865997935245,
-        "longitude": 88.41841130049231,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-1-79c382cb",
-    "title": "Liquor Shop Restrictions",
-    "departmentName": "Finance",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kolkata",
-        "latitude": 22.593211517728765,
-        "longitude": 88.37524664206292,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-3-25702e3c",
-    "title": "PM National Mission on Natural Farming & DDKY",
-    "departmentName": "Agriculture",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Darjeeling",
-        "latitude": 27.05812017963221,
-        "longitude": 88.26075683393003,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Alipurduar",
-        "latitude": 26.469092923618057,
-        "longitude": 89.53571214260178,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Purulia",
-        "latitude": 23.30990542173352,
-        "longitude": 86.37097234791288,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Jhargram",
-        "latitude": 22.462195343890137,
-        "longitude": 87.01212648546691,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-4-01b6acf8",
-    "title": "Precision Agriculture",
-    "departmentName": "Agriculture",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kharagpur",
-        "latitude": 22.306310466845748,
-        "longitude": 87.3377054172102,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-1-0b655f6b",
-    "title": "Floriculture Clusters & Kolaghat Market Hub",
-    "departmentName": "Food Processing Industries and Horticulture",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Howrah",
-        "latitude": 22.610981327230014,
-        "longitude": 88.27839213688753,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Medinipur",
-        "latitude": 22.44400291067489,
-        "longitude": 87.31958577040747,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Nadia",
-        "latitude": 23.464515097984975,
-        "longitude": 88.57756229544493,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Kolaghat",
-        "latitude": 22.416237901987465,
-        "longitude": 87.85150165531957,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Purba Medinipur",
-        "latitude": 22.006323219628968,
-        "longitude": 87.71866647620469,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-1-0a6c58bd",
-    "title": "Flagship Central Schemes Onboarding",
-    "departmentName": "Industry Commerce and Enterprises",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Durgapur",
-        "latitude": 23.53203619607505,
-        "longitude": 87.31638626281024,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-4-f2ad627c",
-    "title": "Tea Industry Revitalization",
-    "departmentName": "Industry Commerce and Enterprises",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 1000000,
-    "locations": [
-      {
-        "name": "Siliguri",
-        "latitude": 26.714831304305346,
-        "longitude": 88.39473670432066,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-6-ecf975d0",
-    "title": "Siliguri Logistics and Trade Hub",
-    "departmentName": "Industry Commerce and Enterprises",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 2000000,
-    "locations": [
-      {
-        "name": "Siliguri",
-        "latitude": 26.748688193316216,
-        "longitude": 88.38026012467469,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-7-d23ca9f2",
-    "title": "Semiconductor Unit & Defence Hub",
-    "departmentName": "Industry Commerce and Enterprises",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Durgapur",
-        "latitude": 23.519674585401848,
-        "longitude": 87.29805948836277,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Bankura",
-        "latitude": 23.21389456018977,
-        "longitude": 87.06042726383686,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Birbhum",
-        "latitude": 23.89101545307033,
-        "longitude": 87.53852819423864,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-10-a5c26783",
-    "title": "Listing SPSUs & Calcutta Stock Exchange Revival",
-    "departmentName": "Industry Commerce and Enterprises",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kolkata",
-        "latitude": 22.579329817594388,
-        "longitude": 88.3611530686511,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-1-05ae048e",
-    "title": "Mangrove Afforestation",
-    "departmentName": "Environment",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 500000,
-    "locations": [
-      {
-        "name": "Sundarbans",
-        "latitude": 21.94265941312819,
-        "longitude": 89.20789473516652,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-4-740d51b1",
-    "title": "Turga Pump Storage Projects (1000 MW)",
-    "departmentName": "Power",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 11300000,
-    "locations": [
-      {
-        "name": "Purulia",
-        "latitude": 23.350117384273197,
-        "longitude": 86.36885823950442,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-7-803c389b",
-    "title": "Goaltore Solar Power Project",
-    "departmentName": "Power",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 1500000,
-    "locations": [
-      {
-        "name": "Medinipur",
-        "latitude": 22.426170656051664,
-        "longitude": 87.30552322666509,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Paschim Medinipur",
-        "latitude": 22.433959356583426,
-        "longitude": 87.31941257418652,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-8-f4507ef7",
-    "title": "Deucha Pachami Coal Block Ancillary Works",
-    "departmentName": "Power",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Deocha Pachami Coal Block",
-        "latitude": 24.03710925474591,
-        "longitude": 87.56293584550166,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-1-b7388c3d",
-    "title": "New Super Specialty Hospitals & Upgrades",
-    "departmentName": "Health & Family Welfare",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Darjeeling",
-        "latitude": 27.01786868831157,
-        "longitude": 88.24724398445802,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Purulia",
-        "latitude": 23.318757330240665,
-        "longitude": 86.37992885984569,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Sundarbans",
-        "latitude": 21.934151984383114,
-        "longitude": 89.16510367237449,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-3-eadcb52d",
-    "title": "New Medical Colleges & Seats",
-    "departmentName": "Health & Family Welfare",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Alipurduar",
-        "latitude": 26.51657358534001,
-        "longitude": 89.50284776932224,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Kalimpong",
-        "latitude": 27.043048680552566,
-        "longitude": 88.46994853496001,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Dakshin Dinajpur",
-        "latitude": 25.27204382000719,
-        "longitude": 88.77285564040152,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Bardhaman",
-        "latitude": 23.221322278479597,
-        "longitude": 87.8505572181421,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-1-1c93b8ef",
-    "title": "Upper & Lower Sundarban Delta Projects",
-    "departmentName": "Irrigation & Waterways",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Sundarbans",
-        "latitude": 21.93662184830389,
-        "longitude": 89.17165867789079,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-2-7496bb93",
-    "title": "Flood Management Programme & Protection Projects",
-    "departmentName": "Irrigation & Waterways",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Malda",
-        "latitude": 25.0317381316406,
-        "longitude": 88.13549700720841,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Murshidabad",
-        "latitude": 24.193401999856214,
-        "longitude": 88.29314795555361,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Nadia",
-        "latitude": 23.495065344801237,
-        "longitude": 88.54577064799764,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Sundarbans",
-        "latitude": 21.927395511279617,
-        "longitude": 89.16409246490868,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-5-3ad810b2",
-    "title": "Spring Rejuvenation",
-    "departmentName": "Irrigation & Waterways",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 500000,
-    "locations": [
-      {
-        "name": "Darjeeling",
-        "latitude": 27.026656852437153,
-        "longitude": 88.25718325189459,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Kalimpong",
-        "latitude": 27.069354534964884,
-        "longitude": 88.47854597821546,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-7-9ac44082",
-    "title": "Targeted Water Supply Schemes",
-    "departmentName": "Irrigation & Waterways",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Malda",
-        "latitude": 24.98879488352488,
-        "longitude": 88.16405441228228,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Bolpur",
-        "latitude": 23.656793255908383,
-        "longitude": 87.69851336848832,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Raghunathpur",
-        "latitude": 23.54770251663592,
-        "longitude": 86.65774915893874,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-14-7a6d50f7",
-    "title": "Medium Irrigation Schemes",
-    "departmentName": "Irrigation & Waterways",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Purulia",
-        "latitude": 23.338640947435806,
-        "longitude": 86.34985932067643,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Medinipur",
-        "latitude": 22.41625437252946,
-        "longitude": 87.32905229461429,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-6-907f752d",
-    "title": "Development of State Transport Corporations",
-    "departmentName": "Transport",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kolkata",
-        "latitude": 22.55011501751958,
-        "longitude": 88.35924129976407,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-4-b7ecc6f4",
-    "title": "Eco-Adventure & Heritage Tourism",
-    "departmentName": "Tourism",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Darjeeling",
-        "latitude": 27.05902882981822,
-        "longitude": 88.26222519922374,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Sundarbans",
-        "latitude": 21.937671919519577,
-        "longitude": 89.18047717377404,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-5-cee61def",
-    "title": "Purulia Integrated Tourism Circuit",
-    "departmentName": "Tourism",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Purulia",
-        "latitude": 23.337232327453027,
-        "longitude": 86.36951135587015,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-6-181cdf08",
-    "title": "Girls Hostels and Women's Colleges",
-    "departmentName": "Higher Education",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Sagar Island",
-        "latitude": 21.727516461867282,
-        "longitude": 88.11894262628707,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-0-36db167e",
-    "title": "Tribal University in Jhargram",
-    "departmentName": "Tribal Development",
-    "amountStatus": "stated",
-    "announcedAmountThousand": 1500000,
-    "locations": [
-      {
-        "name": "Jhargram",
-        "latitude": 22.45457517801058,
-        "longitude": 86.99293018221186,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-2-dc9d28e1",
-    "title": "Tribal Livelihood Schemes",
-    "departmentName": "Tribal Development",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Jhargram",
-        "latitude": 22.43092612614766,
-        "longitude": 86.98543713182197,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-6-888ee2d5",
-    "title": "24x7 Economy / Shops and Establishments Act Amendment",
-    "departmentName": "Labour",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kolkata",
-        "latitude": 22.560755090945264,
-        "longitude": 88.35805737062987,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
     "schemeId": "scheme-0-d00843e2",
     "title": "Major Road Corridors and Bridges",
+    "departmentId": "dept-public-works",
     "departmentName": "Public Works",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
     "locations": [
       {
-        "name": "Dankuni (Corridor Start)",
+        "id": "loc-major-roads-dankuni",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "Dankuni",
+        "administrativeLevel": "locality",
         "latitude": 22.6738,
         "longitude": 88.2913,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 21,
+          "locator": "35 km road corridor between Dankuni Junction and Mogra"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Mogra (Corridor End)",
+        "id": "loc-major-roads-mogra",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "Mogra",
+        "administrativeLevel": "locality",
         "latitude": 22.9784,
         "longitude": 88.3756,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 21,
+          "locator": "35 km road corridor between Dankuni Junction and Mogra"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Mayurakshi Bridge (NH14)",
+        "id": "loc-major-roads-mayurakshi",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "Mayurakshi bridge, NH14",
+        "administrativeLevel": "site",
         "latitude": 23.91,
         "longitude": 87.52,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "exact_site",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 21,
+          "locator": "new four-lane bridge over the Mayurakshi on NH14 in Birbhum"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed bridge reference point",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "New Town Elevated Corridor",
+        "id": "loc-major-roads-new-town",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "New Town elevated corridor",
+        "administrativeLevel": "site",
         "latitude": 22.5833,
         "longitude": 88.4667,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "exact_site",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 21,
+          "locator": "Chingrighata-New Town elevated corridor linking EM Bypass to Salt Lake Sector V"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed corridor reference point",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Bhagirathi Major Bridge (Kalna Side)",
+        "id": "loc-major-roads-kalna",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "Kalna",
+        "administrativeLevel": "locality",
         "latitude": 23.21,
         "longitude": 88.36,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 20,
+          "locator": "Bhagirathi Major Bridge connecting Kalna and Santipur"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Bhagirathi Major Bridge (Santipur Side)",
+        "id": "loc-major-roads-santipur",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "Santipur",
+        "administrativeLevel": "locality",
         "latitude": 23.23,
         "longitude": 88.42,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 20,
+          "locator": "Bhagirathi Major Bridge connecting Kalna and Santipur"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Muriganga Bridge (Sagar Island)",
+        "id": "loc-major-roads-sagar",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "Sagar Island",
+        "administrativeLevel": "locality",
         "latitude": 21.84,
         "longitude": 88.16,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 25,
+          "locator": "Muriganga Bridge to improve connectivity to Sagar Island"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Nandigram to Haldia Bridge",
-        "latitude": 21.99,
-        "longitude": 87.97,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "id": "loc-major-roads-nandigram-haldia",
+        "schemeId": "scheme-0-d00843e2",
+        "name": "Nandigram-Haldia bridge",
+        "administrativeLevel": "site",
+        "latitude": 22.01,
+        "longitude": 88,
+        "precision": "exact_site",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 26,
+          "locator": "all-weather bridge between Nandigram and Haldia"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed midpoint reference",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       }
     ]
   },
   {
     "schemeId": "scheme-1-e0085565",
     "title": "Rail, Water & Air Connectivity",
+    "departmentId": "dept-public-works",
     "departmentName": "Public Works",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
     "locations": [
       {
-        "name": "Minor Port (Kulpi)",
+        "id": "loc-connectivity-kulpi",
+        "schemeId": "scheme-1-e0085565",
+        "name": "Kulpi",
+        "administrativeLevel": "locality",
         "latitude": 22.09,
         "longitude": 88.23,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 23,
+          "locator": "minor ports including Kulpi"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Purulia Airport",
+        "id": "loc-connectivity-purulia-airport",
+        "schemeId": "scheme-1-e0085565",
+        "name": "Purulia airport",
+        "administrativeLevel": "site",
         "latitude": 23.3321,
         "longitude": 86.3616,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "exact_site",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 24,
+          "locator": "new airports under UDAN in Purulia, Balurghat and Malda"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed airport reference point",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Balurghat Airport",
+        "id": "loc-connectivity-balurghat-airport",
+        "schemeId": "scheme-1-e0085565",
+        "name": "Balurghat airport",
+        "administrativeLevel": "site",
         "latitude": 25.2269,
         "longitude": 88.7612,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "exact_site",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 24,
+          "locator": "new airports under UDAN in Purulia, Balurghat and Malda"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed airport reference point",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Malda Airport",
+        "id": "loc-connectivity-malda-airport",
+        "schemeId": "scheme-1-e0085565",
+        "name": "Malda airport",
+        "administrativeLevel": "site",
         "latitude": 25.0108,
         "longitude": 88.1411,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "exact_site",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 24,
+          "locator": "new airports under UDAN in Purulia, Balurghat and Malda"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed airport reference point",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       },
       {
-        "name": "Kalyani Greenfield Airport",
+        "id": "loc-connectivity-kalyani-airport",
+        "schemeId": "scheme-1-e0085565",
+        "name": "Kalyani greenfield airport",
+        "administrativeLevel": "locality",
         "latitude": 22.9751,
         "longitude": 88.4345,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-0-d90284d0",
-    "title": "Development of Jhargram Area",
-    "departmentName": "Paschimanchal Unnayan Affairs",
-    "amountStatus": "stated",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Jhargram",
-        "latitude": 22.42710459369438,
-        "longitude": 86.97414654723262,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-2-a8f6ef4d",
-    "title": "Development of R&D Hub near Kolkata",
-    "departmentName": "Science & Technology and Bio-Technology",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Kolkata",
-        "latitude": 22.58091340374005,
-        "longitude": 88.36802985775553,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      }
-    ]
-  },
-  {
-    "schemeId": "scheme-5-28a43310",
-    "title": "National Volunteer Force (NVF) & Bangiya Agragami",
-    "departmentName": "Disaster Management and Civil Defence",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
-    "locations": [
-      {
-        "name": "Cooch Behar",
-        "latitude": 26.31054247013343,
-        "longitude": 89.46606726641114,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
-      },
-      {
-        "name": "Kalyani",
-        "latitude": 22.999365510482367,
-        "longitude": 88.44286767881684,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 24,
+          "locator": "land near Kalyani for a new greenfield airport"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid; final site not identified",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       }
     ]
   },
   {
     "schemeId": "scheme-3-5b0a0d39",
     "title": "Logistics Connectivity Projects",
+    "departmentId": "dept-programme-monitoring",
     "departmentName": "Programme Monitoring",
-    "amountStatus": "unmatched",
-    "announcedAmountThousand": null,
     "locations": [
       {
-        "name": "Dankuni Logistics Hub",
+        "id": "loc-logistics-dankuni",
+        "schemeId": "scheme-3-5b0a0d39",
+        "name": "Dankuni logistics hub",
+        "administrativeLevel": "locality",
         "latitude": 22.6738,
         "longitude": 88.2913,
-        "precision": "approximate",
-        "sourceId": "legacy-geocoding"
+        "precision": "locality_centroid",
+        "evidence": {
+          "sourceId": "budget-speech-en",
+          "page": 20,
+          "locator": "develop Dankuni as a multimodal logistics hub"
+        },
+        "coordinateSource": {
+          "provider": "OpenStreetMap",
+          "reference": "reviewed locality centroid",
+          "retrievedAt": "2026-08-03"
+        },
+        "reviewStatus": "approved"
       }
     ]
   }

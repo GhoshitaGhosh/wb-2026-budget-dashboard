@@ -3,16 +3,30 @@
 Generated: 2026-08-03
 
 - Canonical departments: 58
-- Legacy catalogue entries retained: 550
-- Extracted BP-3 budget rows published: 5383
-- Exact one-row matches: 52
+- Canonical initiatives shown: 547
+- Searchable initiative aliases: 3
+- Extracted BP-3 budget rows published in the accounting view: 5383
+- Exact one-row matches: 51
 - Deterministic title aliases: 16
-- Exact grouped matches: 28
+- Exact grouped matches: 26
 - Reviewed cross-title aggregates: 1
 - Review candidates: 71
-- Unmatched legacy entries: 382
-- Total explorer records: 5933
+- Unmatched canonical initiatives: 382
+- Shared official heads across canonical initiatives: 3
+- Reviewed rollups unsafe to add: 2
+- Approved cited map locations: 14
+
+## Canonical aliases
+
+- National Urban Digital Mission (NUDM)(SNA-SPARSH) -> National Urban Digital Mission (NUDM)
+- National Urban Livelihood Mission (Central Share) (OCASPS) -> National Urban Livelihood Mission
+- National Urban Livelihood Mission (State Share) (OCASPS) -> National Urban Livelihood Mission
+
+## Unsafe rollups
+
+- Annapurna Yojana: 6 component heads; overlaps with 1 canonical initiative(s)
+- Lakshmir Bhandar: 4 component heads; overlaps with 1 canonical initiative(s)
 
 ## Interpretation
 
-Official BP-3 rows remain independently searchable. Reconciled legacy initiatives link to those rows and may aggregate them, but overlapping initiatives are marked as unsafe to sum. Candidate matches never populate official financial fields until reviewed.
+Initiatives and official BP-3 rows are published in separate explorer views. Component rows remain independently searchable in the accounting view. Aliases never create a second visible initiative or total. Candidate matches never populate official financial fields until reviewed.

@@ -21,6 +21,7 @@ const charts = JSON.parse(fs.readFileSync(path.join(publicDir, 'charts_data.json
 const registry = JSON.parse(fs.readFileSync(path.join(root, 'data', 'source-registry.json'), 'utf8'));
 const overrides = JSON.parse(fs.readFileSync(path.join(root, 'data', 'reconciliation-overrides.json'), 'utf8'));
 const extracted = JSON.parse(fs.readFileSync(path.join(root, 'data', 'extracted', 'bp3-budget-lines.json'), 'utf8'));
+const geography = JSON.parse(fs.readFileSync(path.join(root, 'data', 'geography-registry.json'), 'utf8'));
 
 const DEPARTMENT_ALIASES = {
   'Agriculture Department': 'Agriculture',
@@ -177,6 +178,8 @@ for (const legacyDepartment of legacy.departments) {
     const item = {
       id: stableId('scheme', legacyDepartment.name, sourceItem.name, index),
       recordKind: 'legacy_initiative',
+      canonicalInitiativeId: null,
+      aliasOf: null,
       title: sourceItem.name,
       departmentId: department.id,
       departmentName: department.name,
@@ -196,16 +199,11 @@ for (const legacyDepartment of legacy.departments) {
       budgetCode: null,
       budgetCodes: [],
       officialBudgetLineIds: [],
+      componentLineIds: [],
       centralShareThousand: null,
       stateShareThousand: null,
       sources: [],
-      locations: (sourceItem.locations || []).map(location => ({
-        name: location.name,
-        latitude: Number(location.lat),
-        longitude: Number(location.lng),
-        precision: 'approximate',
-        sourceId: 'legacy-geocoding'
-      })),
+      locations: [],
       reconciliation: {
         status: 'unmatched',
         method: 'none',
@@ -261,6 +259,9 @@ for (const legacyDepartment of legacy.departments) {
       }
     }
 
+    item.canonicalInitiativeId = item.id;
+    item.componentLineIds = [...item.officialBudgetLineIds];
+
     schemes.push(item);
     legacyRecords.push(item);
   });
@@ -272,14 +273,28 @@ for (const item of legacyRecords) {
   delete item.pendingRelatedLegacyTitles;
 }
 
+for (const aliasGroup of overrides.aliases || []) {
+  const canonical = legacyByDepartmentAndTitle.get(legacyKey(aliasGroup.legacyDepartment, aliasGroup.canonicalTitle));
+  if (!canonical) throw new Error(`Canonical initiative not found: ${aliasGroup.legacyDepartment} / ${aliasGroup.canonicalTitle}`);
+  canonical.aliases = [];
+  for (const aliasTitle of aliasGroup.aliasTitles) {
+    const alias = legacyByDepartmentAndTitle.get(legacyKey(aliasGroup.legacyDepartment, aliasTitle));
+    if (!alias) throw new Error(`Initiative alias not found: ${aliasGroup.legacyDepartment} / ${aliasTitle}`);
+    alias.aliasOf = canonical.id;
+    alias.canonicalInitiativeId = canonical.id;
+    alias.reconciliation.aliasNote = aliasGroup.note;
+    canonical.aliases.push({ id: alias.id, title: alias.title });
+  }
+}
+
 const codeUsers = new Map();
-for (const item of legacyRecords.filter(record => record.matchStatus === 'reviewed')) {
+for (const item of legacyRecords.filter(record => record.matchStatus === 'reviewed' && !record.aliasOf)) {
   for (const code of item.budgetCodes) {
     if (!codeUsers.has(code)) codeUsers.set(code, []);
     codeUsers.get(code).push(item.id);
   }
 }
-for (const item of legacyRecords.filter(record => record.matchStatus === 'reviewed')) {
+for (const item of legacyRecords.filter(record => record.matchStatus === 'reviewed' && !record.aliasOf)) {
   const overlaps = [...new Set(item.budgetCodes.flatMap(code => codeUsers.get(code) || []).filter(id => id !== item.id))];
   item.reconciliation.overlapsWith = overlaps;
   if (overlaps.length) item.reconciliation.rollupSafe = false;
@@ -293,6 +308,8 @@ for (const row of extracted.rows) {
   schemes.push({
     id,
     recordKind: 'official_budget_line',
+    canonicalInitiativeId: null,
+    aliasOf: null,
     title: row.title,
     departmentId: department.id,
     departmentName: department.name,
@@ -312,6 +329,7 @@ for (const row of extracted.rows) {
     budgetCode: row.budgetCode,
     budgetCodes: [row.budgetCode],
     officialBudgetLineIds: [id],
+    componentLineIds: [id],
     centralShareThousand: null,
     stateShareThousand: null,
     sources: [row.source],
@@ -329,7 +347,7 @@ for (const row of extracted.rows) {
 }
 
 departments.forEach(department => {
-  const associated = schemes.filter(item => item.departmentId === department.id);
+  const associated = legacyRecords.filter(item => item.departmentId === department.id && !item.aliasOf);
   department.schemeCount = associated.length;
   department.themes = [...new Set(associated.flatMap(item => item.themes))].sort();
 });
@@ -342,11 +360,13 @@ const receipts = Object.entries(charts.revenue_sources).map(([name, crore]) => (
 }));
 const revenueReceiptsCrore = receipts.filter(item => item.kind === 'revenue').reduce((sum, item) => sum + item.crore, 0);
 const capitalReceiptsCrore = receipts.filter(item => item.kind === 'capital').reduce((sum, item) => sum + item.crore, 0);
-const reconciliationBreakdown = Object.fromEntries(['exact', 'exact_alias', 'grouped_exact', 'verified_aggregate', 'candidate', 'unmatched'].map(status => [status, legacyRecords.filter(item => item.reconciliationStatus === status).length]));
-const reviewedLegacy = legacyRecords.filter(item => item.matchStatus === 'reviewed');
+const canonicalLegacy = legacyRecords.filter(item => !item.aliasOf);
+const aliasRecords = legacyRecords.filter(item => item.aliasOf);
+const reconciliationBreakdown = Object.fromEntries(['exact', 'exact_alias', 'grouped_exact', 'verified_aggregate', 'candidate', 'unmatched'].map(status => [status, canonicalLegacy.filter(item => item.reconciliationStatus === status).length]));
+const reviewedLegacy = canonicalLegacy.filter(item => item.matchStatus === 'reviewed');
 
 const metadata = {
-  schemaVersion: 2,
+  schemaVersion: 3,
   financialYear: '2026-27',
   updatedAt: '2026-08-03',
   publicationStatus: 'BP-3 rows published; exact, grouped, aggregate, candidate, and unmatched relationships distinguished',
@@ -354,13 +374,16 @@ const metadata = {
     departments: departments.length,
     catalogueEntries: schemes.length,
     legacyCatalogueEntries: legacyRecords.length,
+    canonicalInitiatives: canonicalLegacy.length,
+    initiativeAliases: aliasRecords.length,
     officialBudgetRows: extracted.rows.length,
     reconciledLegacyEntries: reviewedLegacy.length,
     reconciliationCandidates: reconciliationBreakdown.candidate,
     reconciliationBreakdown,
     entriesWithAnnouncedOutlay: legacyRecords.filter(item => item.announcedAmountThousand != null).length,
     sourceGroundedDescriptions: schemes.filter(item => !item.summary.startsWith('A source-grounded')).length,
-    mappedEntries: schemes.filter(item => item.locations.length).length,
+    mappedEntries: new Set(geography.locations.filter(item => item.reviewStatus === 'approved').map(item => item.schemeId)).size,
+    mappedLocations: geography.locations.filter(item => item.reviewStatus === 'approved').length,
     revenueReceiptsCrore,
     capitalReceiptsCrore,
     totalReceiptsCrore: charts.total_revenue,
@@ -383,20 +406,30 @@ const metadata = {
   }
 };
 
-const mapData = schemes.filter(item => item.locations.length).map(item => ({
-  schemeId: item.id,
-  title: item.title,
-  departmentName: item.departmentName,
-  amountStatus: item.amountStatus,
-  announcedAmountThousand: item.announcedAmountThousand,
-  locations: item.locations
-}));
+const schemeById = new Map(schemes.map(item => [item.id, item]));
+const approvedLocations = geography.locations.filter(item => item.reviewStatus === 'approved');
+const mapGroups = new Map();
+for (const location of approvedLocations) {
+  const initiative = schemeById.get(location.schemeId);
+  if (!initiative || initiative.recordKind !== 'legacy_initiative' || initiative.aliasOf) throw new Error(`Approved geography record references an invalid canonical initiative: ${location.id}`);
+  if (!mapGroups.has(initiative.id)) mapGroups.set(initiative.id, {
+    schemeId: initiative.id,
+    title: initiative.title,
+    departmentId: initiative.departmentId,
+    departmentName: initiative.departmentName,
+    locations: []
+  });
+  mapGroups.get(initiative.id).locations.push(location);
+}
+const mapData = [...mapGroups.values()];
 
 for (const [filename, data] of Object.entries({ 'metadata.json': metadata, 'departments.json': departments, 'schemes.json': schemes, 'map-data.json': mapData })) {
   fs.writeFileSync(path.join(publicDir, filename), `${JSON.stringify(data, null, 2)}\n`);
 }
 
-const report = `# Dashboard data quality report\n\nGenerated: ${metadata.updatedAt}\n\n- Canonical departments: ${departments.length}\n- Legacy catalogue entries retained: ${legacyRecords.length}\n- Extracted BP-3 budget rows published: ${extracted.rows.length}\n- Exact one-row matches: ${reconciliationBreakdown.exact}\n- Deterministic title aliases: ${reconciliationBreakdown.exact_alias}\n- Exact grouped matches: ${reconciliationBreakdown.grouped_exact}\n- Reviewed cross-title aggregates: ${reconciliationBreakdown.verified_aggregate}\n- Review candidates: ${reconciliationBreakdown.candidate}\n- Unmatched legacy entries: ${reconciliationBreakdown.unmatched}\n- Total explorer records: ${schemes.length}\n\n## Interpretation\n\nOfficial BP-3 rows remain independently searchable. Reconciled legacy initiatives link to those rows and may aggregate them, but overlapping initiatives are marked as unsafe to sum. Candidate matches never populate official financial fields until reviewed.\n`;
+const sharedHeads = [...codeUsers.entries()].filter(([, ids]) => ids.length > 1);
+const unsafeRollups = canonicalLegacy.filter(item => item.reconciliation.rollupSafe === false && item.matchStatus === 'reviewed');
+const report = `# Dashboard data quality report\n\nGenerated: ${metadata.updatedAt}\n\n- Canonical departments: ${departments.length}\n- Canonical initiatives shown: ${canonicalLegacy.length}\n- Searchable initiative aliases: ${aliasRecords.length}\n- Extracted BP-3 budget rows published in the accounting view: ${extracted.rows.length}\n- Exact one-row matches: ${reconciliationBreakdown.exact}\n- Deterministic title aliases: ${reconciliationBreakdown.exact_alias}\n- Exact grouped matches: ${reconciliationBreakdown.grouped_exact}\n- Reviewed cross-title aggregates: ${reconciliationBreakdown.verified_aggregate}\n- Review candidates: ${reconciliationBreakdown.candidate}\n- Unmatched canonical initiatives: ${reconciliationBreakdown.unmatched}\n- Shared official heads across canonical initiatives: ${sharedHeads.length}\n- Reviewed rollups unsafe to add: ${unsafeRollups.length}\n- Approved cited map locations: ${approvedLocations.length}\n\n## Canonical aliases\n\n${aliasRecords.map(item => `- ${item.title} -> ${schemeById.get(item.aliasOf)?.title}`).join('\n') || '- None'}\n\n## Unsafe rollups\n\n${unsafeRollups.map(item => `- ${item.title}: ${item.budgetCodes.length} component heads; overlaps with ${(item.reconciliation.overlapsWith || []).length} canonical initiative(s)`).join('\n') || '- None'}\n\n## Interpretation\n\nInitiatives and official BP-3 rows are published in separate explorer views. Component rows remain independently searchable in the accounting view. Aliases never create a second visible initiative or total. Candidate matches never populate official financial fields until reviewed.\n`;
 fs.writeFileSync(path.join(root, 'data', 'DATA_QUALITY.md'), report);
 
 const candidateRows = legacyRecords.filter(item => item.reconciliationStatus === 'candidate').sort((left, right) => left.departmentName.localeCompare(right.departmentName) || left.title.localeCompare(right.title));

@@ -98,19 +98,23 @@
 
       <section class="scheme-section" id="schemes" aria-labelledby="schemes-title">
         <div class="page-shell">
-          <div class="section-heading split"><div><p class="eyebrow">Catalogue and reconciliation</p><h2 id="schemes-title">Scheme explorer</h2><p>Every record shows whether it is an official row, an exact or grouped relationship, a review candidate, or still unmatched.</p></div><div class="download-group"><button class="button secondary small" id="download-filtered" type="button">Download filtered CSV</button><button class="button secondary small" id="download-all" type="button">Download official BP-3 CSV</button></div></div>
+          <div class="section-heading split"><div><p class="eyebrow">Catalogue and accounting</p><h2 id="schemes-title">Budget explorer</h2><p id="explorer-description">Browse public initiatives without duplicating the official heads that make up their allocations.</p></div><div class="download-group"><button class="button secondary small" id="download-filtered" type="button">Download filtered initiatives</button><button class="button secondary small" id="download-all" type="button">Download all official lines</button></div></div>
+          <div class="view-switcher" role="tablist" aria-label="Explorer dataset">
+            <button type="button" role="tab" id="view-initiatives" data-explorer-view="initiatives" aria-selected="true" aria-controls="scheme-results-panel">Initiatives <span id="initiative-total"></span></button>
+            <button type="button" role="tab" id="view-lines" data-explorer-view="lines" aria-selected="false" aria-controls="scheme-results-panel">Official budget lines <span id="line-total"></span></button>
+          </div>
           <form class="filter-panel" id="scheme-filters" aria-label="Filter scheme catalogue">
             <label class="search-field"><span>Search</span><input id="filter-q" type="search" placeholder="Scheme, department, or keyword" autocomplete="off" /></label>
             <label><span>Department</span><select id="filter-department"><option value="">All departments</option></select></label>
             <label><span>Theme</span><select id="filter-theme"><option value="">All themes</option></select></label>
-            <label><span>Record type</span><select id="filter-classification"><option value="">All record types</option><option value="official_budget_line">Official budget line</option><option value="speech_announcement">Speech / catalogue announcement</option><option value="aggregated_programme">Aggregated programme</option><option value="unmatched">Unmatched</option></select></label>
+            <label id="classification-filter"><span>Record type</span><select id="filter-classification"><option value="">All record types</option><option value="speech_announcement">Speech / catalogue announcement</option><option value="aggregated_programme">Aggregated programme</option><option value="unmatched">Unmatched</option></select></label>
             <label><span>Reconciliation</span><select id="filter-match"><option value="">Any reconciliation</option><option value="official_row">Official BP-3 row</option><option value="exact">Exact one-row match</option><option value="exact_alias">Deterministic alias</option><option value="grouped_exact">Grouped exact match</option><option value="verified_aggregate">Verified aggregate</option><option value="candidate">Review candidate</option><option value="unmatched">Unmatched</option></select></label>
             <label><span>Outlay status</span><select id="filter-amount"><option value="">Any amount status</option><option value="stated">Stated amount / provision</option><option value="zero">Zero</option><option value="token_provision">Token provision</option><option value="not_stated">Not stated</option><option value="unmatched">Not yet matched</option></select></label>
             <label><span>Sort</span><select id="filter-sort"><option value="amount-desc">Largest amount</option><option value="name">Name A–Z</option><option value="department">Department</option></select></label>
             <button class="text-button" id="clear-filters" type="button">Reset filters</button>
           </form>
           <div class="results-meta"><p id="active-filter-summary">All catalogue entries</p><p><strong id="scheme-count">0</strong> results</p></div>
-          <div class="table-wrap scheme-table-wrap">
+          <div class="table-wrap scheme-table-wrap" id="scheme-results-panel" role="tabpanel" aria-labelledby="view-initiatives">
             <table class="scheme-table"><caption class="sr-only">Filtered scheme catalogue</caption><thead><tr><th>Scheme or initiative</th><th>Department</th><th>Record status</th><th class="number">2026-27 / announced outlay</th><th><span class="sr-only">Open details</span></th></tr></thead><tbody id="scheme-results"></tbody></table>
           </div>
           <div class="pagination" aria-label="Scheme result pages"><button id="previous-page" type="button">Previous</button><span id="page-status">Page 1</span><button id="next-page" type="button">Next</button></div>
@@ -118,8 +122,16 @@
       </section>
 
       <section class="page-shell section" id="geography" aria-labelledby="geography-title">
-        <div class="section-heading split"><div><p class="eyebrow">Secondary view</p><h2 id="geography-title">Geographic references</h2><p id="map-coverage">The map covers only initiatives with a named place in the current catalogue. It is not a map of total district spending.</p></div><button class="button secondary" id="load-map" type="button">Load interactive map</button></div>
-        <div id="budget-map" class="map-placeholder" aria-label="Geographic references map"><div><strong>Map loads on request</strong><p>This keeps the initial page lighter and avoids presenting partial location coverage as complete.</p></div></div>
+        <div class="section-heading"><p class="eyebrow">Cited locations</p><h2 id="geography-title">Geographic references</h2><p id="map-coverage">This contextual map includes only places explicitly supported by a cited budget source. It is not a map of district spending or statewide coverage.</p></div>
+        <div class="map-toolbar" aria-label="Filter mapped locations">
+          <label><span>Place</span><input id="map-search" type="search" placeholder="Search a cited place" /></label>
+          <label><span>Department</span><select id="map-department"><option value="">All mapped departments</option></select></label>
+          <label><span>Precision</span><select id="map-precision"><option value="">All precision levels</option><option value="exact_site">Exact site</option><option value="locality_centroid">Locality centroid</option><option value="district_centroid">District centroid</option></select></label>
+        </div>
+        <div id="map-status" class="map-status" role="status">Loading cited locations…</div>
+        <div id="budget-map" class="map-placeholder" aria-label="Map of cited geographic references"></div>
+        <div class="map-legend" id="map-legend" aria-label="Map legend"></div>
+        <div class="table-wrap map-table-wrap"><table><caption>Cited locations shown on the map</caption><thead><tr><th>Place</th><th>Initiative</th><th>Department</th><th>Precision</th><th>Evidence</th></tr></thead><tbody id="map-location-list"></tbody></table></div>
       </section>
 
       <section class="methodology-section" id="methodology" aria-labelledby="methodology-title">

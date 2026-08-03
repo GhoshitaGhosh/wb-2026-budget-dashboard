@@ -8,10 +8,12 @@ const metadata = JSON.parse(fs.readFileSync(path.join(publicDir, 'metadata.json'
 const departments = JSON.parse(fs.readFileSync(path.join(publicDir, 'departments.json'), 'utf8'));
 const schemes = JSON.parse(fs.readFileSync(path.join(publicDir, 'schemes.json'), 'utf8'));
 const extracted = JSON.parse(fs.readFileSync(path.join(root, 'data', 'extracted', 'bp3-budget-lines.json'), 'utf8'));
+const geography = JSON.parse(fs.readFileSync(path.join(root, 'data', 'geography-registry.json'), 'utf8'));
+const mapData = JSON.parse(fs.readFileSync(path.join(publicDir, 'map-data.json'), 'utf8'));
 const errors = [];
 const unique = values => new Set(values).size === values.length;
 
-if (metadata.schemaVersion !== 2) errors.push('Unexpected metadata schema version.');
+if (metadata.schemaVersion !== 3) errors.push('Unexpected metadata schema version.');
 if (departments.length !== 58) errors.push(`Expected 58 canonical departments; found ${departments.length}.`);
 if (!unique(departments.map(item => item.id))) errors.push('Department IDs are not unique.');
 if (!unique(schemes.map(item => item.id))) errors.push('Scheme IDs are not unique.');
@@ -21,6 +23,13 @@ if (schemes.some(item => item.financials.budget2026Thousand != null && !item.sou
 if (metadata.totals.officialBudgetRows !== extracted.rows.length) errors.push('Published official-row count does not reconcile to the BP-3 extraction.');
 if (schemes.filter(item => item.recordKind === 'official_budget_line').length !== extracted.rows.length) errors.push('Every extracted BP-3 row must remain independently published.');
 if (schemes.some(item => !item.recordKind || !item.reconciliationStatus || !item.reconciliation)) errors.push('A record is missing the version 2 reconciliation contract.');
+if (schemes.some(item => !Array.isArray(item.componentLineIds))) errors.push('A record is missing componentLineIds.');
+const initiatives = schemes.filter(item => item.recordKind === 'legacy_initiative');
+const canonicalInitiatives = initiatives.filter(item => !item.aliasOf);
+const aliases = initiatives.filter(item => item.aliasOf);
+if (canonicalInitiatives.some(item => item.canonicalInitiativeId !== item.id)) errors.push('A canonical initiative has an invalid canonicalInitiativeId.');
+if (aliases.some(item => !schemes.some(canonical => canonical.id === item.aliasOf && !canonical.aliasOf))) errors.push('An initiative alias references a missing or non-canonical initiative.');
+if (metadata.totals.canonicalInitiatives !== canonicalInitiatives.length || metadata.totals.initiativeAliases !== aliases.length) errors.push('Canonical initiative or alias totals do not reconcile.');
 if (schemes.some(item => item.matchStatus === 'reviewed' && item.recordKind === 'legacy_initiative' && !item.budgetCodes.length)) errors.push('A reviewed legacy initiative has no included budget codes.');
 if (schemes.some(item => item.reconciliationStatus === 'candidate' && item.financials.budget2026Thousand != null)) errors.push('An unreviewed candidate must not expose an official allocation.');
 if (schemes.some(item => item.reconciliationStatus === 'candidate' && !item.reconciliation.candidates?.length)) errors.push('A candidate record is missing candidate details.');
@@ -35,6 +44,15 @@ if (extracted.rows.some(item => Object.values(item.financials).some(value => val
 if (extracted.rows.some(item => !item.source?.page || item.source.sourceId !== 'bp-3')) errors.push('An extracted BP-3 row lacks a source page.');
 if (departments.find(item => item.name === 'Agriculture')?.amount2026Thousand !== 85658430) errors.push('Department lakh-to-thousand conversion regression detected.');
 if (Math.abs(metadata.totals.totalReceiptsCrore - (metadata.totals.revenueReceiptsCrore + metadata.totals.capitalReceiptsCrore)) > 0.02) errors.push('Receipt subtotals do not reconcile.');
+const approvedLocations = geography.locations.filter(item => item.reviewStatus === 'approved');
+if (!unique(approvedLocations.map(item => item.id))) errors.push('Approved geography IDs are not unique.');
+if (approvedLocations.some(item => !['exact_site', 'locality_centroid', 'district_centroid'].includes(item.precision))) errors.push('A geography record has an unsupported precision.');
+if (approvedLocations.some(item => item.latitude < 20.5 || item.latitude > 28 || item.longitude < 84.5 || item.longitude > 90.5)) errors.push('A geography record lies outside the reviewed map bounds.');
+if (approvedLocations.some(item => !item.evidence?.sourceId || !item.evidence?.page || !item.evidence?.locator)) errors.push('An approved geography record is missing page-level evidence.');
+if (approvedLocations.some(item => !canonicalInitiatives.some(scheme => scheme.id === item.schemeId))) errors.push('An approved geography record does not reference a canonical initiative.');
+if (mapData.flatMap(item => item.locations).length !== approvedLocations.length) errors.push('Published map data does not contain exactly the approved geography records.');
+if (JSON.stringify(mapData).includes('legacy-geocoding') || JSON.stringify(mapData).includes('approximate')) errors.push('Legacy keyword geocoding reached the production map.');
+if (metadata.totals.mappedLocations !== approvedLocations.length) errors.push('Mapped-location metadata does not reconcile.');
 
 if (errors.length) {
   console.error(errors.map(error => `- ${error}`).join('\n'));

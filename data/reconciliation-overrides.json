@@ -2,6 +2,23 @@
   "version": 2,
   "reviewedAt": "2026-08-03",
   "notes": "Reviewed aggregate and cross-title relationships. Exact same-title BP-3 groups are resolved automatically; fuzzy candidates are never promoted without an entry here.",
+  "aliases": [
+    {
+      "legacyDepartment": "Urban Development & Municipal Affairs",
+      "canonicalTitle": "National Urban Digital Mission (NUDM)",
+      "aliasTitles": ["National Urban Digital Mission (NUDM)(SNA-SPARSH)"],
+      "note": "The SNA-SPARSH-labelled catalogue entry resolves to the same BP-3 head and is retained as a searchable alias."
+    },
+    {
+      "legacyDepartment": "Urban Development & Municipal Affairs",
+      "canonicalTitle": "National Urban Livelihood Mission",
+      "aliasTitles": [
+        "National Urban Livelihood Mission (Central Share) (OCASPS)",
+        "National Urban Livelihood Mission (State Share) (OCASPS)"
+      ],
+      "note": "The share-labelled catalogue variants resolve to the same reviewed ten-head programme rollup and are retained as searchable aliases."
+    }
+  ],
   "matches": [
     {
       "legacyDepartment": "Women & Child Development and Social Welfare",

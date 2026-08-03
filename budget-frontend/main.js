@@ -13,9 +13,11 @@ const state = {
   schemes: [],
   mapData: [],
   filtered: [],
+  explorerView: 'initiatives',
   page: 1,
   selectedDepartmentId: null,
   mapLoaded: false,
+  map: { instance: null, tileLayer: null, clusters: null, L: null, visibleLocations: [] },
   charts: {}
 };
 
@@ -43,6 +45,18 @@ const labels = {
   not_stated: 'Not stated',
   not_classified: 'Not classified'
 };
+
+const precisionLabels = {
+  exact_site: 'Exact site',
+  locality_centroid: 'Locality centroid',
+  district_centroid: 'District centroid'
+};
+
+function recordsForView() {
+  return state.explorerView === 'lines'
+    ? state.schemes.filter(item => item.recordKind === 'official_budget_line')
+    : state.schemes.filter(item => item.recordKind === 'legacy_initiative' && !item.aliasOf);
+}
 
 function metric(label, value, help) {
   return `<article class="metric"><div class="metric-value">${escapeHtml(value)}</div><div class="metric-label">${escapeHtml(label)}</div><p class="metric-help">${escapeHtml(help)}</p></article>`;
@@ -155,7 +169,7 @@ function renderDepartments() {
 function populateFilters() {
   const departmentSelect = el('filter-department');
   [...state.departments].sort((a, b) => a.name.localeCompare(b.name)).forEach(department => departmentSelect.add(new Option(department.name, department.id)));
-  const themes = [...new Set(state.schemes.flatMap(item => item.themes))].sort();
+  const themes = [...new Set(state.schemes.filter(item => item.recordKind === 'legacy_initiative' && !item.aliasOf).flatMap(item => item.themes))].sort();
   themes.forEach(theme => el('filter-theme').add(new Option(theme, theme)));
   const params = new URLSearchParams(location.search);
   el('filter-q').value = params.get('q') || '';
@@ -165,6 +179,8 @@ function populateFilters() {
   el('filter-match').value = params.get('match') || '';
   el('filter-amount').value = params.get('amountStatus') || '';
   el('filter-sort').value = params.get('sort') || 'amount-desc';
+  state.explorerView = params.get('view') === 'lines' ? 'lines' : 'initiatives';
+  updateExplorerView(false);
 }
 
 function readFilters() {
@@ -175,7 +191,8 @@ function readFilters() {
     classification: el('filter-classification').value,
     match: el('filter-match').value,
     amountStatus: el('filter-amount').value,
-    sort: el('filter-sort').value
+    sort: el('filter-sort').value,
+    view: state.explorerView
   };
 }
 
@@ -188,6 +205,7 @@ function syncUrl(filters) {
   if (filters.match) params.set('match', filters.match);
   if (filters.amountStatus) params.set('amountStatus', filters.amountStatus);
   if (filters.sort !== 'amount-desc') params.set('sort', filters.sort);
+  if (filters.view === 'lines') params.set('view', 'lines');
   const query = params.toString();
   history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
 }
@@ -195,8 +213,9 @@ function syncUrl(filters) {
 function applyFilters(resetPage = false) {
   const filters = readFilters();
   if (resetPage) state.page = 1;
-  state.filtered = state.schemes.filter(item => {
-    const haystack = `${item.title} ${item.departmentName} ${item.summary} ${item.themes.join(' ')}`.toLowerCase();
+  state.filtered = recordsForView().filter(item => {
+    const aliases = (item.aliases || []).map(alias => alias.title).join(' ');
+    const haystack = `${item.title} ${aliases} ${item.budgetCode || ''} ${item.departmentName} ${item.summary} ${item.themes.join(' ')}`.toLowerCase();
     return (!filters.q || haystack.includes(filters.q)) &&
       (!filters.department || item.departmentId === filters.department) &&
       (!filters.theme || item.themes.includes(filters.theme)) &&
@@ -207,6 +226,35 @@ function applyFilters(resetPage = false) {
   state.filtered.sort((a, b) => filters.sort === 'name' ? a.title.localeCompare(b.title) : filters.sort === 'department' ? a.departmentName.localeCompare(b.departmentName) || a.title.localeCompare(b.title) : (b.financials.budget2026Thousand ?? b.announcedAmountThousand ?? -Infinity) - (a.financials.budget2026Thousand ?? a.announcedAmountThousand ?? -Infinity));
   syncUrl(filters);
   renderSchemeResults(filters);
+}
+
+function updateExplorerView(resetFilters = true) {
+  const lines = state.explorerView === 'lines';
+  document.querySelectorAll('[data-explorer-view]').forEach(button => {
+    const active = button.dataset.explorerView === state.explorerView;
+    button.setAttribute('aria-selected', String(active));
+    button.classList.toggle('active', active);
+  });
+  el('scheme-results-panel').setAttribute('aria-labelledby', lines ? 'view-lines' : 'view-initiatives');
+  el('classification-filter').hidden = lines;
+  el('filter-theme').closest('label').hidden = lines;
+  el('filter-match').closest('label').hidden = lines;
+  el('explorer-description').textContent = lines
+    ? 'Search every independently published BP-3 accounting row. Initiative rollups are referenced, never added again.'
+    : 'Browse canonical public initiatives without duplicating the official heads that make up their allocations.';
+  el('download-filtered').textContent = lines ? 'Download filtered official lines' : 'Download filtered initiatives';
+  if (resetFilters) {
+    el('filter-classification').value = '';
+    el('filter-theme').value = '';
+    el('filter-match').value = '';
+    state.page = 1;
+    applyFilters();
+  }
+}
+
+function setExplorerView(view, resetFilters = true) {
+  state.explorerView = view === 'lines' ? 'lines' : 'initiatives';
+  updateExplorerView(resetFilters);
 }
 
 function schemeAmount(item) {
@@ -230,7 +278,7 @@ function renderSchemeResults(filters = readFilters()) {
   el('scheme-results').innerHTML = pageItems.length ? pageItems.map(item => {
     const amount = schemeAmount(item);
     return `<tr>
-      <td data-label="Scheme"><button class="scheme-title-button" type="button" data-scheme-id="${item.id}">${escapeHtml(item.title)}</button><span class="subline">${escapeHtml(item.themes.slice(0, 3).join(' · ') || 'No theme assigned')}</span></td>
+      <td data-label="${state.explorerView === 'lines' ? 'Budget line' : 'Initiative'}"><button class="scheme-title-button" type="button" data-scheme-id="${item.id}">${escapeHtml(item.title)}</button><span class="subline">${escapeHtml(state.explorerView === 'lines' ? item.budgetCode : (item.themes.slice(0, 3).join(' · ') || ((item.aliases || []).length ? `${item.aliases.length} searchable alias${item.aliases.length === 1 ? '' : 'es'}` : 'No theme assigned')))}</span></td>
       <td data-label="Department">${escapeHtml(item.departmentName)}</td>
       <td data-label="Record status">${statusPill(item)}</td>
       <td data-label="Outlay" class="number"><strong>${escapeHtml(amount.value)}</strong><span class="subline">${escapeHtml(amount.note)}</span></td>
@@ -243,7 +291,8 @@ function renderSchemeResults(filters = readFilters()) {
   el('previous-page').disabled = state.page <= 1;
   el('next-page').disabled = state.page >= totalPages;
   const active = [filters.q && `search “${filters.q}”`, filters.department && el('filter-department').selectedOptions[0]?.text, filters.theme, filters.classification && labels[filters.classification], filters.match && labels[filters.match], filters.amountStatus && labels[filters.amountStatus]].filter(Boolean);
-  el('active-filter-summary').textContent = active.length ? `Filtered by ${active.join(' · ')}` : 'All catalogue entries';
+  const scope = state.explorerView === 'lines' ? 'official budget lines' : 'canonical initiatives';
+  el('active-filter-summary').textContent = active.length ? `${scope}: filtered by ${active.join(' · ')}` : `All ${scope}`;
 }
 
 function financeCell(label, value) {
@@ -251,19 +300,27 @@ function financeCell(label, value) {
 }
 
 function openScheme(id, updateHash = true) {
-  const item = state.schemes.find(scheme => scheme.id === id);
+  let item = state.schemes.find(scheme => scheme.id === id);
   if (!item) return;
+  if (item.aliasOf) {
+    item = state.schemes.find(scheme => scheme.id === item.aliasOf);
+    if (!item) return;
+    id = item.id;
+  }
   const amount = schemeAmount(item);
   const sourceMarkup = item.sources.length ? item.sources.map(source => {
     const record = state.metadata.sources.find(entry => entry.id === source.sourceId);
     return `<a href="${escapeHtml(record?.url || '#')}" target="_blank" rel="noreferrer">${escapeHtml(record?.title || source.sourceId)}${source.page ? `, p. ${source.page}` : ''} ↗</a>`;
   }).join('<br>') : 'No reviewed official source relationship is attached to this entry.';
   const linkedLines = (item.officialBudgetLineIds || []).map(lineId => state.schemes.find(record => record.id === lineId)).filter(Boolean);
-  const linkedLineMarkup = linkedLines.length ? `<div class="linked-lines">${linkedLines.map(line => `<button type="button" data-related-scheme-id="${line.id}"><span>${escapeHtml(line.budgetCode)}</span><strong>${escapeHtml(line.title)}</strong><em>${formatThousandAsCrore(line.financials.budget2026Thousand)}</em></button>`).join('')}</div>` : '';
+  const linkedLineMarkup = linkedLines.length ? `<div class="table-wrap component-table"><table><caption>Official heads included in this initiative</caption><thead><tr><th>Budget code and title</th><th class="number">2026-27 BE</th><th>Source</th></tr></thead><tbody>${linkedLines.map(line => `<tr><td><button type="button" class="inline-link" data-component-line-id="${line.id}">${escapeHtml(line.budgetCode)}</button><span class="subline">${escapeHtml(line.title)}</span></td><td class="number">${formatThousandAsCrore(line.financials.budget2026Thousand)}</td><td>BP-3, p. ${escapeHtml(line.sources[0]?.page || '—')}</td></tr>`).join('')}</tbody></table></div><p class="component-rationale">${escapeHtml(item.reconciliation?.note || '')}</p>` : '';
   const candidateMarkup = item.reconciliation?.candidates?.length ? `<div class="candidate-list">${item.reconciliation.candidates.map(candidate => `<div><strong>${escapeHtml(candidate.title)}</strong><span>${candidate.budgetCodes.length} possible ${candidate.budgetCodes.length === 1 ? 'head' : 'heads'} · ${formatThousandAsCrore(candidate.budget2026Thousand)} · confidence ${Math.round(candidate.score * 100)}%</span></div>`).join('')}</div>` : '';
   const relatedRecords = [...new Set([...(item.relatedInitiativeIds || []), ...(item.reconciliation?.overlapsWith || [])])].map(relatedId => state.schemes.find(record => record.id === relatedId)).filter(Boolean);
   const relationshipMarkup = relatedRecords.length ? `<p class="relationship-note"><strong>Related or overlapping initiatives:</strong> ${relatedRecords.map(record => `<button type="button" class="inline-link" data-related-scheme-id="${record.id}">${escapeHtml(record.title)}</button>`).join(', ')}. ${item.reconciliation.rollupSafe === false ? 'Do not sum these initiative totals together.' : ''}</p>` : '';
   const announcedMarkup = item.announcedAmountThousand != null ? `<div class="detail-section"><h3>Legacy / announced claim</h3><p><strong>${formatThousandAsCrore(item.announcedAmountThousand)}</strong>${item.announcedOutlayNote ? ` · ${escapeHtml(item.announcedOutlayNote)}` : ''}</p></div>` : '';
+  const aliasesMarkup = item.aliases?.length ? `<div class="detail-section"><h3>Also known as</h3><p>${item.aliases.map(alias => escapeHtml(alias.title)).join('; ')}</p></div>` : '';
+  const usedBy = item.recordKind === 'official_budget_line' ? (item.relatedInitiativeIds || []).map(relatedId => state.schemes.find(record => record.id === relatedId)).filter(Boolean) : [];
+  const usedByMarkup = usedBy.length ? `<div class="detail-section"><h3>Used by canonical initiatives</h3><p>${usedBy.map(record => `<button type="button" class="inline-link" data-related-scheme-id="${record.id}">${escapeHtml(record.title)}</button>`).join(', ')}</p><p class="subline">This accounting row remains independent; the initiative view references it without adding it again.</p></div>` : '';
   el('detail-content').innerHTML = `
     <p class="eyebrow">${escapeHtml(item.departmentName)}</p><h2 id="detail-title">${escapeHtml(item.title)}</h2>
     <div class="detail-meta">${statusPill(item)}<span class="status-pill">${escapeHtml(labels[item.amountStatus] || item.amountStatus)}</span>${item.budgetCodes?.length ? `<span class="status-pill matched">${item.budgetCodes.length === 1 ? escapeHtml(item.budgetCodes[0]) : `${item.budgetCodes.length} budget heads`}</span>` : ''}</div>
@@ -271,11 +328,21 @@ function openScheme(id, updateHash = true) {
     <div class="finance-grid">${financeCell('2024-25 actual', item.financials.actual2024Thousand)}${financeCell('2025-26 budget', item.financials.budget2025Thousand)}${financeCell('2025-26 revised', item.financials.revised2025Thousand)}${financeCell('2026-27 budget', item.financials.budget2026Thousand)}</div>
     <div class="detail-section"><h3>Displayed amount</h3><p><strong>${escapeHtml(amount.value)}</strong> · ${escapeHtml(amount.note)}</p></div>
     ${announcedMarkup}
+    ${aliasesMarkup}
     <div class="detail-section"><h3>Themes</h3><p>${escapeHtml(item.themes.join(', ') || 'Not classified')}</p></div>
     <div class="detail-section"><h3>Reconciliation method</h3><p><strong>${escapeHtml(labels[item.reconciliationStatus] || item.reconciliationStatus)}</strong><br>${escapeHtml(item.reconciliation?.note || 'No reconciliation note supplied.')}</p>${relationshipMarkup}${candidateMarkup}</div>
-    ${linkedLineMarkup ? `<div class="detail-section"><h3>Included official budget lines</h3>${linkedLineMarkup}</div>` : ''}
+    ${linkedLineMarkup ? `<div class="detail-section"><h3>Allocation components</h3>${linkedLineMarkup}</div>` : ''}
+    ${usedByMarkup}
     <div class="detail-section"><h3>Sources</h3><p>${sourceMarkup}</p></div>`;
-  el('detail-content').querySelectorAll('[data-related-scheme-id]').forEach(button => button.addEventListener('click', () => openScheme(button.dataset.relatedSchemeId)));
+  el('detail-content').querySelectorAll('[data-related-scheme-id]').forEach(button => button.addEventListener('click', () => {
+    const target = state.schemes.find(record => record.id === button.dataset.relatedSchemeId);
+    if (target) setExplorerView(target.recordKind === 'official_budget_line' ? 'lines' : 'initiatives');
+    openScheme(button.dataset.relatedSchemeId);
+  }));
+  el('detail-content').querySelectorAll('[data-component-line-id]').forEach(button => button.addEventListener('click', () => {
+    setExplorerView('lines');
+    openScheme(button.dataset.componentLineId);
+  }));
   if (!el('detail-dialog').open) el('detail-dialog').showModal();
   document.body.classList.add('no-scroll');
   if (updateHash) history.replaceState(null, '', `${location.pathname}${location.search}#scheme=${id}`);
@@ -307,29 +374,89 @@ function renderSources() {
   el('source-list').innerHTML = primary.map(source => `<div class="source-item"><span><strong>${escapeHtml(source.title)}</strong><br>${escapeHtml(source.purpose)}</span><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open ↗</a></div>`).join('');
   const totals = state.metadata.totals;
   const breakdown = totals.reconciliationBreakdown;
-  el('quality-summary').textContent = `${integer.format(totals.legacyCatalogueEntries)} legacy initiatives are retained alongside all ${integer.format(totals.officialBudgetRows)} BP-3 rows. ${integer.format(totals.reconciledLegacyEntries)} initiatives are reviewed: ${breakdown.exact} exact, ${breakdown.exact_alias} deterministic aliases, ${breakdown.grouped_exact} grouped exact matches, and ${breakdown.verified_aggregate} cross-title aggregate. ${breakdown.candidate} similarities remain review candidates and do not populate official amounts.`;
-  el('map-coverage').textContent = `${integer.format(totals.mappedEntries)} of ${integer.format(totals.catalogueEntries)} entries contain a location reference. Coordinates are currently approximate legacy geocoding, not a measure of district allocation.`;
+  el('quality-summary').textContent = `${integer.format(totals.canonicalInitiatives)} canonical initiatives and ${integer.format(totals.initiativeAliases)} searchable aliases are separated from all ${integer.format(totals.officialBudgetRows)} BP-3 accounting rows. ${integer.format(totals.reconciledLegacyEntries)} canonical initiatives are reviewed: ${breakdown.exact} exact, ${breakdown.exact_alias} deterministic title aliases, ${breakdown.grouped_exact} grouped exact matches, and ${breakdown.verified_aggregate} cross-title aggregate. ${breakdown.candidate} similarities remain review candidates and do not populate official amounts.`;
+  el('map-coverage').textContent = `${integer.format(totals.mappedLocations)} cited locations represent ${integer.format(totals.mappedEntries)} initiatives. Only source-supported sites and centroids are shown; this is not a map of district spending or statewide coverage.`;
+}
+
+function mapTileUrl() {
+  return document.documentElement.dataset.theme === 'dark'
+    ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+    : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+}
+
+function updateMapTheme() {
+  if (!state.map.instance || !state.map.L) return;
+  if (state.map.tileLayer) state.map.instance.removeLayer(state.map.tileLayer);
+  state.map.tileLayer = state.map.L.tileLayer(mapTileUrl(), { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors &copy; CARTO' }).addTo(state.map.instance);
+  state.map.tileLayer.bringToBack();
+}
+
+function mapMarkerStyle(precision) {
+  if (precision === 'exact_site') return { radius: 7, color: '#fffdf8', weight: 2, fillColor: '#b84a2b', fillOpacity: .96 };
+  if (precision === 'district_centroid') return { radius: 7, color: '#1d5d6b', weight: 2, dashArray: '3 3', fillColor: '#1d5d6b', fillOpacity: .18 };
+  return { radius: 7, color: '#1d5d6b', weight: 2, fillColor: '#fffdf8', fillOpacity: .82 };
+}
+
+function filteredMapRecords() {
+  const query = el('map-search').value.trim().toLowerCase();
+  const department = el('map-department').value;
+  const precision = el('map-precision').value;
+  return state.mapData.flatMap(item => item.locations.map(location => ({ ...location, schemeId: item.schemeId, title: item.title, departmentId: item.departmentId, departmentName: item.departmentName }))).filter(item =>
+    (!query || `${item.name} ${item.title} ${item.departmentName}`.toLowerCase().includes(query)) &&
+    (!department || item.departmentId === department) &&
+    (!precision || item.precision === precision));
+}
+
+function sourceLink(evidence) {
+  const source = state.metadata.sources.find(item => item.id === evidence.sourceId);
+  return source ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.title)}, p. ${escapeHtml(evidence.page)} ↗</a>` : `${escapeHtml(evidence.sourceId)}, p. ${escapeHtml(evidence.page)}`;
+}
+
+function renderMapLocations(fit = false) {
+  const records = filteredMapRecords();
+  state.map.visibleLocations = records;
+  el('map-status').textContent = `${integer.format(records.length)} cited ${records.length === 1 ? 'location' : 'locations'} shown`;
+  const counts = Object.fromEntries(Object.keys(precisionLabels).map(key => [key, records.filter(item => item.precision === key).length]));
+  el('map-legend').innerHTML = Object.entries(precisionLabels).map(([key, label]) => `<span><i class="legend-marker ${key}" aria-hidden="true"></i>${label} (${counts[key]})</span>`).join('');
+  el('map-location-list').innerHTML = records.length ? records.map(item => `<tr><td><button type="button" class="inline-link" data-map-location-id="${item.id}">${escapeHtml(item.name)}</button></td><td><button type="button" class="inline-link" data-map-scheme-id="${item.schemeId}">${escapeHtml(item.title)}</button></td><td>${escapeHtml(item.departmentName)}</td><td>${escapeHtml(precisionLabels[item.precision])}</td><td>${sourceLink(item.evidence)}<span class="subline">${escapeHtml(item.evidence.locator)}</span></td></tr>`).join('') : '<tr><td colspan="5">No cited locations match these filters.</td></tr>';
+  el('map-location-list').querySelectorAll('[data-map-scheme-id]').forEach(button => button.addEventListener('click', () => openScheme(button.dataset.mapSchemeId)));
+  if (!state.mapLoaded) return;
+  state.map.clusters.clearLayers();
+  const bounds = [];
+  records.forEach(item => {
+    const marker = state.map.L.circleMarker([item.latitude, item.longitude], mapMarkerStyle(item.precision));
+    marker.options.locationId = item.id;
+    marker.bindPopup(`<strong>${escapeHtml(item.name)}</strong><br>${escapeHtml(item.title)}<br><small>${escapeHtml(item.departmentName)} · ${escapeHtml(precisionLabels[item.precision])}</small><p>${sourceLink(item.evidence)}</p><a href="#scheme=${encodeURIComponent(item.schemeId)}">View initiative</a>`);
+    state.map.clusters.addLayer(marker);
+    bounds.push([item.latitude, item.longitude]);
+  });
+  el('map-location-list').querySelectorAll('[data-map-location-id]').forEach(button => button.addEventListener('click', () => {
+    const marker = state.map.clusters.getLayers().find(layer => layer.options.locationId === button.dataset.mapLocationId);
+    if (marker) state.map.clusters.zoomToShowLayer(marker, () => marker.openPopup());
+  }));
+  if (fit && bounds.length) state.map.instance.fitBounds(bounds, { padding: [28, 28], maxZoom: 10 });
+}
+
+function destroyMap() {
+  if (state.map.instance) state.map.instance.remove();
+  state.map = { instance: null, tileLayer: null, clusters: null, L: null, visibleLocations: [] };
+  state.mapLoaded = false;
 }
 
 async function loadMap() {
   if (state.mapLoaded) return;
-  el('load-map').disabled = true;
-  el('load-map').textContent = 'Loading map…';
+  el('map-status').textContent = 'Loading cited locations…';
   const [{ default: L }] = await Promise.all([import('leaflet'), import('leaflet/dist/leaflet.css')]);
   await Promise.all([import('leaflet.markercluster'), import('leaflet.markercluster/dist/MarkerCluster.css'), import('leaflet.markercluster/dist/MarkerCluster.Default.css')]);
   el('budget-map').classList.remove('map-placeholder');
   el('budget-map').innerHTML = '';
-  const map = L.map('budget-map', { minZoom: 6, maxBounds: [[20.5, 84.5], [28, 90.5]], maxBoundsViscosity: 1 }).setView([23.5, 87.8], 7);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors &copy; CARTO' }).addTo(map);
-  const clusters = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 42 });
-  state.mapData.forEach(item => item.locations.forEach(location => {
-    const marker = L.circleMarker([location.latitude, location.longitude], { radius: 7, color: '#fffdf8', weight: 2, fillColor: '#b84a2b', fillOpacity: .95 });
-    marker.bindPopup(`<strong>${escapeHtml(item.title)}</strong><br>${escapeHtml(item.departmentName)}<br><small>${escapeHtml(location.name)} · approximate location</small>`);
-    clusters.addLayer(marker);
-  }));
+  const map = L.map('budget-map', { minZoom: 6, maxZoom: 19, maxBounds: [[20.5, 84.5], [28, 90.5]], maxBoundsViscosity: 1 }).setView([23.5, 87.8], 7);
+  const clusters = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 42, iconCreateFunction: cluster => L.divIcon({ html: `<span>${cluster.getChildCount()}</span>`, className: 'map-cluster', iconSize: [38, 38] }) });
   map.addLayer(clusters);
+  state.map = { instance: map, tileLayer: null, clusters, L, visibleLocations: [] };
   state.mapLoaded = true;
-  el('load-map').textContent = 'Map loaded';
+  updateMapTheme();
+  renderMapLocations(true);
 }
 
 function setupTheme() {
@@ -342,6 +469,7 @@ function setupTheme() {
     localStorage.setItem('budget-theme', document.documentElement.dataset.theme);
     updateThemeButton();
     renderCompositionCharts().catch(error => console.error(error));
+    updateMapTheme();
   });
 }
 
@@ -362,11 +490,13 @@ function bindEvents() {
   el('next-page').addEventListener('click', () => { state.page += 1; renderSchemeResults(); el('schemes-title').scrollIntoView(); });
   el('download-filtered').addEventListener('click', () => downloadCsv(state.filtered, 'west-bengal-budget-filtered.csv'));
   el('download-all').addEventListener('click', () => downloadCsv(state.schemes.filter(item => item.recordKind === 'official_budget_line'), 'west-bengal-budget-official-lines.csv'));
+  document.querySelectorAll('[data-explorer-view]').forEach(button => button.addEventListener('click', () => setExplorerView(button.dataset.explorerView)));
   el('detail-close').addEventListener('click', closeScheme);
   el('detail-dialog').addEventListener('click', event => { if (event.target === el('detail-dialog')) closeScheme(); });
   el('detail-dialog').addEventListener('close', () => { document.body.classList.remove('no-scroll'); });
-  el('load-map').addEventListener('click', () => loadMap().catch(error => { console.error(error); el('load-map').disabled = false; el('load-map').textContent = 'Try loading map again'; }));
+  ['map-search', 'map-department', 'map-precision'].forEach(id => el(id).addEventListener(id === 'map-search' ? 'input' : 'change', () => renderMapLocations(true)));
   window.addEventListener('hashchange', () => { if (location.hash.startsWith('#scheme=')) openScheme(location.hash.slice(8), false); });
+  window.addEventListener('pagehide', destroyMap);
 }
 
 async function init() {
@@ -379,11 +509,19 @@ async function init() {
     const responses = await Promise.all(['departments.json', 'schemes.json', 'map-data.json'].map(file => fetch(`${BASE}${file}?v=${dataVersion}`, { cache: 'no-store' })));
     if (responses.some(response => !response.ok)) throw new Error('A dashboard data file could not be loaded.');
     [state.departments, state.schemes, state.mapData] = await Promise.all(responses.map(response => response.json()));
+    el('initiative-total').textContent = integer.format(state.metadata.totals.canonicalInitiatives);
+    el('line-total').textContent = integer.format(state.metadata.totals.officialBudgetRows);
+    [...new Map(state.mapData.map(item => [item.departmentId, item.departmentName])).entries()].sort((a, b) => a[1].localeCompare(b[1])).forEach(([id, name]) => el('map-department').add(new Option(name, id)));
     renderHeadline(); renderTakeaways();
     renderBars('receipts-bars', 'receipts-table', state.metadata.receipts, state.metadata.totals.totalReceiptsCrore, true);
     renderBars('spending-bars', 'spending-table', state.metadata.expenditure, state.metadata.totals.totalExpenditureCrore);
     await renderCompositionCharts();
     renderDepartments(); populateFilters(); applyFilters(); renderSources(); bindEvents();
+    loadMap().catch(error => {
+      console.error(error);
+      el('map-status').innerHTML = 'The map could not be initialized. <button type="button" class="inline-link" id="retry-map">Try again</button>';
+      el('retry-map').addEventListener('click', () => loadMap().catch(console.error), { once: true });
+    });
     if (location.hash.startsWith('#scheme=')) openScheme(location.hash.slice(8), false);
   } catch (error) {
     console.error(error);

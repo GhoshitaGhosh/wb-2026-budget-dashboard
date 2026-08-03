@@ -11,8 +11,9 @@ An evidence-led, static civic data dashboard for exploring West Bengal's 2026-27
 - All 5,383 official rows remain independently searchable even when they also contribute to a reconciled initiative.
 - Paginated, shareable scheme search with department, theme, record-type, reconciliation, amount-status, and sorting controls.
 - Doughnut composition charts for compact part-to-whole totals, optional ranked bars, and accessible tables for both views.
-- Accessible tables for every analytical view, keyboard-operable controls, responsive layouts, dark mode, CSV downloads, and a lazy-loaded map with an explicit coverage warning.
-- Generated metadata, department, scheme, and map contracts validated before every production build.
+- Accessible tables for every analytical view, keyboard-operable controls, responsive layouts, dark mode, view-scoped CSV downloads, and an automatically initialized map of reviewed cited locations.
+- Generated metadata, department, initiative/alias, official-line, and cited-map contracts validated before every production build.
+- One managed production-preview smoke test verifies its exact server process exits and its temporary port is released before deployment.
 
 ## Data workflow
 

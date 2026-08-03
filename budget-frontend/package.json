@@ -7,6 +7,7 @@
     "data:build": "node ../scripts/build_dashboard_data.mjs",
     "data:validate": "node ../scripts/validate_dashboard_data.mjs",
     "test": "node ../scripts/test_data_utils.mjs && node ../scripts/check_accessibility.mjs",
+    "test:preview": "node ../scripts/verify_preview_cleanup.mjs",
     "dev": "npm run data:build && vite",
     "build": "npm run data:build && npm run data:validate && vite build",
     "preview": "vite preview"
